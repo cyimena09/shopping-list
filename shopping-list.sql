@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 10 jan. 2021 à 15:13
+-- Généré le : Dim 10 jan. 2021 à 15:32
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -86,6 +86,21 @@ INSERT INTO `mesure` (`idMes`, `nomMes`) VALUES
 (1, 'KG'),
 (2, 'Littre'),
 (3, 'Unité');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `panier`
+--
+
+DROP TABLE IF EXISTS `panier`;
+CREATE TABLE IF NOT EXISTS `panier` (
+  `idPan` int(11) NOT NULL,
+  `idMag` int(11) NOT NULL,
+  `idProd` int(11) NOT NULL,
+  `quantité` int(11) NOT NULL,
+  `idMesu` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
