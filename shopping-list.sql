@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 10 jan. 2021 à 15:32
+-- Généré le : Dim 10 jan. 2021 à 15:47
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -98,8 +98,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `idPan` int(11) NOT NULL,
   `idMag` int(11) NOT NULL,
   `idProd` int(11) NOT NULL,
-  `quantité` int(11) NOT NULL,
-  `idMesu` int(11) NOT NULL
+  `quantité` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -113,6 +112,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `idProd` int(11) NOT NULL AUTO_INCREMENT,
   `nomProd` varchar(255) NOT NULL,
   `idCat` int(11) NOT NULL,
+  `idMes` int(11) NOT NULL,
   PRIMARY KEY (`idProd`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
