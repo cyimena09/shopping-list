@@ -50,7 +50,6 @@ public class ServletProduitAdd extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             request.setAttribute("mesures", mesureDAO.getMesures());
-            System.out.println(mesureDAO.getMesures());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
