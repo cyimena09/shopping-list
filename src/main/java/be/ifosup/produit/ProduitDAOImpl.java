@@ -43,7 +43,7 @@ public class ProduitDAOImpl implements ProduitDAO {
     public void createProduit(Produit produit) {
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = connection.prepareStatement("INSERT INTO produit (idProd, nomProd, idCat, idMes) VALUES (?, ?, ?, ?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO produit (idProduit, nom, idCategorie, idMesure) VALUES (?, ?, ?, ?)");
             preparedStatement.setLong(1, produit.getIdProd());
             preparedStatement.setString(2, produit.getNomPro());
             preparedStatement.setLong(3, produit.getIdCategory());

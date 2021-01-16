@@ -40,6 +40,8 @@ public class DAOFactory {
     // Get Dao for sql tables
     public ProduitDAO getProduitDAO() { return new ProduitDAOImpl(this); }
 
+    //public MesureDAO getMesureDAO() { return new MesureDAOImpl(this); }
+
 
     // décommenter lorsque les classes auront été créé
 //    public MagasinDAO getMagasinDAO(){
@@ -55,5 +57,5 @@ public class DAOFactory {
 //        return new CategorieImpl(this);
 //    }
 //
-//    public MesureDAO getMesureDAO() { return new MesureDAOImpl(this); }
+
 }
