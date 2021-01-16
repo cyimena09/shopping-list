@@ -37,18 +37,18 @@ public class DAOFactory {
     // Get Dao for sql tables
     // décommenter lorsque les classes auront été créé
 //    public MagasinDAO getMagasinDAO(){
-//        return new UserDAOImpl(this);
+//        return new MagasinDAOImpl(this);
 //    }
 //
 //    public PanierDAO getPanierDAO(){
-//        return new TodoDAOImpl(this);
+//        return new PanierDAOImpl(this);
 //    }
 //
-//    public ProduitDAO getProduitDAO() { return new CategoryDAOImpl(this); }
+//    public ProduitDAO getProduitDAO() { return new ProduitDAOImpl(this); }
 //
 //    public CategorieDAO getCategorieDAO(){
-//        return new TodoDAOImpl(this);
+//        return new CategorieImpl(this);
 //    }
 //
-//    public MesureDAO getMesureDAO() { return new CategoryDAOImpl(this); }
+//    public MesureDAO getMesureDAO() { return new MesureDAOImpl(this); }
 }
