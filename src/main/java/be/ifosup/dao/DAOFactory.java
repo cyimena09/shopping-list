@@ -1,5 +1,8 @@
 package be.ifosup.dao;
 
+import be.ifosup.produit.ProduitDAO;
+import be.ifosup.produit.ProduitDAOImpl;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -26,7 +29,7 @@ public class DAOFactory {
         catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/poo?serverTimezone=CET", "root", "");
+        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "root", "");
         return instance;
     }
 
@@ -35,6 +38,9 @@ public class DAOFactory {
     }
 
     // Get Dao for sql tables
+    public ProduitDAO getProduitDAO() { return new ProduitDAOImpl(this); }
+
+
     // décommenter lorsque les classes auront été créé
 //    public MagasinDAO getMagasinDAO(){
 //        return new MagasinDAOImpl(this);
@@ -44,7 +50,6 @@ public class DAOFactory {
 //        return new PanierDAOImpl(this);
 //    }
 //
-//    public ProduitDAO getProduitDAO() { return new ProduitDAOImpl(this); }
 //
 //    public CategorieDAO getCategorieDAO(){
 //        return new CategorieImpl(this);
