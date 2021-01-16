@@ -2,48 +2,47 @@ package be.ifosup.produit;
 
 public class Produit {
     // ATTRIBUTES
-    private Long idProd;
-    private String nomPro;
-    private Long idCategory;
-    private Long idMes;
+    private Long idProduit;
+    private String nom;
+    private Long idCategorie;
+    private Long idMesure;
 
-    public Produit(Long idProd, String nomPro, Long idCategory, Long idMes) {
-        this.idProd = idProd;
-        this.nomPro = nomPro;
-        this.idCategory = idCategory;
-        this.idMes = idMes;
+    public Produit(Long idProduit, String nom, Long idCategorie, Long idMesure) {
+        this.idProduit = idProduit;
+        this.nom = nom;
+        this.idCategorie = idCategorie;
+        this.idMesure = idMesure;
     }
 
-    public Long getIdProd() {
-        return idProd;
+    public Long getIdProduit() {
+        return idProduit;
     }
 
-    public void setIdProd(Long idProd) {
-        this.idProd = idProd;
+    public void setIdProduit(Long idProduit) {
+        this.idProduit = idProduit;
     }
 
-    public String getNomPro() {
-        return nomPro;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomPro(String nomPro) {
-        this.nomPro = nomPro;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public Long getIdCategory() {
-        return idCategory;
+    public Long getIdCategorie() {
+        return idCategorie;
     }
 
-    public void setIdCategory(Long idCategory) {
-        this.idCategory = idCategory;
+    public void setIdCategorie(Long idCategorie) {
+        this.idCategorie = idCategorie;
     }
 
-    public Long getIdMes() {
-        return idMes;
+    public Long getIdMesure() {
+        return idMesure;
     }
 
-    public void setIdMes(Long idMes) {
-        this.idMes = idMes;
+    public void setIdMesure(Long idMesure) {
+        this.idMesure = idMesure;
     }
-
 }

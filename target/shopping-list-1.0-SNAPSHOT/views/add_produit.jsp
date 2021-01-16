@@ -1,11 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cyime
-  Date: 16-01-21
-  Time: 09:50
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page pageEncoding="UTF-8" %>
+
+<%@include file="../templates/header.jsp"%>
+
+<%@include file="../templates/navigation.jsp"%>
+
 <html>
 <head>
     <title>Title</title>
@@ -15,10 +13,17 @@
 
 <form action="add_produit" method="post">
 
-    <label for="nomPro">Nom du produit</label>
-    <input id="nomPro" name="nomPro" type="text">
+    <label for="nomProduit">Nom du produit</label>
+    <input id="nomProduit" name="nomProduit" type="text">
+
+    <label for="idMesure">Sélectionnez une catégorie</label>
+    <select class="form-control" name="idMesure" id="idMesure">
+        <c:forEach items="${mesures}" var="mesure">
+            <option value="${mesure.idMesure}">${mesure.nom}</option>
+        </c:forEach>
+    </select>
+
     <button type="submit">Enregister</button>
 </form>
 
-</body>
-</html>
+<%@include file="../templates/footer.jsp"%>

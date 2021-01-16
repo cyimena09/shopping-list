@@ -27,11 +27,11 @@ public class ProduitDAOImpl implements ProduitDAO {
         connection = daoFactory.getConnection();
         statement = connection.createStatement();
         resultSet = statement.executeQuery(
-                "SELECT p.idProduit, p.nomProd FROM produit");
+                "SELECT p.idProduit, p.nom FROM produit");
 
         while (resultSet.next()) {
-            Long id = resultSet.getLong("idProd");
-            String nomPro = resultSet.getString("nomPro");
+            Long id = resultSet.getLong("idProduit");
+            String nomPro = resultSet.getString("nom");
 
             Produit produit = new Produit(id, nomPro, null, null);
             produits.add(produit);
@@ -41,13 +41,13 @@ public class ProduitDAOImpl implements ProduitDAO {
 
     @Override
     public void createProduit(Produit produit) {
+
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = connection.prepareStatement("INSERT INTO produit (idProduit, nom, idCategorie, idMesure) VALUES (?, ?, ?, ?)");
-            preparedStatement.setLong(1, produit.getIdProd());
-            preparedStatement.setString(2, produit.getNomPro());
-            preparedStatement.setLong(3, produit.getIdCategory());
-            preparedStatement.setLong(4, produit.getIdMes());
+            preparedStatement = connection.prepareStatement("INSERT INTO produit (nom, idCategorie, idMesure) VALUES (?, ?, ?)");
+            preparedStatement.setString(1, produit.getNom());
+            preparedStatement.setLong(2, produit.getIdCategorie());
+            preparedStatement.setLong(3, produit.getIdMesure());
 
             preparedStatement.executeUpdate();
 

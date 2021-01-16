@@ -1,0 +1,10 @@
+be\ifosup\servlet\ServletProduitAdd.class
+be\ifosup\produit\ProduitDAO.class
+be\ifosup\produit\ProduitDAOImpl.class
+be\ifosup\mesure\MesureDAO.class
+be\ifosup\servlet\ServletHome.class
+be\ifosup\servlet\ServletProduits.class
+be\ifosup\mesure\Mesure.class
+be\ifosup\produit\Produit.class
+be\ifosup\mesure\MesureDAOImpl.class
+be\ifosup\dao\DAOFactory.class

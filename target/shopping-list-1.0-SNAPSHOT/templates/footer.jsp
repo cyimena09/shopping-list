@@ -1,6 +1,6 @@
 <div class="container" >
     <footer>
-        <p class="text-center p-3">&copy; Ifosup Wavre 2021/p>
+        <p class="text-center p-3">&copy; Ifosup Wavre 2021</p>
     </footer>
 </div>
 
