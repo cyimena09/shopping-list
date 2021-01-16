@@ -26,8 +26,7 @@ public class ProduitDAOImpl implements ProduitDAO {
 
         connection = daoFactory.getConnection();
         statement = connection.createStatement();
-        resultSet = statement.executeQuery(
-                "SELECT p.idProduit, p.nom FROM produit p");
+        resultSet = statement.executeQuery("SELECT p.idProduit, p.nom FROM produit p");
 
         while (resultSet.next()) {
             Long id = resultSet.getLong("idProduit");
@@ -45,9 +44,29 @@ public class ProduitDAOImpl implements ProduitDAO {
         try {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement("INSERT INTO produit (nom, idCategorie, idMesure) VALUES (?, ?, ?)");
+
             preparedStatement.setString(1, produit.getNom());
             preparedStatement.setLong(2, produit.getIdCategorie());
             preparedStatement.setLong(3, produit.getIdMesure());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateProduit(Long id, Produit produit) {
+
+        try {
+            connection = daoFactory.getConnection();
+            preparedStatement = connection.prepareStatement("UPDATE produit p SET p.nom = ? , p.idCategorie = ?, p.idMesure = ? WHERE p.idProduit = ?");
+
+            preparedStatement.setString(1, produit.getNom());
+            preparedStatement.setLong(2, produit.getIdCategorie());
+            preparedStatement.setLong(3, produit.getIdMesure());
+            preparedStatement.setLong(4, produit.getIdProduit());
 
             preparedStatement.executeUpdate();
 
@@ -61,6 +80,7 @@ public class ProduitDAOImpl implements ProduitDAO {
         try {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement("DELETE FROM produit WHERE id = ?");
+
             preparedStatement.setLong(1, id);
 
             preparedStatement.executeUpdate();
@@ -68,11 +88,6 @@ public class ProduitDAOImpl implements ProduitDAO {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-    }
-
-    @Override
-    public void updateProduit(Long id) {
-
     }
 
 }

@@ -16,7 +16,7 @@
     <label for="nomProduit">Nom du produit</label>
     <input id="nomProduit" name="nomProduit" type="text">
 
-    <label for="idMesure">Sélectionnez une catégorie</label>
+    <label for="idMesure">Sélectionnez une mesure</label>
     <select class="form-control" name="idMesure" id="idMesure">
         <c:forEach items="${mesures}" var="mesure">
             <option value="${mesure.idMesure}">${mesure.nom}</option>

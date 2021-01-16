@@ -7,6 +7,7 @@ public class Produit {
     private Long idCategorie;
     private Long idMesure;
 
+    // CONSTRUCTOR
     public Produit(Long idProduit, String nom, Long idCategorie, Long idMesure) {
         this.idProduit = idProduit;
         this.nom = nom;
@@ -14,6 +15,7 @@ public class Produit {
         this.idMesure = idMesure;
     }
 
+    // METHODS
     public Long getIdProduit() {
         return idProduit;
     }
@@ -45,4 +47,5 @@ public class Produit {
     public void setIdMesure(Long idMesure) {
         this.idMesure = idMesure;
     }
+
 }

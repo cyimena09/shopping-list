@@ -9,7 +9,7 @@ public interface ProduitDAO {
 
     void createProduit(Produit produit);
 
-    void updateProduit(Long id);
+    void updateProduit(Long id, Produit produit);
 
     void deleteProduit(Long id);
 
