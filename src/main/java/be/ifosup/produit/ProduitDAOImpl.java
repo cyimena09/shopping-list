@@ -27,7 +27,7 @@ public class ProduitDAOImpl implements ProduitDAO {
         connection = daoFactory.getConnection();
         statement = connection.createStatement();
         resultSet = statement.executeQuery(
-                "SELECT p.idProd, p.nomProd FROM produit");
+                "SELECT p.idProduit, p.nomProd FROM produit");
 
         while (resultSet.next()) {
             Long id = resultSet.getLong("idProd");

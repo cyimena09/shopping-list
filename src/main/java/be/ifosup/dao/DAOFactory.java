@@ -14,7 +14,7 @@ public class DAOFactory {
     private final String password;
 
     // CONSTRUCTOR
-    public DAOFactory(String url, String userName, String password){
+    public DAOFactory(String url, String userName, String password) {
         this.url = url;
         this.userName = userName;
         this.password = password;
@@ -22,7 +22,7 @@ public class DAOFactory {
 
     // METHODS
     // Load driver
-    public static DAOFactory getInstance(){
+    public static DAOFactory getInstance() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         }

@@ -7,7 +7,7 @@ public class Produit {
     private Long idCategory;
     private Long idMes;
 
-    public Produit(Long idProd, String nomPro, Long idCategory, Long idMes){
+    public Produit(Long idProd, String nomPro, Long idCategory, Long idMes) {
         this.idProd = idProd;
         this.nomPro = nomPro;
         this.idCategory = idCategory;
