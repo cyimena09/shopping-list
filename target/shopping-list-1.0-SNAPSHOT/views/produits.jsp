@@ -6,7 +6,6 @@
 
 <a href="add_produit">Ajouter un produit</a>
 
-
 <h2>Liste des produits</h2>
 
 <table class="table">
@@ -16,6 +15,7 @@
         <th scope="col">Nom</th>
         <th scope="col">Quantité</th>
         <th scope="col">Catégorie</th>
+        <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +25,8 @@
             <td>${produit.nom}</td>
             <td></td>
             <td></td>
+            <th><a class="btn btn-warning" href="update_produit?idProduit=${produit.idProduit}">Modifier</a></th>
+            <th><a class="btn btn-danger" href="delete_produit?idProduit=${produit.idProduit}">Supprimer</a></th>
         </tr>
     </c:forEach>
     </tbody>

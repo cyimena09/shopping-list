@@ -1,22 +1,22 @@
 package be.ifosup.mesure;
 
 public class Mesure {
-    // ATTRIBUTES
-    private Long idMesure;
+    // ATTRIBUTS
+    private Integer idMesure;
     private String nom;
 
-    // CONSTRUCTOR
-    public Mesure(Long idMesure, String nom) {
+    // CONSTRUCTEUR
+    public Mesure(Integer idMesure, String nom) {
         this.idMesure = idMesure;
         this.nom = nom;
     }
 
-    // METHODS
-    public Long getIdMesure() {
+    // METHODES
+    public Integer getIdMesure() {
         return idMesure;
     }
 
-    public void setIdMesure(Long idMesure) {
+    public void setIdMesure(Integer idMesure) {
         this.idMesure = idMesure;
     }
 

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletProduitAdd", urlPatterns = "/add_produit")
-public class ServletProduitAdd extends HttpServlet {
+@WebServlet(name = "ServletUpdateProduit", urlPatterns = "/update_produit")
+public class ServletUpdateProduit extends HttpServlet {
     private ProduitDAO produitDAO;
     private MesureDAO mesureDAO;
 
@@ -25,21 +25,16 @@ public class ServletProduitAdd extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // force UTF-8
+        // Force UTF-8
         request.setCharacterEncoding("UTF-8");
-        // get form values
+        // Récupération de l'id du produit depuis l'url.
+        Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
+        // Récupération du nom de la mesure depuis le formulaire.
         String nomProduit = request.getParameter("nomProduit");
-        String strIdCategorie = request.getParameter("idCategorie");
-        String strIdMesure = request.getParameter("idMesure");
+        Integer idMesure = Integer.parseInt(request.getParameter("idMesure"));
 
-        // convert strings to long
-        //Long idCategorie = Long.parseLong(strIdCategorie);
-        Long idMesure = Long.parseLong(strIdMesure);
-        // add in db
-        produitDAO.createProduit(new Produit(null, nomProduit, (long)1, idMesure ));
-
-        // redirection
         try {
+            produitDAO.updateProduit(idProduit, new Produit(null, nomProduit, 2, idMesure));
             request.setAttribute("produits", produitDAO.getProduits());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -48,11 +43,15 @@ public class ServletProduitAdd extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String strIdProduit = request.getParameter("idProduit");
         try {
+            // Recuperation du produits, des catégories et des mesures.
+            request.setAttribute("produit", produitDAO.getProduitById(Integer.parseInt(strIdProduit)));
             request.setAttribute("mesures", mesureDAO.getMesures());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/add_produit.jsp").forward(request, response);
+        request.getRequestDispatcher("views/update_produit.jsp").forward(request, response);
     }
+
 }

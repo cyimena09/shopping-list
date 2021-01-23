@@ -10,20 +10,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DAOFactory {
-    // ATTRIBUTES
+    // ATTRIBUTS
     private final String url;
     private final String userName;
     private final String password;
 
-    // CONSTRUCTOR
+    // CONSTRUCTEUR
     public DAOFactory(String url, String userName, String password) {
         this.url = url;
         this.userName = userName;
         this.password = password;
     }
 
-    // METHODS
-    // Load driver
+    // METHODES
+    // Chargement du driver.
     public static DAOFactory getInstance() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,13 +39,13 @@ public class DAOFactory {
         return DriverManager.getConnection(url, userName, password);
     }
 
-    // Get Dao for sql tables
+    // Récupération des DAO par tables SQL.
     public ProduitDAO getProduitDAO() { return new ProduitDAOImpl(this); }
 
     public MesureDAO getMesureDAO() { return new MesureDAOImpl(this); }
 
 
-    // décommenter lorsque les classes auront été créé
+    // décommenter lorsque les classes auront été créées
 //    public MagasinDAO getMagasinDAO(){
 //        return new MagasinDAOImpl(this);
 //    }

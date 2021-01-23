@@ -7,10 +7,12 @@ public interface MesureDAO {
 
     List<Mesure> getMesures() throws SQLException;
 
-    void createMesure(Mesure mesure);
+    Mesure getMesureById(Integer id) throws SQLException;
 
-    void updateMesure(Long id, Mesure mesure);
+    void createMesure(Mesure mesure) throws SQLException;
 
-    void deleteMesure(Long id);
+    void updateMesure(Integer id, Mesure mesure) throws SQLException;
+
+    void deleteMesure(Integer id) throws SQLException;
 
 }

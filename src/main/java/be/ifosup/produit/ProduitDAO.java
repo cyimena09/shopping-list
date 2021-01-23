@@ -7,10 +7,12 @@ public interface ProduitDAO {
 
     List<Produit> getProduits() throws SQLException;
 
-    void createProduit(Produit produit);
+    Produit getProduitById(Integer idPorduit)  throws SQLException;
 
-    void updateProduit(Long id, Produit produit);
+    void createProduit(Produit produit) throws SQLException;
 
-    void deleteProduit(Long id);
+    void updateProduit(Integer idProduit, Produit produit) throws SQLException;
+
+    void deleteProduit(Integer idProduit) throws SQLException;
 
 }

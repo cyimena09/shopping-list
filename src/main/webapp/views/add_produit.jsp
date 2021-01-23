@@ -4,12 +4,6 @@
 
 <%@include file="../templates/navigation.jsp"%>
 
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
 
 <form action="add_produit" method="post">
 
