@@ -2,6 +2,8 @@ package be.ifosup.dao;
 
 import be.ifosup.mesure.MesureDAO;
 import be.ifosup.mesure.MesureDAOImpl;
+import be.ifosup.panier.PanierDAO;
+import be.ifosup.panier.PanierDAOImpl;
 import be.ifosup.produit.ProduitDAO;
 import be.ifosup.produit.ProduitDAOImpl;
 
@@ -31,7 +33,7 @@ public class DAOFactory {
         catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "root", "");
+        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "admin", "admin");
         return instance;
     }
 
@@ -44,16 +46,13 @@ public class DAOFactory {
 
     public MesureDAO getMesureDAO() { return new MesureDAOImpl(this); }
 
+    public PanierDAO getPanierDAO() { return new PanierDAOImpl(this); }
+
 
     // décommenter lorsque les classes auront été créées
 //    public MagasinDAO getMagasinDAO(){
 //        return new MagasinDAOImpl(this);
 //    }
-//
-//    public PanierDAO getPanierDAO(){
-//        return new PanierDAOImpl(this);
-//    }
-//
 //
 //    public CategorieDAO getCategorieDAO(){
 //        return new CategorieImpl(this);

@@ -10,9 +10,9 @@
         <nav>
             <ul>
                 <li><a href="home">Accueil</a></li>
-                <li><a >Vos paniers</a></li>
-                <li><a>Ajouter un magasin</a></li>
-                <li><a >Ajouter une catégorie</a></li>
+                <li><a href="paniers">Mes listes de courses</a></li>
+                <li><a href="""">Ajouter un magasin</a></li>
+                <li><a href="">Ajouter une categorie</a></li>
                 <li><a href="mesures">Ajouter une mesure</a></li>
             </ul>
         </nav>
