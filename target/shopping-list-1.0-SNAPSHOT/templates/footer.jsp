@@ -1,12 +1,30 @@
-<div class="container" >
-    <footer>
-        <p class="text-center p-3">&copy; Ifosup Wavre 2021</p>
-    </footer>
-</div>
+<footer>
 
-<!-- JavaScript Bundle with Popper.js For Boostrap 5-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+    <div class="wrapper">
+
+        <div class="entreprise">
+            <h5>Shopping List</h5>
+            <ul>
+                <li><a href="">Accueil</a></li>
+                <li><a href="">Vos paniers</a></li>
+                <li><a href="">Ajouter un magasin</a></li>
+                <li><a href="">Ajouter une catégorie</a></li>
+                <li><a href="">Ajouter une mesure</a></li>
+            </ul>
+        </div>
+
+        <div class="developped-by">
+            <h5>Projet réalisé par</h5>
+            <ul>
+                <li>Emile Cyimena</li>
+                <li>Benoît Vankoningslo</li>
+                <li>Xavier</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="all-right-reserved">
+        <p>© 2021. Tous droits réservés.</p>
+    </div>
+
+</footer>
