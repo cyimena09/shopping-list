@@ -1,0 +1,58 @@
+@import 'variables.scss';
+
+* {
+  color: white;
+  font-size: 15px;
+}
+
+footer{
+  margin-top: 300px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3% 0 2% 0;
+  color: white;
+  background-color: $color-dark-green;
+}
+
+.wrapper {
+  display: flex;
+  width: 1000px;
+  justify-content: space-between;
+}
+
+h5 {
+  color: white;
+  font-size: 16px;
+  font-weight: unset;
+  border-bottom: 1px white solid;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+a {
+  text-decoration: none;
+  font-weight: unset;
+}
+
+.entreprise, .developped-by {
+  width: 250px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.all-right-reserved {
+  width: 1000px;
+
+  p {
+    white-space: nowrap;
+    border-top: 1px solid white;
+    margin-top: 30px;
+    width: 195px;
+    padding-top: 10px;
+  }
+
+}

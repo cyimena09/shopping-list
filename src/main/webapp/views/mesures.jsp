@@ -4,6 +4,11 @@
 
 <%@include file="../templates/navigation.jsp"%>
 
+
+
+
+
+
 <a href="add_mesure">Ajouter une mesure</a>
 
 <h2>Liste des mesures</h2>

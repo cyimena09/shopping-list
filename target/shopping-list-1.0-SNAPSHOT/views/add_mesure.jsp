@@ -4,13 +4,21 @@
 
 <%@include file="../templates/navigation.jsp"%>
 
-<h2>Ajouter une mesure</h2>
-<form action="add_mesure" method="post">
+<div class="page">
+    <div class="content">
+        <h1 class="page-title">Ajouter une nouvelle unité de mesure</h1>
 
-    <label for="nomMesure">Nom de la mesure</label>
-    <input id="nomMesure" name="nomMesure" type="text">
+        <form>
+            <div class="form-group">
+                <label for="mesure">Nom de la mesure</label>
+                <input type="text" class="form-control" id="mesure" placeholder="ex: Kg">
+            </div>
 
-    <button type="submit">Enregister</button>
-</form>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+
+    </div>
+
+</div>
 
 <%@include file="../templates/footer.jsp"%>

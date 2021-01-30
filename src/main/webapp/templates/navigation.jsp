@@ -1,24 +1,21 @@
 
-<div class="container">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
-        <a href="#" class="navbar-brand"> Ifosup-Wavre</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a href="/todos" class="nav-link"
-                ${pseudo != '' ? 'active' : '' }>Todo</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <c:choose>
-                    <c:when test="${pseudo == null}">
-                        <a href="login" class="nav-link active">Login</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a href="logout" class="nav-link">${pseudo} Logout</a>
-                    </c:otherwise>
-                </c:choose>
-            </li>
-        </ul>
-    </nav>
-</div>
+<header>
+    <div id=wrapper-brand class="wrapper">
+        <div class="brand">
+            <h1>Shopping List</h1>
+        </div>
+    </div>
+
+    <div id="wrapper-nav" class="wrapper">
+        <nav>
+            <ul>
+                <li><a href="home">Accueil</a></li>
+                <li><a >Vos paniers</a></li>
+                <li><a>Ajouter un magasin</a></li>
+                <li><a >Ajouter une catégorie</a></li>
+                <li><a href="mesures">Ajouter une mesure</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+

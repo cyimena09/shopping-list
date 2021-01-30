@@ -1,0 +1,53 @@
+@import 'variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Poppins:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font-text;
+}
+
+body {
+  background-color: $body;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 1200px;
+  margin-top: 50px;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+  font-family: $font-text;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #b7b6b6;
+}
+
+.page-title {
+  margin-bottom: 30px;
+}
+
+form {
+  width: 300px;
+}
+
+li {
+  list-style: none;
+}
