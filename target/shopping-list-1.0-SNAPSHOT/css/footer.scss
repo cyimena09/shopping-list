@@ -1,11 +1,5 @@
-@import 'variables.scss';
 
-* {
-  color: white;
-  font-size: 15px;
-}
-
-footer{
+footer {
   margin-top: 300px;
   margin-bottom: 0;
   display: flex;
@@ -13,16 +7,16 @@ footer{
   align-items: center;
   padding: 3% 0 2% 0;
   color: white;
-  background-color: $color-dark-green;
+  background-color: #297729;
 }
 
-.wrapper {
+footer .wrapper {
   display: flex;
   width: 1000px;
   justify-content: space-between;
 }
 
-h5 {
+.wrapper h5 {
   color: white;
   font-size: 16px;
   font-weight: unset;
@@ -31,28 +25,33 @@ h5 {
   margin-bottom: 12px;
 }
 
-a {
-  text-decoration: none;
-  font-weight: unset;
+footer ul {
+  margin: 0;
+  padding: 0;
 }
 
-.entreprise, .developped-by {
+footer a {
+  text-decoration: none;
+  font-weight: unset;
+  color: white;
+}
+
+footer .entreprise, .developped-by {
   width: 250px;
 }
 
-li {
+footer li {
   margin-bottom: 5px;
 }
 
-.all-right-reserved {
+footer .all-right-reserved {
   width: 1000px;
+}
 
-  p {
-    white-space: nowrap;
-    border-top: 1px solid white;
-    margin-top: 30px;
-    width: 195px;
-    padding-top: 10px;
-  }
-
+footer .all-right-reserved  p {
+  white-space: nowrap;
+  border-top: 1px solid white;
+  margin-top: 30px;
+  width: 195px;
+  padding-top: 10px;
 }

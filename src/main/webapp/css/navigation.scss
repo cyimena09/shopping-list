@@ -1,0 +1,103 @@
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+header .wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+header #wrapper-brand {
+  background-color: #297729;
+  padding: 10px 0;
+}
+
+header #wrapper-nav {
+  background-color: white;
+}
+
+header .brand, nav {
+  width: 1200px;
+}
+
+header .brand {
+  display: flex;
+}
+
+header  h1 {
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+}
+
+header nav {
+  display: flex;
+  align-content: center;
+  padding: 10px 0;
+}
+
+header ul {
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+header li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 20px 0 20px;
+  margin: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-left: 1px solid #888787;
+}
+
+header a {
+  color: #9f9d9d;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: unset;
+  transition: .4s;
+}
+
+header  .network {
+  font-size: 17px;
+}
+
+header a:hover {
+  color: #297729;
+}
+
+header a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #297729;
+  transition: width .4s;
+}
+
+header a:hover::after {
+  width: 100%;
+}
+
+header .active {
+  color: #297729;
+}
+
+header .active::after {
+  width: 100%;
+}
+
+header .fas {
+  color: white;
+  margin-right: 10px;
+}

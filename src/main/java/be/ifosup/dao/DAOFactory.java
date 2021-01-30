@@ -49,7 +49,7 @@ public class DAOFactory {
     public PanierDAO getPanierDAO() { return new PanierDAOImpl(this); }
 
 
-    // décommenter lorsque les classes auront été créées
+     //décommenter lorsque les classes auront été créées
 //    public MagasinDAO getMagasinDAO(){
 //        return new MagasinDAOImpl(this);
 //    }
@@ -57,6 +57,6 @@ public class DAOFactory {
 //    public CategorieDAO getCategorieDAO(){
 //        return new CategorieImpl(this);
 //    }
-//
+
 
 }

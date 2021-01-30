@@ -1,14 +1,14 @@
-@import 'variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: $font-text;
+  font-family: 'Nunito Sans', sans-serif; // general font.
 }
 
 body {
-  background-color: $body;
+  background-color: rgb(240,240,240);
 }
 
 .page {
@@ -23,7 +23,7 @@ body {
 
 h1, h2, h3 {
   font-weight: bold;
-  font-family: $font-text;
+  //font-family: $font-text;
   color: black;
   margin: 0;
   padding: 0;
