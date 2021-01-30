@@ -1,49 +1,13 @@
 <%@page pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
-<head>
-    <title>Shopping List</title>
-    <!-- Boostrap 5 CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css"
-          rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="css/navigation.scss"/>
-    <link rel="stylesheet" href="css/styles.scss"/>
-    <link rel="stylesheet" href="css/home.scss"/>
-    <link rel="stylesheet" href="css/footer.scss"/>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-</head>
-<body>
-
-<%--NAVIGATION--%>
-<header>
-    <div id=wrapper-brand class="wrapper">
-        <div class="brand">
-            <h1>Shopping List</h1>
-        </div>
-    </div>
-
-    <div id="wrapper-nav" class="wrapper">
-        <nav>
-            <ul>
-                <li><a href="home">Accueil</a></li>
-                <li><a href="home" >Vos paniers</a></li>
-                <li><a href="home">Ajouter un magasin</a></li>
-                <li><a href="add_mesure">Ajouter une catégorie</a></li>
-                <li><a href="mesures">Ajouter une mesure</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
+<%@include file="../templates/header.jsp"%>
+<%@include file="../templates/navigation.jsp"%>
 
 <%-- HOME--%>
 <div class="home page">
     <div class="content">
-        <div class="presentation">
 
+        <div class="presentation">
             <div class="wrapper">
                 <h1>Shopping List - Faire vos courses n'aura jamais été aussi facile !</h1>
                 <p style="font-weight: bold">Vous en avez marre :</p>
@@ -63,42 +27,8 @@
         <div class="illustration">
             <img src="assets/grocery-1232944_1280.jpg" alt="">
         </div>
+
     </div>
 </div>
 
-<%--FOOTER--%>
-<footer>
-
-    <div id="test" class="wrapper">
-
-        <div class="entreprise">
-            <h5>Shopping List</h5>
-            <ul>
-                <li><a href="">Accueil</a></li>
-                <li><a href="">Vos paniers</a></li>
-                <li><a href="">Ajouter un magasin</a></li>
-                <li><a href="">Ajouter une catégorie</a></li>
-                <li><a href="">Ajouter une mesure</a></li>
-            </ul>
-        </div>
-
-        <div class="developped-by">
-            <h5>Projet réalisé par</h5>
-            <ul>
-                <li>Emile Cyimena</li>
-                <li>Benoît Vankoningslo</li>
-                <li>Xavier</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="all-right-reserved">
-        <p>© 2021. Tous droits réservés.</p>
-    </div>
-
-</footer>
-
-
-</body>
-</html>
-
+<%@include file="../templates/footer.jsp"%>

@@ -16,6 +16,6 @@ public class ServletHome extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //response.sendRedirect("index");
         request.getRequestDispatcher("views/home.jsp").forward(request, response);
-
     }
+
 }
