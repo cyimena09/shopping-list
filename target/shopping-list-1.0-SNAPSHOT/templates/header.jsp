@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/navigation.scss"/>
     <link rel="stylesheet" href="css/styles.scss"/>
     <link rel="stylesheet" href="css/home.scss"/>
+    <link rel="stylesheet" href="css/panier.scss"/>
     <link rel="stylesheet" href="css/footer.scss"/>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>

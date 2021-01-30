@@ -81,7 +81,7 @@ public class PanierDAOImpl implements PanierDAO {
             }
         }
 
-         return new Panier(idPanier, nom);
+        return new Panier(idPanier, nom);
     }
 
     @Override

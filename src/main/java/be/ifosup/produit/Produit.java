@@ -65,4 +65,5 @@ public class Produit {
     public void setNomCategorie(String nomCategorie) {
         this.nomCategorie = nomCategorie;
     }
+
 }

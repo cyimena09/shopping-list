@@ -1,4 +1,5 @@
-    <%--FOOTER--%>
+<%@page pageEncoding="UTF-8" %>
+<%--FOOTER--%>
     <footer>
         <div id="test" class="wrapper">
 

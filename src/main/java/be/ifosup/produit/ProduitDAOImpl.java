@@ -98,6 +98,7 @@ public class ProduitDAOImpl implements ProduitDAO {
         Produit produit =  new Produit(idProduit, nom, idCategorie, idMesure);
         produit.setNomCategorie(nomCategorie);
         produit.setNomMesure(nomMesure);
+
         return produit;
     }
 

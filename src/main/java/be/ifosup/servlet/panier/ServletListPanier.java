@@ -26,12 +26,12 @@ public class ServletListPanier extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            request.setAttribute("mesures", panierDAO.getPaniers());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
-        }
-        request.getRequestDispatcher("views/paniers.jsp").forward(request, response);
+//        try {
+//            request.setAttribute("mesures", panierDAO.getPaniers());
+//        } catch (SQLException throwable) {
+//            throwable.printStackTrace();
+//        }
+        request.getRequestDispatcher("views/panier/paniers.jsp").forward(request, response);
     }
 
 }

@@ -1,5 +1,4 @@
 <%@page pageEncoding="UTF-8" %>
-
 <%@include file="../templates/header.jsp"%>
 <%@include file="../templates/navigation.jsp"%>
 
@@ -20,7 +19,7 @@
                 <p>Shopping List vous aide à vous souvenir des produits que vous devez acheter.</p>
             </div>
             <div class="start">
-                <a href="">Commencer une liste</a>
+                <a href="">Commencer une panier</a>
             </div>
         </div>
 

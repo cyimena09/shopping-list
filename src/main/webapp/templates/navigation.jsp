@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%--NAVIGATION--%>
 <header>
     <div id=wrapper-brand class="wrapper">

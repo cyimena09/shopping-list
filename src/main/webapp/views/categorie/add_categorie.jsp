@@ -1,24 +1,14 @@
 <%@page pageEncoding="UTF-8" %>
-<%@include file="../../templates/header.jsp"%>
-<%@include file="../../templates/navigation.jsp"%>
 
 <div class="page">
     <div class="content">
         <h1 class="page-title">Ajouter une nouvelle catégorie</h1>
-
-        <form>
+        <form action="add_categorie" method="post">
             <div class="form-group">
-                <label for="magasin">Nom du magasin</label>
-                <input type="text" class="form-control" id="magasin" placeholder="ex: Carrefour">
+                <label for="mesure">Nom de la mesure</label>
+                <input type="text" class="form-control" id="mesure" name="nomCategorie" placeholder="ex: Produit laitier">
             </div>
-
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <button type="submit" class="btn btn-primary mt-2">Enregistrer</button>
         </form>
-
-        <h2>Liste des catégories enregistré</h2>
-
     </div>
-
 </div>
-
-<%@include file="../../templates/footer.jsp"%>
