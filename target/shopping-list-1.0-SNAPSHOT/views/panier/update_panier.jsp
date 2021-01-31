@@ -1,7 +1,5 @@
 <%@page pageEncoding="UTF-8" %>
-
 <%@include file="../../templates/header.jsp"%>
-
 <%@include file="../../templates/navigation.jsp"%>
 
 <h2>Mettre à jour le nom du panier</h2>
