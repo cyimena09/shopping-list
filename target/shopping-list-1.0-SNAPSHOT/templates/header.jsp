@@ -8,11 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="css/navigation.scss"/>
-    <link rel="stylesheet" href="css/styles.scss"/>
-    <link rel="stylesheet" href="css/home.scss"/>
-    <link rel="stylesheet" href="css/panier.scss"/>
-    <link rel="stylesheet" href="css/footer.scss"/>
+    <link rel="stylesheet" href="css/styles.css"/>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
