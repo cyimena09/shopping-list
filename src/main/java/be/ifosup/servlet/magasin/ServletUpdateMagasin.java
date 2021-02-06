@@ -24,10 +24,10 @@ public class ServletUpdateMagasin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Force UTF-8
         request.setCharacterEncoding("UTF-8");
-        // Récupération depuis l'url et conversion en Integer de l'id de la mesure.
+        // Récupération depuis l'url et conversion en Integer de l'id du magasin
         String strIdMagasin = request.getParameter("idMagasin");
         Integer idMagasin = Integer.parseInt(strIdMagasin);
-        // Récupération du nom de la mesure depuis le formulaire.
+        // Récupération du nom du magasin depuis le formulaire.
         String nomMagasin = request.getParameter("nomMagasin");
 
         try {
@@ -43,7 +43,7 @@ public class ServletUpdateMagasin extends HttpServlet {
         String strIdMagasin = request.getParameter("idMagasin");
 
         try {
-            // Ajout de la mesure dans l'attribut.
+            // Ajout du magasin dans l'attribut.
             request.setAttribute("magasin", magasinDAO.getMagasinById(Integer.parseInt(strIdMagasin)));
         } catch (SQLException throwable) {
             throwable.printStackTrace();

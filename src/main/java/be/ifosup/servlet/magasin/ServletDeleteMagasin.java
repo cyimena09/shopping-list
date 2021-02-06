@@ -23,7 +23,7 @@ public class ServletDeleteMagasin extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Récupération de l'id de le mesure à supprimer.
+        // Récupération de l'id du magasin à supprimer.
         String idMagasin = request.getParameter("idMagasin");
 
         try {
