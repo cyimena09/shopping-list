@@ -8,8 +8,8 @@
 
         <form action="update_categorie?idCategorie=${categorie.idCategorie}" method="post">
 
-            <label for="nomMesure">Nom du produit</label>
-            <input id="nomMesure" name="nomMesure" type="text" value="${categorie.nom}">
+            <label for="nomCategorie">Nom de la Catégorie</label>
+            <input id="nomCategorie" name="nomCategorie" type="text" value="${categorie.nom}">
 
             <button type="submit">Enregister</button>
         </form>
@@ -17,3 +17,4 @@
 </div>
 
 <%@include file="../../templates/footer.jsp"%>
+
