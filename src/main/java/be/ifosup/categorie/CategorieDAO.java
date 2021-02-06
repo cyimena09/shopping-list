@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface CategorieDAO {
+
     List<Categorie> getCategories() throws SQLException;
 
     Categorie getCategorieById(Integer id) throws SQLException;
