@@ -16,7 +16,7 @@
                 <li><a href="magasins">Ajouter un magasin</a></li>
                 <li><a href="categories">Ajouter une catégorie</a></li>
                 <li><a href="mesures">Ajouter une mesure</a></li>
-                <li><a href="mesures">mes produits</a></li>
+                <li><a href="produits">Mes produits</a></li>
             </ul>
         </nav>
     </div>

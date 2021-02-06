@@ -19,19 +19,22 @@ import java.sql.SQLException;
 @WebServlet(name = "ServletListProduits", urlPatterns = "/produits")
 public class ServletListProduits extends HttpServlet {
     private ProduitDAO produitDAO;
+    private MesureDAO mesureDAO;
 
     public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.produitDAO = daoFactory.getProduitDAO();
+        this.mesureDAO = daoFactory.getMesureDAO();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             request.setAttribute("produits", produitDAO.getProduits());
+            request.setAttribute("mesures", mesureDAO.getMesures());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/produits.jsp").forward(request, response);
+        request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
     }
 
 }

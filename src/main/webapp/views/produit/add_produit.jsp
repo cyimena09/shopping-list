@@ -1,20 +1,25 @@
 <%@page pageEncoding="UTF-8" %>
-<%@include file="../../templates/header.jsp"%>
-<%@include file="../../templates/navigation.jsp"%>
 
-<form action="add_produit" method="post">
+<div class="page">
+    <div class="content">
 
-    <label for="nomProduit">Nom du produit</label>
-    <input id="nomProduit" name="nomProduit" type="text">
+        <form action="add_produit" method="post">
 
-    <label for="idMesure">Sélectionnez une mesure</label>
-    <select class="form-control" name="idMesure" id="idMesure">
-        <c:forEach items="${mesures}" var="mesure">
-            <option value="${mesure.idMesure}">${mesure.nom}</option>
-        </c:forEach>
-    </select>
+            <div class="form-group">
+                <label for="nomProduit">Nom du produit</label>
+                <input id="nomProduit" class="form-control" name="nomProduit" type="text">
+            </div>
 
-    <button type="submit">Enregister</button>
-</form>
+            <div class="form-group">
+                <label for="idMesure">Unité de mesure</label>
+                <select class="form-control" name="idMesure" id="idMesure">
+                    <c:forEach items="${mesures}" var="mesure">
+                        <option value="${mesure.idMesure}">${mesure.nom}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Enregister</button>
+        </form>
 
-<%@include file="../../templates/footer.jsp"%>
+    </div>
+</div>

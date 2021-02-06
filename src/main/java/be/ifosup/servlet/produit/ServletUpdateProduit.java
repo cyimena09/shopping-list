@@ -42,7 +42,7 @@ public class ServletUpdateProduit extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/produits.jsp").forward(request, response);
+        request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,7 +54,7 @@ public class ServletUpdateProduit extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/update_produit.jsp").forward(request, response);
+        request.getRequestDispatcher("views/produit/update_produit.jsp").forward(request, response);
     }
 
 }

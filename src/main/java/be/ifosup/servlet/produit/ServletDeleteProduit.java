@@ -38,6 +38,6 @@ public class ServletDeleteProduit extends HttpServlet {
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/produits.jsp").forward(request, response);
+        request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
     }
 }

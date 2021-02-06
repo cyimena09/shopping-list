@@ -44,19 +44,11 @@ public class ServletAddProduit extends HttpServlet {
             // add in db
             produitDAO.createProduit(new Produit(null, nomProduit, (int)1, idMesure ));
             request.setAttribute("produits", produitDAO.getProduits());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
-        }
-        request.getRequestDispatcher("views/produits.jsp").forward(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
             request.setAttribute("mesures", mesureDAO.getMesures());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/add_produit.jsp").forward(request, response);
+        request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
     }
 
 }
