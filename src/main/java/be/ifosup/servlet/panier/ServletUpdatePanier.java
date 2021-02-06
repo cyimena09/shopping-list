@@ -29,13 +29,14 @@ public class ServletUpdatePanier extends HttpServlet {
         // Force UTF-8
         request.setCharacterEncoding("UTF-8");
         // Récupération depuis l'url et conversion en Integer de l'id de la mesure.
-        String strIdPanieer = request.getParameter("idPanier");
-        Integer idPanier = Integer.parseInt(strIdPanieer);
-        // Récupération du nom de la mesure depuis le formulaire.
-        String nomPanier = request.getParameter("nomPanier");
+        Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
 
+        // Récupération depuis le formulaire.
+        Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
+//        Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
+//        Integer quantite = Integer.parseInt(request.getParameter("quantite"));
         try {
-            panierDAO.updatePanier(idPanier, new Panier(null));
+            panierDAO.updatePanier(idPanier, new Panier(idMagasin));
             request.setAttribute("paniers", panierDAO.getPaniers());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

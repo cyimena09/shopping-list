@@ -12,7 +12,6 @@ public class Categorie {
     public Categorie(Integer idCategorie, String nom) {
         this.idCategorie = idCategorie;
         this.nom = nom;
-
     }
 
     // METHODES

@@ -7,14 +7,26 @@ public class Panier {
     private Integer idProduit;
     private String nomProduit;
     private String nomMagasin;
+    private Integer quantite;
 
     // CONSTRUCTEUR
     public Panier() { }
 
-    public Panier(Integer idPanier) {
+    // pour la récupération du panier uniquement
+    public Panier(Integer idPanier, Integer idMagasin, Integer idProduit, Integer quantite, String nomMagasin) {
         this.idPanier = idPanier;
+        this.idMagasin = idMagasin;
+        this.idProduit = idProduit;
+        this.quantite = quantite;
+        this.nomMagasin = nomMagasin;
     }
 
+    // pour la création du panier
+    public Panier(Integer idMagasin) {
+        this.idMagasin = idMagasin;
+    }
+
+    // pour la récupération du panier et des produits par magasin
     public Panier(Integer idPanier, Integer idMagasin, Integer idProduit, String nomMagasin, String nomProduit) {
         this.idPanier = idPanier;
         this.idMagasin = idMagasin;
@@ -64,4 +76,11 @@ public class Panier {
         this.nomMagasin = nomMagasin;
     }
 
+    public Integer getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(Integer quantite) {
+        this.quantite = quantite;
+    }
 }

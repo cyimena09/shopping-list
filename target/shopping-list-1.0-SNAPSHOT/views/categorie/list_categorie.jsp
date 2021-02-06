@@ -15,7 +15,7 @@
             <c:forEach items="${categories}" var="categorie">
                 <tr>
                     <th scope="row">1</th>
-                    <td>${mesure.nom}</td>
+                    <td>${categorie.nom}</td>
                     <td>
                         <a class="btn btn-warning btn-sm" href="update_mesure?idMesure=${categorie.idCategorie}">Modifier</a>
                         <a class="btn btn-danger btn-sm" href="delete_mesure?idMesure=${categorie.categorie}">Supprimer</a>

@@ -3,3 +3,4 @@
 <%@include file="add_categorie.jsp"%>
 <%@include file="list_categorie.jsp"%>
 <%@include file="../../templates/footer.jsp"%>
+

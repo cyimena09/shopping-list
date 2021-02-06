@@ -2,6 +2,7 @@ package be.ifosup.servlet.produit;
 
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.MesureDAO;
+import be.ifosup.panier.PanierDAO;
 import be.ifosup.produit.Produit;
 import be.ifosup.produit.ProduitDAO;
 
@@ -15,37 +16,32 @@ import java.sql.SQLException;
 
 @WebServlet(name = "ServletAddProduit", urlPatterns = "/add_produit")
 public class ServletAddProduit extends HttpServlet {
+    private PanierDAO panierDAO;
     private ProduitDAO produitDAO;
     private MesureDAO mesureDAO;
 
     public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
+        this.panierDAO = daoFactory.getPanierDAO();
         this.produitDAO = daoFactory.getProduitDAO();
         this.mesureDAO = daoFactory.getMesureDAO();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // force UTF-8
-        request.setCharacterEncoding("UTF-8");
-        // get form values
-        String nomProduit = request.getParameter("nomProduit");
-        String strIdCategorie = request.getParameter("idCategorie");
-        String strIdMesure = request.getParameter("idMesure");
+    // Cette méthode vise à ajouter un produit dans le panier
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // recupération du panier, du produit et du magasin depuis l'url
+        Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
+        Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
+        Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
 
-        // convert strings to long
-        //Long idCategorie = Long.parseLong(strIdCategorie);
-        Integer idMesure = Integer.parseInt(strIdMesure);
-
-        // redirection
+        System.out.println("LID DU PANIER EST : " + idPanier +"LID DU MAGASIN EST : "+ idMagasin + "LID DU PRODUIT EST :" +  idProduit);
         try {
-            // add in db
-            produitDAO.createProduit(new Produit(null, nomProduit, 1, idMesure ));
-            request.setAttribute("produits", produitDAO.getProduits());
-            request.setAttribute("mesures", mesureDAO.getMesures());
+            panierDAO.addProduitInPanier(idPanier,idMagasin, idProduit, 5 );
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
+        response.sendRedirect("single_panier?idPanier=2");
+        //request.getRequestDispatcher("views/magasin/update_magasin.jsp").forward(request, response);
     }
 
 }

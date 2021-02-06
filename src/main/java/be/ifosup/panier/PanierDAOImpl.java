@@ -33,7 +33,7 @@ public class PanierDAOImpl implements PanierDAO {
                 Integer idPanier = resultSet.getInt("idPanier");
                 String nom = resultSet.getString("nom");
 
-                Panier panier = new Panier(idPanier);
+                Panier panier = new Panier();
                 paniers.add(panier);
             }
         } catch (SQLException throwable) {
@@ -54,20 +54,34 @@ public class PanierDAOImpl implements PanierDAO {
     public Panier getPanierById(Integer id) throws SQLException {
         // Attribut de l'objet retourné.
         Integer idPanier = null;
-        String nom = null;
+        Integer idMagasin = null;
+        Integer idProduit = null;
+        Integer quantite = null;
+        String nomMagasin = null;
 
         try {
             // La connexion et la requete prepare sont crees.
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
-            preparedStatement = connection.prepareStatement("SELECT pa.idPanier FROM panier pa WHERE pa.idPanier = ?");
+            preparedStatement = connection.prepareStatement("SELECT pa.idPanier, pa.idMagasin, pa.idProduit, pa.quantite, ma.nom as nomMagasin " +
+                    "FROM panier pa " +
+                    "INNER JOIN magasin ma ON ma.idMagasin = pa.idMagasin " +
+                    "WHERE pa.idPanier = ?");
             // Set attributes.
             preparedStatement.setInt(1, id);
             // Execution de la requete.
             resultSet = preparedStatement.executeQuery();
             // Recuperation des donnees.
             while (resultSet.next()) {
+
+                // de la table panier
                 idPanier = resultSet.getInt("idPanier");
+                idMagasin = resultSet.getInt("idMagasin");
+                idProduit = resultSet.getInt("idProduit");
+                quantite = resultSet.getInt("quantite");
+
+                // de la table magasin
+                nomMagasin = resultSet.getString("nomMagasin");
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -80,7 +94,7 @@ public class PanierDAOImpl implements PanierDAO {
             }
         }
 
-        return new Panier(idPanier);
+        return new Panier(idPanier, idMagasin, idProduit, quantite, nomMagasin);
     }
 
     @Override
@@ -124,9 +138,40 @@ public class PanierDAOImpl implements PanierDAO {
 
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = connection.prepareStatement("INSERT INTO panier (idPanier) VALUES (?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO panier (idMagasin, idProduit, quantite) " +
+                    "VALUES (?, ?, ?)");
 
-           // preparedStatement.setString(1, panier.get());
+            preparedStatement.setInt(1, panier.getIdMagasin());
+            preparedStatement.setInt(2, panier.getIdProduit());
+            preparedStatement.setInt(3, panier.getQuantite());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }
+    @Override
+    public void addProduitInPanier(Integer idPanier, Integer idMagasin, Integer idProduit, Integer quantite) throws SQLException {
+
+        try {
+            connection = daoFactory.getConnection();
+            preparedStatement = connection.prepareStatement("INSERT INTO panier (idMagasin, idProduit, quantite) " +
+                    "VALUES (?, ?, ?)" +
+                    "WHERE idPanier = ?");
+
+            preparedStatement.setInt(1, idMagasin);
+            preparedStatement.setInt(2, idProduit);
+            preparedStatement.setInt(3, quantite);
+            preparedStatement.setInt(4, idPanier);
 
             preparedStatement.executeUpdate();
 
@@ -145,7 +190,7 @@ public class PanierDAOImpl implements PanierDAO {
 
     @Override
     public void updatePanier(Integer id, Panier panier) throws SQLException {
-        System.out.println(id);
+
         try {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement("UPDATE panier m SET m.nom = ? WHERE m.idPanier = ?");

@@ -6,11 +6,11 @@
         <div  style="margin-bottom: 15px"><a href="add_panier">Créer un nouveau panier</a></div>
         <div class="magasins">
 
-            <c:forEach items="${magasins}" var="magasin">
+            <c:forEach items="${paniers}" var="panier">
 
                 <div class="magasin">
                     <div class="head">
-                        <h2>${magasin.nomMagasin}</h2>
+                        <h2>${panier.nomMagasin}</h2>
                     </div>
                     <div class="label">
                         <p>Produit</p>
@@ -39,7 +39,7 @@
                     </ul>
 
 
-                    <a class="btn btn-success add-article" href="single_panier">Ajouter un article</a>
+                    <a class="btn btn-success add-article" href="single_panier?idPanier=${panier.idPanier}">Ajouter un article</a>
 
                 </div>
 
