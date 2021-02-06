@@ -7,10 +7,11 @@
                 <h5>Shopping List</h5>
                 <ul>
                     <li><a href="home">Accueil</a></li>
-                    <li><a href="paniers">Vos paniers</a></li>
+                    <li><a href="paniers">Mes paniers</a></li>
                     <li><a href="magasins">Ajouter un magasin</a></li>
                     <li><a href="categories">Ajouter une catégorie</a></li>
                     <li><a href="mesures">Ajouter une mesure</a></li>
+                    <li><a href="mesures">Mes Produits</a></li>
                 </ul>
             </div>
 
@@ -18,7 +19,7 @@
                 <h5>Projet réalisé par</h5>
                 <ul>
                     <li>Emile Cyimena</li>
-                    <li>Benoît Vankoningslo</li>
+                    <li>Benoît Vankoningsloo</li>
                     <li>Xavier</li>
                 </ul>
             </div>
