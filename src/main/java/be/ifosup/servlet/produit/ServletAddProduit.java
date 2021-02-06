@@ -1,12 +1,9 @@
 package be.ifosup.servlet.produit;
 
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.mesure.Mesure;
 import be.ifosup.mesure.MesureDAO;
 import be.ifosup.produit.Produit;
 import be.ifosup.produit.ProduitDAO;
-import be.ifosup.panier.Panier;
-import be.ifosup.panier.PanierDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +39,7 @@ public class ServletAddProduit extends HttpServlet {
         // redirection
         try {
             // add in db
-            produitDAO.createProduit(new Produit(null, nomProduit, (int)1, idMesure ));
+            produitDAO.createProduit(new Produit(null, nomProduit, 1, idMesure ));
             request.setAttribute("produits", produitDAO.getProduits());
             request.setAttribute("mesures", mesureDAO.getMesures());
         } catch (SQLException throwable) {

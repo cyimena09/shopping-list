@@ -9,11 +9,12 @@
 
         <form action="update_produit?idProduit=${produit.idProduit}" method="post">
 
+            <div class="form-group">
+                <label for="nomProduit">Nom du produit</label>
+                <input id="nomProduit" class="form-control" name="nomProduit" type="text" value="${produit.nom}">
+            </div>
 
-            <label for="nomProduit">Nom du produit</label>
-
-            <input id="nomProduit" name="nomProduit" type="text" value="${produit.nom}">
-
+            <div class="form-group">
         <%--    <label for="idMesure">Sélectionnez une Catégorie</label>--%>
         <%--    <select class="form-control" name="idCategorie" id="idCategorie">--%>
         <%--        <option value="${produit.idCategorie}" selected>${produit.nomCategorie}</option>--%>
@@ -24,6 +25,8 @@
         <%--        </c:forEach>--%>
         <%--    </select>--%>
 
+            </div>
+            <div class="form-group">
             <label for="idMesure">Sélectionnez une mesure</label>
             <select class="form-control" name="idMesure" id="idMesure">
                 <option value="${produit.idMesure}" selected>${produit.nomMesure}</option>
@@ -33,7 +36,8 @@
                     </c:if>
                 </c:forEach>
             </select>
-            <button type="submit">Enregister</button>
+                </div>
+            <button class="btn btn-primary mt-2" type="submit">Enregister</button>
         </form>
     </div>
 </div>
