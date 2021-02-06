@@ -12,7 +12,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${magasins}" var="categorie">
+            <c:forEach items="${magasins}" var="magasin">
                 <tr>
                     <th scope="row">1</th>
                     <td>${magasin.nom}</td>

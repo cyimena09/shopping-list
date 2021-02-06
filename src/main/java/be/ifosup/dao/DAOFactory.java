@@ -37,7 +37,7 @@ public class DAOFactory {
         catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "admin", "admin");
+        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "root", "");
         return instance;
     }
 
@@ -52,10 +52,10 @@ public class DAOFactory {
 
     public PanierDAO getPanierDAO() { return new PanierDAOImpl(this); }
 
-//    public MagasinDAO getMagasinDAO(){
-//        return new MagasinDAOImpl(this);
-//    }
-//
+    public MagasinDAO getMagasinDAO(){
+        return new MagasinDAOImpl(this);
+    }
+
 //    public CategorieDAO getCategorieDAO(){
 //        return new CategorieDAOImpl(this);
 //    }

@@ -112,7 +112,7 @@ public class MesureDAOImpl implements MesureDAO {
 
     @Override
     public void updateMesure(Integer id, Mesure mesure) throws SQLException {
-        System.out.println(id);
+
         try {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement("UPDATE mesure m SET m.nom = ? WHERE m.idMesure = ?");

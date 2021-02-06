@@ -1,5 +1,8 @@
 package be.ifosup.servlet.magasin;
 
+import be.ifosup.dao.DAOFactory;
+import be.ifosup.magasin.MagasinDAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,11 +13,19 @@ import java.sql.SQLException;
 
 @WebServlet(name = "ServletListMagasin", urlPatterns = "/magasins")
 public class ServletListMagasin extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private MagasinDAO magasinDAO;
 
+    public void init() {
+        DAOFactory daoFactory = DAOFactory.getInstance();
+        this.magasinDAO = daoFactory.getMagasinDAO();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            request.setAttribute("magasins", magasinDAO.getMagasins());
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
         request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
     }
 

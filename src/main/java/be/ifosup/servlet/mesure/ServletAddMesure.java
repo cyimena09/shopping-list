@@ -3,10 +3,6 @@ package be.ifosup.servlet.mesure;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.Mesure;
 import be.ifosup.mesure.MesureDAO;
-import be.ifosup.produit.Produit;
-import be.ifosup.produit.ProduitDAO;
-import be.ifosup.panier.Panier;
-import be.ifosup.panier.PanierDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

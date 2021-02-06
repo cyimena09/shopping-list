@@ -12,8 +12,11 @@
                 <label for="nomMesure">Nom de la mesure</label>
                 <input id="nomMesure" class="form-control" name="nomMesure" type="text" value="${mesure.nom}">
             </div>
+
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
+
         </form>
+
     </div>
 </div>
 

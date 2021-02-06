@@ -1,7 +1,7 @@
-package be.ifosup.servlet.mesure;
+package be.ifosup.servlet.magasin;
 
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.mesure.MesureDAO;
+import be.ifosup.magasin.MagasinDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,29 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletDeleteMesure", urlPatterns = "/delete_mesure")
-public class ServletDeleteMesure extends HttpServlet {
+@WebServlet(name = "ServletDeleteMagasin", urlPatterns = "/delete_magasin")
+public class ServletDeleteMagasin extends HttpServlet {
     // ATTRIBUTS
-    private MesureDAO mesureDAO;
+    private MagasinDAO magasinDAO;
 
     // METHODES
     public void init(){
         DAOFactory daoFactory = DAOFactory.getInstance();
-        this.mesureDAO = daoFactory.getMesureDAO();
+        this.magasinDAO = daoFactory.getMagasinDAO();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupération de l'id de le mesure à supprimer.
-        String idMesure = request.getParameter("idMesure");
+        String idMagasin = request.getParameter("idMagasin");
 
         try {
             // On appelle la méthode delete.
-            mesureDAO.deleteMesure(Integer.parseInt(idMesure));
-            request.setAttribute("mesures", mesureDAO.getMesures());
+            magasinDAO.deleteMagasin(Integer.parseInt(idMagasin));
+            request.setAttribute("magasins", magasinDAO.getMagasins());
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
+        request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
     }
-
 }

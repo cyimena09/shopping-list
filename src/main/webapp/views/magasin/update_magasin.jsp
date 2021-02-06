@@ -8,11 +8,15 @@
 
         <form action="update_magasin?idMagasin=${magasin.idMagasin}" method="post">
 
-            <label for="nomMesure">Nom du magasin</label>
-            <input id="nomMesure" name="nomMesure" type="text" value="${magasin.nom}">
+            <div class="form-group">
+                <label for="nomMagasin">Nom du magasin</label>
+                <input id="nomMagasin" class="form-control" name="nomMagasin" type="text" value="${magasin.nom}">
+            </div>
 
-            <button type="submit">Enregister</button>
+            <button class="btn btn-primary mt-2" type="submit">Enregister</button>
+
         </form>
+
     </div>
 </div>
 
