@@ -38,4 +38,5 @@ public class ServletAddCategorie extends HttpServlet {
     }
         request.getRequestDispatcher("views/categorie/add_categorie.jsp").forward(request, response);
     }
+
 }
