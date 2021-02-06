@@ -1,11 +1,6 @@
 package be.ifosup.servlet.panier;
 
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.mesure.Mesure;
-import be.ifosup.mesure.MesureDAO;
-import be.ifosup.produit.Produit;
-import be.ifosup.produit.ProduitDAO;
-import be.ifosup.panier.Panier;
 import be.ifosup.panier.PanierDAO;
 
 import javax.servlet.ServletException;
@@ -26,11 +21,11 @@ public class ServletListPanier extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        try {
-//            request.setAttribute("mesures", panierDAO.getPaniers());
-//        } catch (SQLException throwable) {
-//            throwable.printStackTrace();
-//        }
+        try {
+            request.setAttribute("paniers", panierDAO.getPaniersByMagasin());
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
         request.getRequestDispatcher("views/panier/paniers.jsp").forward(request, response);
     }
 

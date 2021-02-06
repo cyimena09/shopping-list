@@ -15,7 +15,7 @@ import java.sql.SQLException;
 @WebServlet(name = "ServletDeleteMesure", urlPatterns = "/delete_mesure")
 public class ServletDeleteCategorie extends HttpServlet {
     // ATTRIBUTS
-    private CategorieDAO mesureDAO;
+    private CategorieDAO categorieDAO;
 
     // METHODES
     public void init(){
@@ -30,7 +30,7 @@ public class ServletDeleteCategorie extends HttpServlet {
         try {
             // On appelle la méthode delete.
             categorieDAO.deleteCategorie(Integer.parseInt(idMesure));
-            request.setAttribute("catégories", CategorieDAO.getCategories();
+            request.setAttribute("catégories", categorieDAO.getCategories());
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }

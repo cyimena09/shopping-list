@@ -9,6 +9,8 @@ public interface PanierDAO {
 
     Panier getPanierById(Integer id) throws SQLException;
 
+    List<Panier> getPaniersByMagasin() throws SQLException;
+
     void createPanier(Panier panier) throws SQLException;
 
     void updatePanier(Integer id, Panier panier) throws SQLException;

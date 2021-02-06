@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 @WebServlet(name = "ServletUpdateCategorie", urlPatterns = "/update_categorie")
 public class ServletUpdateCategorie extends HttpServlet {
-    private CategorieDAO mesureDAO;
+    private CategorieDAO categorieDAO;
 
     public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
@@ -31,8 +31,8 @@ public class ServletUpdateCategorie extends HttpServlet {
         String nomCategorie = request.getParameter("nomCategorie");
 
         try {
-            CategorieDAO.updateCategorie(idCategorie, new Categorie(null, nomCategorie));
-            request.setAttribute("mesures", mesureDAO.getCategories());
+            categorieDAO.updateCategorie(idCategorie, new Categorie(null, nomCategorie));
+            request.setAttribute("categories", categorieDAO.getCategories());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
@@ -40,11 +40,11 @@ public class ServletUpdateCategorie extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String strIdMesure = request.getParameter("idCategorie");
+        String strIdCategorie = request.getParameter("idCategorie");
 
         try {
             // Ajout de la mesure dans l'attribut.
-            request.setAttribute("mesure", mesureDAO.getCategorieById();
+            request.setAttribute("categorie", categorieDAO.getCategorieById(Integer.parseInt(strIdCategorie)));
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

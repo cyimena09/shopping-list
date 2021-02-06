@@ -3,12 +3,24 @@ package be.ifosup.panier;
 public class Panier {
     // ATTRIBUTS
     private Integer idPanier;
-    private String nom;
+    private Integer idMagasin;
+    private Integer idProduit;
+    private String nomProduit;
+    private String nomMagasin;
 
     // CONSTRUCTEUR
-    public Panier(Integer idPanier, String nom) {
+    public Panier() { }
+
+    public Panier(Integer idPanier) {
         this.idPanier = idPanier;
-        this.nom = nom;
+    }
+
+    public Panier(Integer idPanier, Integer idMagasin, Integer idProduit, String nomMagasin, String nomProduit) {
+        this.idPanier = idPanier;
+        this.idMagasin = idMagasin;
+        this.idProduit = idProduit;
+        this.nomMagasin = nomMagasin;
+        this.nomProduit = nomProduit;
     }
 
     // METHODES
@@ -20,12 +32,36 @@ public class Panier {
         this.idPanier = idPanier;
     }
 
-    public String getNom() {
-        return nom;
+    public Integer getIdMagasin() {
+        return idMagasin;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setIdMagasin(Integer idMagasin) {
+        this.idMagasin = idMagasin;
+    }
+
+    public Integer getIdProduit() {
+        return idProduit;
+    }
+
+    public void setIdProduit(Integer idProduit) {
+        this.idProduit = idProduit;
+    }
+
+    public String getNomProduit() {
+        return nomProduit;
+    }
+
+    public void setNomProduit(String nomProduit) {
+        this.nomProduit = nomProduit;
+    }
+
+    public String getNomMagasin() {
+        return nomMagasin;
+    }
+
+    public void setNomMagasin(String nomMagasin) {
+        this.nomMagasin = nomMagasin;
     }
 
 }

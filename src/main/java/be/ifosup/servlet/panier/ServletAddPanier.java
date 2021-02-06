@@ -32,7 +32,7 @@ public class ServletAddPanier extends HttpServlet {
 
         try {
             // Ajout de la mesure dans la db.
-            panierDAO.createPanier(new Panier(null, nomPanier));
+            panierDAO.createPanier(new Panier(null));
             request.setAttribute("paniers", panierDAO.getPaniers());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

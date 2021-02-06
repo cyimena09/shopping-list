@@ -26,10 +26,12 @@ public class ServletAddCategorie extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         // Recuperation des catégories dans le formulaire.
         String nomCategorie = request.getParameter("nomCategorie");
-    }
+
         try {
             // Ajout de la mesure dans la db.
             categorieDAO.createCategorie(new Categorie(null, "nomCategorie"));
+
+            categorieDAO.createCategorie(new Categorie());
             request.setAttribute("categories", categorieDAO.getCategories());
     }   catch (SQLException throwable) {
             throwable.printStackTrace();

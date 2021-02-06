@@ -27,13 +27,13 @@ public class PanierDAOImpl implements PanierDAO {
         try {
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT m.idPanier, m.nom FROM panier m");
+            resultSet = statement.executeQuery("SELECT pa.idPanier FROM panier pa");
 
             while (resultSet.next()) {
                 Integer idPanier = resultSet.getInt("idPanier");
                 String nom = resultSet.getString("nom");
 
-                Panier panier = new Panier(idPanier, nom);
+                Panier panier = new Panier(idPanier);
                 paniers.add(panier);
             }
         } catch (SQLException throwable) {
@@ -60,7 +60,7 @@ public class PanierDAOImpl implements PanierDAO {
             // La connexion et la requete prepare sont crees.
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
-            preparedStatement = connection.prepareStatement("SELECT m.idPanier, m.nom FROM panier m WHERE m.idPanier = ?");
+            preparedStatement = connection.prepareStatement("SELECT pa.idPanier FROM panier pa WHERE pa.idPanier = ?");
             // Set attributes.
             preparedStatement.setInt(1, id);
             // Execution de la requete.
@@ -68,7 +68,6 @@ public class PanierDAOImpl implements PanierDAO {
             // Recuperation des donnees.
             while (resultSet.next()) {
                 idPanier = resultSet.getInt("idPanier");
-                nom = resultSet.getString("nom");
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -81,7 +80,43 @@ public class PanierDAOImpl implements PanierDAO {
             }
         }
 
-        return new Panier(idPanier, nom);
+        return new Panier(idPanier);
+    }
+
+    @Override
+    public List<Panier> getPaniersByMagasin() throws SQLException {
+        List<Panier> paniers = new ArrayList<>();
+
+        try {
+            connection = daoFactory.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT pa.idPanier, pa.idMagasin, pa.idProduit, quantite, ma.nom as nomMagasin, pr.nom as nomProduit " +
+                    "FROM panier pa " +
+                    "INNER JOIN magasin ma ON ma.idMagasin = pa.idMagasin " +
+                    "INNER JOIN produit pr ON pr.idProduit = pa.idProduit");
+
+            while (resultSet.next()) {
+                Integer idPanier = resultSet.getInt("idPanier");
+                Integer idMagasin = resultSet.getInt("idMagasin");
+                Integer idProduit = resultSet.getInt("idProduit");
+                String nomMagasin = resultSet.getString("nomMagasin");
+                String nomProduit = resultSet.getString("nomProduit");
+
+                Panier panier = new Panier(idPanier, idMagasin, idProduit, nomMagasin, nomProduit);
+                paniers.add(panier);
+            }
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return paniers;
     }
 
     @Override
@@ -89,9 +124,9 @@ public class PanierDAOImpl implements PanierDAO {
 
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = connection.prepareStatement("INSERT INTO panier (nom) VALUES (?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO panier (idPanier) VALUES (?)");
 
-            preparedStatement.setString(1, panier.getNom());
+           // preparedStatement.setString(1, panier.get());
 
             preparedStatement.executeUpdate();
 
@@ -115,7 +150,7 @@ public class PanierDAOImpl implements PanierDAO {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement("UPDATE panier m SET m.nom = ? WHERE m.idPanier = ?");
 
-            preparedStatement.setString(1, panier.getNom());
+           // preparedStatement.setString(1, panier.getNom());
             preparedStatement.setInt(2, id);
 
             preparedStatement.executeUpdate();

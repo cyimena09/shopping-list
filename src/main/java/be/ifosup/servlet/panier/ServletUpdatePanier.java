@@ -35,7 +35,7 @@ public class ServletUpdatePanier extends HttpServlet {
         String nomPanier = request.getParameter("nomPanier");
 
         try {
-            panierDAO.updatePanier(idPanier, new Panier(null, nomPanier));
+            panierDAO.updatePanier(idPanier, new Panier(null));
             request.setAttribute("paniers", panierDAO.getPaniers());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
