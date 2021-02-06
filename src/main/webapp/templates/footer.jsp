@@ -18,7 +18,7 @@
                 <h5>Projet réalisé par</h5>
                 <ul>
                     <li>Emile Cyimena</li>
-                    <li>Benoît Vankoningslo</li>
+                    <li>Benoît Vankoningsloo</li>
                     <li>Xavier</li>
                 </ul>
             </div>
