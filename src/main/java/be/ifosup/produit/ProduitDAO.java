@@ -7,7 +7,9 @@ public interface ProduitDAO {
 
     List<Produit> getProduits() throws SQLException;
 
-    Produit getProduitById(Integer idPorduit)  throws SQLException;
+    Produit getProduitById(Integer idPorduit) throws SQLException;
+
+    List<Produit> getProduitsByPanierId(Integer idPanier) throws SQLException;
 
     void createProduit(Produit produit) throws SQLException;
 

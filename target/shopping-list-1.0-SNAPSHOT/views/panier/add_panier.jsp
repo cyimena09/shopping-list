@@ -8,6 +8,11 @@
         <form action="add_panier" method="post">
 
             <div class="form-group">
+                <label for="nomPanier">Nom de votre panier</label>
+                <input id="nomPanier" type="text" name="nomPanier">
+            </div>
+
+            <div class="form-group">
                 <label for="idMagasin">Sélectionner le magasin</label>
                 <select id="idMagasin" class="form-control" name="idMagasin">
                     <c:forEach items="${magasins}" var="magasin">

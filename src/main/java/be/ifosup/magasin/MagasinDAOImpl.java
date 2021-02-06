@@ -1,6 +1,7 @@
 package be.ifosup.magasin;
 
 import be.ifosup.dao.DAOFactory;
+import be.ifosup.panier.Panier;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class MagasinDAOImpl implements MagasinDAO {
             // La connexion et la requete prepare sont crees.
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
-            preparedStatement = connection.prepareStatement("SELECT m.idMagasin, m.nom FROM magasin m WHERE m.idMagasin = ?");
+            preparedStatement = connection.prepareStatement("SELECT ma.idMagasin, ma.nom FROM magasin ma WHERE ma.idMagasin = ?");
             // Set attributes.
             preparedStatement.setInt(1, id);
             // Execution de la requete.

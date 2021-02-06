@@ -10,7 +10,7 @@
 
                 <div class="magasin">
                     <div class="head">
-                        <h2>${panier.nomMagasin}</h2>
+                        <h2>${panier.nom}</h2>
                     </div>
                     <div class="label">
                         <p>Produit</p>

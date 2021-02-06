@@ -32,8 +32,9 @@ public class ServletSinglePanier extends HttpServlet {
 
         try {
             // On récupère le panier indiqué dans l'url de la requete
-            Integer idPanier = Integer.parseInt( request.getParameter("idPanier"));
+            Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
             request.setAttribute("panier", panierDAO.getPanierById(idPanier));
+            request.setAttribute("produits", produitDAO.getProduitsByPanierId(idPanier));
             request.setAttribute("allProduits", produitDAO.getProduits());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

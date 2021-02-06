@@ -30,12 +30,12 @@ public class ServletAddPanier extends HttpServlet {
         // force UTF-8
         request.setCharacterEncoding("UTF-8");
 
-        // Recuperation et conversion en Integer de l'id du magasin et du produit.
-        Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
-
         try {
-            // Ajout de la mesure dans la db.
-            panierDAO.createPanier(new Panier(idMagasin));
+            // Recuperation et conversion en Integer de l'id du magasin et du produit.
+            String nomPanier = request.getParameter("nomPanier");
+            Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
+            // Ajout du panier dans la db.
+            panierDAO.createPanier(new Panier(nomPanier, idMagasin));
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

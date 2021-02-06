@@ -12,6 +12,7 @@
             </tr>
             </thead>
             <tbody>
+            
             <c:forEach items="${mesures}" var="mesure">
                 <tr>
                     <th scope="row">1</th>

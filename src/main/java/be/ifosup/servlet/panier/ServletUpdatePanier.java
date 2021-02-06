@@ -32,11 +32,12 @@ public class ServletUpdatePanier extends HttpServlet {
         Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
 
         // Récupération depuis le formulaire.
+        String nomPanier = request.getParameter("nomPanier");
         Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
 //        Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
 //        Integer quantite = Integer.parseInt(request.getParameter("quantite"));
         try {
-            panierDAO.updatePanier(idPanier, new Panier(idMagasin));
+            panierDAO.updatePanier(idPanier, new Panier(nomPanier, idMagasin));
             request.setAttribute("paniers", panierDAO.getPaniers());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

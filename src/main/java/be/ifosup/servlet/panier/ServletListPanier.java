@@ -21,8 +21,10 @@ public class ServletListPanier extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         try {
-            request.setAttribute("paniers", panierDAO.getPaniersByMagasin());
+            request.setAttribute("paniers", panierDAO.getPaniers());
+
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

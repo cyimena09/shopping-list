@@ -4,14 +4,15 @@
 <div class="page">
     <div class="content">
         <h2>Nom du magasin : ${panier.nomMagasin}</h2>
+        <p>Description : ${panier.nom}</p>
         Produits dans le panier :
 
-<%--        <c:forEach items="${produits}" var="produit">--%>
-<%--        <ul>--%>
-<%--            <li>${produit.nomProduit}</li>--%>
-<%--        </ul>--%>
+        <c:forEach items="${produits}" var="produit">
+        <ul>
+            <li>${produit.nom}</li>
+        </ul>
 
-<%--        </c:forEach>--%>
+        </c:forEach>
 
 
     <div>
@@ -21,7 +22,7 @@
                 <li>${produit.nom}</li>
             </ul>
 
-            <a href="add_produit?idPanier=${panier.idPanier}&idMagasin=${panier.idMagasin}&idProduit=${produit.idProduit}">+</a>
+            <a href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">+</a>
         </c:forEach>
     </div>
 
