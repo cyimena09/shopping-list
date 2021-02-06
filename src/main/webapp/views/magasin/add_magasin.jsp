@@ -8,7 +8,7 @@
                 <label for="magasin">Nom du magasin</label>
                 <input type="text" class="form-control" id="magasin" name="nomMagasin" placeholder="ex: Carrefour">
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Enregistrer</button>
+            <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i>Enregistrer</button>
         </form>
     </div>
 </div>

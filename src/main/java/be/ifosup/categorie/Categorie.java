@@ -20,6 +20,7 @@ public class Categorie {
     }
 
     public void setIdCategorie(Integer idCategorie) {
+
         this.idCategorie = idCategorie;
     }
 
@@ -30,6 +31,5 @@ public class Categorie {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
 
 }

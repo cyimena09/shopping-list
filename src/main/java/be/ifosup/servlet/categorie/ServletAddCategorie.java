@@ -28,15 +28,13 @@ public class ServletAddCategorie extends HttpServlet {
         String nomCategorie = request.getParameter("nomCategorie");
 
         try {
-            // Ajout de la mesure dans la db.
+            // Ajout de la catégorie dans la db.
             categorieDAO.createCategorie(new Categorie(null, "nomCategorie"));
-
-            categorieDAO.createCategorie(new Categorie());
             request.setAttribute("categories", categorieDAO.getCategories());
-    }   catch (SQLException throwable) {
+        }   catch (SQLException throwable) {
             throwable.printStackTrace();
-    }
-        request.getRequestDispatcher("views/categorie/add_categorie.jsp").forward(request, response);
+        }
+        request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
 
 }

@@ -2,15 +2,15 @@
 
 <div class="page">
     <div class="content panier">
-        <h1 class="page-title">Paniers de course</h1>
+        <h1 class="page-title">Liste des Paniers de course</h1>
         <div  style="margin-bottom: 15px"><a href="add_panier">Créer un nouveau panier</a></div>
-        <div class="magasins">
+        <div class="paniers">
 
-            <c:forEach items="${magasins}" var="magasin">
+            <c:forEach items="${paniers}" var="magasin">
 
-                <div class="magasin">
+                <div class="panier">
                     <div class="head">
-                        <h2>${magasin.nomMagasin}</h2>
+                        <h2>${panier.nomPanier}</h2>
                     </div>
                     <div class="label">
                         <p>Produit</p>

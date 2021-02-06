@@ -48,7 +48,7 @@ public class CategorieDAOImpl implements CategorieDAO {
             }
         }
 
-        return getCategories;
+        return categories;
     }
 
     @Override
@@ -137,7 +137,6 @@ public class CategorieDAOImpl implements CategorieDAO {
 
     @Override
     public void deleteCategorie(Integer idCategorie) throws SQLException {
-
         try {
             // La connexion et la requete prepare sont crees.
             connection = daoFactory.getConnection();

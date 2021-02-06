@@ -36,19 +36,19 @@ public class ServletUpdateCategorie extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/categorie/mesures.jsp").forward(request, response);
+        request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String strIdCategorie = request.getParameter("idCategorie");
 
         try {
-            // Ajout de la mesure dans l'attribut.
+            // Ajout de la catégorie dans l'attribut.
             request.setAttribute("categorie", categorieDAO.getCategorieById(Integer.parseInt(strIdCategorie)));
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/mesure/update_mesure.jsp").forward(request, response);
+        request.getRequestDispatcher("views/categorie/update_categorie.jsp").forward(request, response);
     }
 
 }
