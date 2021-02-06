@@ -56,8 +56,6 @@ public class DAOFactory {
         return new MagasinDAOImpl(this);
     }
 
-//    public CategorieDAO getCategorieDAO(){
-//        return new CategorieDAOImpl(this);
-//    }
-
+    public CategorieDAO getCategorieDAO(){ return new CategorieDAOImpl(this);
+    }
 }
