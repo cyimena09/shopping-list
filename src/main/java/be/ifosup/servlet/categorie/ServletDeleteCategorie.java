@@ -1,7 +1,6 @@
 package be.ifosup.servlet.categorie;
 
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.categorie.Categorie;
 import be.ifosup.categorie.CategorieDAO;
 
 import javax.servlet.ServletException;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletDeleteMesure", urlPatterns = "/delete_mesure")
+@WebServlet(name = "ServletDeleteCategorie", urlPatterns = "/delete_categorie")
 public class ServletDeleteCategorie extends HttpServlet {
     // ATTRIBUTS
     private CategorieDAO categorieDAO;
@@ -25,16 +24,16 @@ public class ServletDeleteCategorie extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupération de l'id de la catégorie à supprimer.
-        String idMesure = request.getParameter("idMesure");
+        String idCategorie = request.getParameter("idCategorie");
 
         try {
             // On appelle la méthode delete.
-            categorieDAO.deleteCategorie(Integer.parseInt(idMesure));
+            categorieDAO.deleteCategorie(Integer.parseInt(idCategorie));
             request.setAttribute("catégories", categorieDAO.getCategories());
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
+        request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
 
 }

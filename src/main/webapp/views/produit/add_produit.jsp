@@ -18,7 +18,7 @@
                     </c:forEach>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Enregister</button>
+            <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i>Enregistrer</button>
         </form>
 
     </div>

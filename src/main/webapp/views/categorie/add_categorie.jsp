@@ -6,9 +6,9 @@
         <form action="add_categorie" method="post">
             <div class="form-group">
                 <label for="categorie">Nom de la catégorie</label>
-                <input type="text" class="form-control" id="mesure" name="nomCategorie" placeholder="ex: Produit laitier">
+                <input type="text" class="form-control" id="categorie" name="nomCategorie" placeholder="ex: Produit laitier">
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Enregistrer</button>
+            <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i>Enregistrer</button>
         </form>
     </div>
 </div>
