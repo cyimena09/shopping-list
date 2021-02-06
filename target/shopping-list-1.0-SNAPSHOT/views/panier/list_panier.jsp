@@ -18,7 +18,7 @@
                             <p>Quantité</p>
                             <p class="action"></p>
                         </div>
-    
+
                     </div>
                     <ul>
                         <li>

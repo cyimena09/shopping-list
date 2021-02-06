@@ -12,7 +12,6 @@ public class Categorie {
     public Categorie(Integer idCategorie, String nom) {
         this.idCategorie = idCategorie;
         this.nom = nom;
-
     }
 
     // METHODES
@@ -20,7 +19,7 @@ public class Categorie {
         return idCategorie;
     }
 
-    public void setIdCagorie(Integer idCategorie) {
+    public void setIdCategorie(Integer idCategorie) {
         this.idCategorie = idCategorie;
     }
 
