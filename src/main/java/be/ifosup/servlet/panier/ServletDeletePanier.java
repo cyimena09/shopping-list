@@ -39,7 +39,7 @@ public class ServletDeletePanier extends HttpServlet {
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/paniers.jsp").forward(request, response);
+        request.getRequestDispatcher("views/panier/paniers.jsp").forward(request, response);
     }
 
 }

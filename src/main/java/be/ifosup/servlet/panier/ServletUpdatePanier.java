@@ -52,6 +52,6 @@ public class ServletUpdatePanier extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/update_panier.jsp").forward(request, response);
+        request.getRequestDispatcher("views/panier/update_panier.jsp").forward(request, response);
     }
 }

@@ -3,7 +3,7 @@
 <div class="page">
     <div class="content panier">
         <h1 class="page-title">Paniers de course</h1>
-        <div  style="margin-bottom: 15px"><a href="">Créer un nouveau panier</a></div>
+        <div  style="margin-bottom: 15px"><a href="add_panier">Créer un nouveau panier</a></div>
         <div class="magasins">
 
             <div class="magasin">
@@ -36,7 +36,7 @@
                     <li>Chocolat</li>
                 </ul>
 
-                <a class="btn btn-success add-article" routerLink="/add_panier">Ajouter un article</a>
+                <a class="btn btn-success add-article" href="single_panier">Ajouter un article</a>
             </div>
 
 

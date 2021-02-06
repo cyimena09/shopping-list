@@ -101,6 +101,7 @@ public class PanierDAOImpl implements PanierDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
+
             if (connection != null) {
                 connection.close();
             }
@@ -125,6 +126,7 @@ public class PanierDAOImpl implements PanierDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
+
             if (connection != null) {
                 connection.close();
             }
@@ -149,6 +151,7 @@ public class PanierDAOImpl implements PanierDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
+
             if (connection != null) {
                 connection.close();
             }

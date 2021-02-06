@@ -1,5 +1,9 @@
 package be.ifosup.dao;
 
+import be.ifosup.categorie.CategorieDAO;
+import be.ifosup.categorie.CategorieDAOImpl;
+import be.ifosup.magasin.MagasinDAO;
+import be.ifosup.magasin.MagasinDAOImpl;
 import be.ifosup.mesure.MesureDAO;
 import be.ifosup.mesure.MesureDAOImpl;
 import be.ifosup.panier.PanierDAO;
@@ -25,7 +29,7 @@ public class DAOFactory {
     }
 
     // METHODES
-    // Chargement du driver.
+    // Chargement du driver
     public static DAOFactory getInstance() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -41,22 +45,19 @@ public class DAOFactory {
         return DriverManager.getConnection(url, userName, password);
     }
 
-    // Récupération des DAO par tables SQL.
+    // Récupération des DAO par tables SQL
     public ProduitDAO getProduitDAO() { return new ProduitDAOImpl(this); }
 
     public MesureDAO getMesureDAO() { return new MesureDAOImpl(this); }
 
     public PanierDAO getPanierDAO() { return new PanierDAOImpl(this); }
 
-
-     //décommenter lorsque les classes auront été créées
 //    public MagasinDAO getMagasinDAO(){
 //        return new MagasinDAOImpl(this);
 //    }
 //
 //    public CategorieDAO getCategorieDAO(){
-//        return new CategorieImpl(this);
+//        return new CategorieDAOImpl(this);
 //    }
-
 
 }

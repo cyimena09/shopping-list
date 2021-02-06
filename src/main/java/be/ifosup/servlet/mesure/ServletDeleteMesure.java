@@ -28,7 +28,6 @@ public class ServletDeleteMesure extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         // Récupération de l'id de le mesure à supprimer.
         String idMesure = request.getParameter("idMesure");
 
@@ -39,7 +38,7 @@ public class ServletDeleteMesure extends HttpServlet {
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/mesures.jsp").forward(request, response);
+        request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
     }
 
 }

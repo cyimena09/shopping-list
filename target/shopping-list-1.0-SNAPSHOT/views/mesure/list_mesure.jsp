@@ -17,7 +17,7 @@
                     <th scope="row">1</th>
                     <td>${mesure.nom}</td>
                     <td>
-                        <a class="btn btn-warning btn-sm" href="update_mesure?idMesure=${mesure.idMesure}">Modifier</a>
+                        <a class="btn btn-warning btn-sm mr-2" href="update_mesure?idMesure=${mesure.idMesure}">Modifier</a>
                         <a class="btn btn-danger btn-sm" href="delete_mesure?idMesure=${mesure.idMesure}">Supprimer</a>
                     </td>
                 </tr>

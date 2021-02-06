@@ -10,6 +10,8 @@ public class Produit {
     private String nomCategorie;
 
     // CONSTRUCTEUR
+    public Produit() {}
+
     public Produit(Integer idProduit, String nom, Integer idCategorie, Integer idMesure) {
         this.idProduit = idProduit;
         this.nom = nom;

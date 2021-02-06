@@ -42,6 +42,7 @@ public class MesureDAOImpl implements MesureDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
+
             if (connection != null) {
                 connection.close();
             }
@@ -76,6 +77,7 @@ public class MesureDAOImpl implements MesureDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
+
             if (connection != null) {
                 connection.close();
             }
@@ -101,6 +103,7 @@ public class MesureDAOImpl implements MesureDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
+
             if (connection != null) {
                 connection.close();
             }
@@ -125,6 +128,7 @@ public class MesureDAOImpl implements MesureDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
+
             if (connection != null) {
                 connection.close();
             }
@@ -149,6 +153,7 @@ public class MesureDAOImpl implements MesureDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
+
             if (connection != null) {
                 connection.close();
             }

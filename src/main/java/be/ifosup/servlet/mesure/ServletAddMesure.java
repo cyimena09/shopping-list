@@ -24,6 +24,7 @@ public class ServletAddMesure extends HttpServlet {
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.mesureDAO = daoFactory.getMesureDAO();
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // force UTF-8
         request.setCharacterEncoding("UTF-8");
@@ -37,11 +38,7 @@ public class ServletAddMesure extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/mesures.jsp").forward(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("views/add_mesure.jsp").forward(request, response);
+        request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
     }
 
 }

@@ -6,6 +6,9 @@ public class Mesure {
     private String nom;
 
     // CONSTRUCTEUR
+
+    public Mesure() {}
+
     public Mesure(Integer idMesure, String nom) {
         this.idMesure = idMesure;
         this.nom = nom;

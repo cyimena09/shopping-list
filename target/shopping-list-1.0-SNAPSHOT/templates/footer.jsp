@@ -6,11 +6,11 @@
             <div class="entreprise">
                 <h5>Shopping List</h5>
                 <ul>
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="">Vos paniers</a></li>
-                    <li><a href="">Ajouter un magasin</a></li>
-                    <li><a href="">Ajouter une catégorie</a></li>
-                    <li><a href="">Ajouter une mesure</a></li>
+                    <li><a href="home">Accueil</a></li>
+                    <li><a href="paniers">Vos paniers</a></li>
+                    <li><a href="magasins">Ajouter un magasin</a></li>
+                    <li><a href="categories">Ajouter une catégorie</a></li>
+                    <li><a href="mesures">Ajouter une mesure</a></li>
                 </ul>
             </div>
 

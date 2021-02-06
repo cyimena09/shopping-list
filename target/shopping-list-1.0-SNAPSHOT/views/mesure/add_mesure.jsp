@@ -8,7 +8,7 @@
                 <label for="mesure">Nom de la mesure</label>
                 <input type="text" class="form-control" id="mesure" name="nomMesure" placeholder="ex: Kg">
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Enregistrer</button>
+            <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i>Enregistrer</button>
         </form>
     </div>
 </div>

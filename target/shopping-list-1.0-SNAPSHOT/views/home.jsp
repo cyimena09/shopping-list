@@ -19,7 +19,7 @@
                 <p>Shopping List vous aide à vous souvenir des produits que vous devez acheter.</p>
             </div>
             <div class="start">
-                <a href="">Commencer une panier</a>
+                <a href="add_panier">Commencer une panier</a>
             </div>
         </div>
 

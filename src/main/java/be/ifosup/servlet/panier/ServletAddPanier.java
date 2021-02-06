@@ -37,11 +37,11 @@ public class ServletAddPanier extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/paniers.jsp").forward(request, response);
+        request.getRequestDispatcher("views/panier/paniers.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("views/add_panier.jsp").forward(request, response);
+        request.getRequestDispatcher("views/panier/add_panier.jsp").forward(request, response);
     }
 
 }
