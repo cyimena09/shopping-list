@@ -1,8 +1,6 @@
 package be.ifosup.categorie;
 
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.categorie.Categorie;
-import be.ifosup.categorie.CategorieDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
