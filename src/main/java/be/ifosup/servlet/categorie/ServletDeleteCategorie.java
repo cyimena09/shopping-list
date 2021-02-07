@@ -23,17 +23,16 @@ public class ServletDeleteCategorie extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Récupération de l'id de la catégorie à supprimer.
+        // Récupération de l'id du categorie à supprimer.
         String idCategorie = request.getParameter("idCategorie");
 
         try {
             // On appelle la méthode delete.
             categorieDAO.deleteCategorie(Integer.parseInt(idCategorie));
-            request.setAttribute("catégories", categorieDAO.getCategories());
+            request.setAttribute("categories", categorieDAO.getCategories());
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
         request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
-
 }

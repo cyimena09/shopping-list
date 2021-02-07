@@ -2,7 +2,6 @@ package be.ifosup.servlet.categorie;
 
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.categorie.CategorieDAO;
-import be.ifosup.categorie.Categorie;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

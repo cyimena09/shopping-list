@@ -24,10 +24,10 @@ public class ServletUpdateCategorie extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Force UTF-8
         request.setCharacterEncoding("UTF-8");
-        // Récupération depuis l'url et conversion en Integer de l'id de la catégorie.
+        // Récupération depuis l'url et conversion en Integer de l'id du categorie
         String strIdCategorie = request.getParameter("idCategorie");
         Integer idCategorie = Integer.parseInt(strIdCategorie);
-        // Récupération du nom de la catégorie depuis le formulaire.
+        // Récupération du nom du categorie depuis le formulaire.
         String nomCategorie = request.getParameter("nomCategorie");
 
         try {
@@ -43,7 +43,7 @@ public class ServletUpdateCategorie extends HttpServlet {
         String strIdCategorie = request.getParameter("idCategorie");
 
         try {
-            // Ajout de la catégorie dans l'attribut.
+            // Ajout du categorie dans l'attribut.
             request.setAttribute("categorie", categorieDAO.getCategorieById(Integer.parseInt(strIdCategorie)));
         } catch (SQLException throwable) {
             throwable.printStackTrace();

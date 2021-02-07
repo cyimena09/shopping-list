@@ -24,14 +24,14 @@ public class ServletAddCategorie extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // force UTF-8
         request.setCharacterEncoding("UTF-8");
-        // Recuperation des catégories dans le formulaire.
+        // Recuperation de la mesure dans le formulaire.
         String nomCategorie = request.getParameter("nomCategorie");
 
         try {
-            // Ajout de la catégorie dans la db.
+            // Ajout de la mesure dans la db.
             categorieDAO.createCategorie(new Categorie(null, nomCategorie));
             request.setAttribute("categories", categorieDAO.getCategories());
-        }   catch (SQLException throwable) {
+        } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
         request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
