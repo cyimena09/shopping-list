@@ -25,7 +25,7 @@ public class CategorieDAOImpl implements CategorieDAO {
     @Override
     public List<Categorie> getCategories() throws SQLException {
         List<Categorie> categories = new ArrayList<>();
-        System.out.println("NOUS SOMMES DANS QUATER");
+
         try {
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
@@ -37,7 +37,6 @@ public class CategorieDAOImpl implements CategorieDAO {
 
                 Categorie categorie = new Categorie(idCategorie, nom);
                 categories.add(categorie);
-                System.out.println("JE VAIS BIEN ");
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
