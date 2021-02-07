@@ -33,14 +33,12 @@ public class ServletAddPanierProduit extends HttpServlet {
         Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
         Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
 
-        System.out.println("LID DU PANIER EST : " + idPanier + "LID DU PRODUIT EST :" +  idProduit);
         try {
             panierDAO.addProduitInPanier(idPanier, idProduit, 5 );
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        response.sendRedirect("single_panier?idPanier=2");
-        //request.getRequestDispatcher("views/magasin/update_magasin.jsp").forward(request, response);
+        response.sendRedirect("single_panier?idPanier=" + idPanier);
     }
 
 }

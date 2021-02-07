@@ -31,7 +31,7 @@ public class ServletUpdateMagasin extends HttpServlet {
         String nomMagasin = request.getParameter("nomMagasin");
 
         try {
-            magasinDAO.updateMagasin(idMagasin, new Magasin(null, nomMagasin));
+            magasinDAO.updateMagasin(idMagasin, new Magasin());
             request.setAttribute("magasins", magasinDAO.getMagasins());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

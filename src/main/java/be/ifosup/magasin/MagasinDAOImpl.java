@@ -1,7 +1,6 @@
 package be.ifosup.magasin;
 
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.panier.Panier;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,13 +27,16 @@ public class MagasinDAOImpl implements MagasinDAO {
         try {
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT m.idMagasin, m.nom FROM magasin m");
+            resultSet = statement.executeQuery("SELECT m.idMagasin, m.nom AS nomMagasin FROM magasin m");
 
             while (resultSet.next()) {
                 Integer idMagasin = resultSet.getInt("idMagasin");
-                String nom = resultSet.getString("nom");
-
-                Magasin magasin = new Magasin(idMagasin, nom);
+                String nomMagasin = resultSet.getString("nomMagasin");
+                // on set les valeurs dans magasin
+                Magasin magasin = new Magasin();
+                magasin.setIdMagasin(idMagasin);
+                magasin.setNom(nomMagasin);
+                // On ajoute le magasin dans la liste des magasins
                 magasins.add(magasin);
             }
         } catch (SQLException throwable) {
@@ -54,23 +56,31 @@ public class MagasinDAOImpl implements MagasinDAO {
 
     @Override
     public Magasin getMagasinById(Integer id) throws SQLException {
+        Magasin magasin = new Magasin();
         // Attribut de l'objet retourné.
-        Integer idMagasin = null;
-        String nom = null;
+        int idMagasin;
+        String nomMagasin;
 
         try {
             // La connexion et la requete prepare sont crees.
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
-            preparedStatement = connection.prepareStatement("SELECT ma.idMagasin, ma.nom FROM magasin ma WHERE ma.idMagasin = ?");
+            preparedStatement = connection.prepareStatement(
+                    "SELECT ma.idMagasin, ma.nom AS nomMagasin " +
+                            "FROM magasin ma " +
+                            "WHERE ma.idMagasin = ?");
             // Set attributes.
             preparedStatement.setInt(1, id);
             // Execution de la requete.
             resultSet = preparedStatement.executeQuery();
-            // Recuperation des donnees.
+
             while (resultSet.next()) {
+                // Recuperation des donnees.
                 idMagasin = resultSet.getInt("idMagasin");
-                nom = resultSet.getString("nom");
+                nomMagasin = resultSet.getString("nomMagasin");
+                // ajout des données dans magasin
+                magasin.setIdMagasin(idMagasin);
+                magasin.setNom(nomMagasin);
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -84,7 +94,7 @@ public class MagasinDAOImpl implements MagasinDAO {
             }
         }
 
-        return new Magasin(idMagasin, nom);
+        return magasin;
     }
 
     @Override

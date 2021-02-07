@@ -3,39 +3,45 @@
 <div class="page">
     <div class="content panier">
         <h1 class="page-title">Paniers de course</h1>
-        <div  style="margin-bottom: 15px"><a href="add_panier">Créer un nouveau panier</a></div>
+
+        <div  style="margin-bottom: 15px">
+            <a href="add_panier">Créer un nouveau panier</a>
+        </div>
+
         <div class="magasins">
 
             <c:forEach items="${paniers}" var="panier">
 
                 <div class="magasin">
                     <div class="head">
-                        <h2>${panier.nom}</h2>
+                        <h2>${panier.magasin.nom}</h2>
+                        <p>${panier.nom}</p>
                     </div>
+
                     <div class="label">
                         <p>Produit</p>
                         <div style="display: flex">
                             <p>Quantité</p>
                             <p class="action"></p>
                         </div>
-
                     </div>
                     <ul>
-                        <li>
-                            <span>Aricot</span>
 
-                            <div style="display: flex">
-                                <span style="border-right: 1px solid green">15 kg</span>
-                                <div class="action">
-                                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                    <i class="fas fa-trash"></i>
+                        <c:forEach items="${panier.produitList}" var="produit">
+
+                            <li>
+                                <span>${produit.nom}</span>
+
+                                <div style="display: flex">
+                                    <span style="border-right: 1px solid green">${produit.quantite} ${produit.mesure.nom} </span>
+                                    <div class="action">
+                                        <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                        <i class="fas fa-trash"></i>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </li>
-                        <li>Pomme de terre</li>
-                        <li>Poivron</li>
-                        <li>Chocolat</li>
+                            </li>
+                        </c:forEach>
                     </ul>
 
 

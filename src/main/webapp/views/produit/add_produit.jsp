@@ -3,11 +3,21 @@
 <div class="page">
     <div class="content">
 
-        <form action="add_produit" method="post">
+        <form action="create_produit" method="post">
 
             <div class="form-group">
                 <label for="nomProduit">Nom du produit</label>
                 <input id="nomProduit" class="form-control" name="nomProduit" type="text">
+            </div>
+
+            <div class="form-group">
+                <label for="idCategorie">Catégorie de produit</label>
+                <select class="form-control" name="idCategorie" id="idCategorie">
+                    <c:forEach items="${categories}" var="categorie">
+                        <p>fff</p>
+                        <option value="${categorie.idCategorie}">${categorie.nom}</option>
+                    </c:forEach>
+                </select>
             </div>
 
             <div class="form-group">

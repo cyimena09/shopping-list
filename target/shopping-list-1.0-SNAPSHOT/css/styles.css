@@ -221,7 +221,7 @@ header .fas {
   flex-wrap: wrap;
 }
 
-.panier .magasin {
+.panier .magasin, #single-panier .wrapper {
   width: 350px;
   border: solid #c6e9c6 1px;
   margin: 0 30px 30px 0;
@@ -259,6 +259,47 @@ header .fas {
 .panier .add-article {
   width: 100%;
 }
+
+/* SINGLE PANIER */
+
+#single-panier {
+  display: flex;
+  justify-content: space-between;
+}
+
+#single-panier .wrapper {
+  width: 500px;
+}
+
+#single-panier .all-produits {
+  width: 350px;
+}
+
+.single-panier-description {
+  font-size: 13px;
+  color: #9f9d9d;
+  font-weight: normal;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+}
+
+.legend p {
+  color: #9f9d9d;
+}
+
+#single-panier li {
+  padding: 3px 3px;
+  border-bottom: solid 1px #e9e7e7;
+}
+
+#single-panier li:hover {
+  //background-color: #cbc9c9;
+  background-color: #e9e7e7;
+}
+
 
 /* FOOTER */
 

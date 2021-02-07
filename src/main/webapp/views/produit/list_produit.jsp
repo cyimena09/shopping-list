@@ -10,7 +10,6 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom</th>
-                <th scope="col">Quantité</th>
                 <th scope="col">Catégorie</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -20,10 +19,11 @@
                 <tr>
                     <th scope="row">1</th>
                     <td>${produit.nom}</td>
-                    <td></td>
-                    <td></td>
-                    <th><a class="btn btn-warning btn-sm" href="update_produit?idProduit=${produit.idProduit}">Modifier</a></th>
-                    <th><a class="btn btn-danger btn-sm" href="delete_produit?idProduit=${produit.idProduit}">Supprimer</a></th>
+                    <td>${produit.categorie.nom}</td>
+                    <th>
+                        <a class="btn btn-warning btn-sm mr-2" href="update_produit?idProduit=${produit.idProduit}">Modifier</a>
+                        <a class="btn btn-danger btn-sm" href="delete_produit?idProduit=${produit.idProduit}">Supprimer</a>
+                    </th>
                 </tr>
             </c:forEach>
             </tbody>

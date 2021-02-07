@@ -7,7 +7,7 @@ public class Categorie {
 
     // CONSTRUCTEUR
 
-    public Categorie() {}
+    public Categorie() { }
 
     public Categorie(Integer idCategorie, String nom) {
         this.idCategorie = idCategorie;

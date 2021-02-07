@@ -1,5 +1,6 @@
 package be.ifosup.servlet.produit;
 
+import be.ifosup.categorie.CategorieDAO;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.MesureDAO;
 import be.ifosup.produit.ProduitDAO;
@@ -16,17 +17,20 @@ import java.sql.SQLException;
 public class ServletListProduits extends HttpServlet {
     private ProduitDAO produitDAO;
     private MesureDAO mesureDAO;
+    private CategorieDAO categorieDAO;
 
     public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.produitDAO = daoFactory.getProduitDAO();
         this.mesureDAO = daoFactory.getMesureDAO();
+        this.categorieDAO = daoFactory.getCategorieDAO();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             request.setAttribute("produits", produitDAO.getProduits());
             request.setAttribute("mesures", mesureDAO.getMesures());
+            request.setAttribute("categories", categorieDAO.getCategories());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

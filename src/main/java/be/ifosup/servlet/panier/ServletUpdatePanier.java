@@ -37,7 +37,7 @@ public class ServletUpdatePanier extends HttpServlet {
 //        Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
 //        Integer quantite = Integer.parseInt(request.getParameter("quantite"));
         try {
-            panierDAO.updatePanier(idPanier, new Panier(nomPanier, idMagasin));
+            panierDAO.updatePanier(idPanier, new Panier());
             request.setAttribute("paniers", panierDAO.getPaniers());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

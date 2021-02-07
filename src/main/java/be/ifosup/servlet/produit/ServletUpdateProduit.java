@@ -34,7 +34,7 @@ public class ServletUpdateProduit extends HttpServlet {
         Integer idMesure = Integer.parseInt(request.getParameter("idMesure"));
 
         try {
-            produitDAO.updateProduit(idProduit, new Produit(null, nomProduit, 2, idMesure));
+            produitDAO.updateProduit(idProduit, new Produit());
             request.setAttribute("produits", produitDAO.getProduits());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

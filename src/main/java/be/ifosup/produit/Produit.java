@@ -1,23 +1,15 @@
 package be.ifosup.produit;
 
+import be.ifosup.categorie.Categorie;
+import be.ifosup.mesure.Mesure;
+
 public class Produit {
     // ATTRIBUTS
     private Integer idProduit;
     private String nom;
-    private Integer idCategorie;
-    private Integer idMesure;
-    private String nomMesure;
-    private String nomCategorie;
-
-    // CONSTRUCTEUR
-    public Produit() {}
-
-    public Produit(Integer idProduit, String nom, Integer idCategorie, Integer idMesure) {
-        this.idProduit = idProduit;
-        this.nom = nom;
-        this.idCategorie = idCategorie;
-        this.idMesure = idMesure;
-    }
+    private float quantite;
+    private Mesure mesure;
+    private Categorie categorie;
 
     // METHODES
     public Integer getIdProduit() {
@@ -36,36 +28,28 @@ public class Produit {
         this.nom = nom;
     }
 
-    public Integer getIdCategorie() {
-        return idCategorie;
+    public float getQuantite() {
+        return quantite;
     }
 
-    public void setIdCategorie(Integer idCategorie) {
-        this.idCategorie = idCategorie;
+    public void setQuantite(float quantite) {
+        this.quantite = quantite;
     }
 
-    public Integer getIdMesure() {
-        return idMesure;
+    public Mesure getMesure() {
+        return mesure;
     }
 
-    public void setIdMesure(Integer idMesure) {
-        this.idMesure = idMesure;
+    public void setMesure(Mesure mesure) {
+        this.mesure = mesure;
     }
 
-    public String getNomMesure() {
-        return nomMesure;
+    public Categorie getCategorie() {
+        return categorie;
     }
 
-    public void setNomMesure(String nomMesure) {
-        this.nomMesure = nomMesure;
-    }
-
-    public String getNomCategorie() {
-        return nomCategorie;
-    }
-
-    public void setNomCategorie(String nomCategorie) {
-        this.nomCategorie = nomCategorie;
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
 }

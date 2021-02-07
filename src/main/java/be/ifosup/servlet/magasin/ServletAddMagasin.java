@@ -26,10 +26,11 @@ public class ServletAddMagasin extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         // Recuperation de la mesure dans le formulaire.
         String nomMagasin = request.getParameter("nomMagasin");
-
+        Magasin magasin = new Magasin();
+        magasin.setNom(nomMagasin);
         try {
             // Ajout de la mesure dans la db.
-            magasinDAO.createMagasin(new Magasin(null, nomMagasin));
+            magasinDAO.createMagasin(magasin);
             request.setAttribute("magasins", magasinDAO.getMagasins());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

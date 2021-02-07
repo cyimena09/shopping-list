@@ -1,38 +1,41 @@
+<%@page pageEncoding="UTF-8" %>
 <%@include file="../../templates/header.jsp"%>
 <%@include file="../../templates/navigation.jsp"%>
 
 <div class="page">
-    <div class="content">
-        <h2>Nom du magasin : ${panier.nomMagasin}</h2>
-        <p>Description : ${panier.nom}</p>
-        Produits dans le panier :
+    <div id="single-panier" class="content">
 
-        <c:forEach items="${produits}" var="produit">
-        <ul>
-            <li>${produit.nom}</li>
-        </ul>
+        <div class="wrapper">
+            <h2>${panier.magasin.nom} <span class="single-panier-description">- ${panier.nom}</span></h2>
+            <div class="legend">
+                <p>Produits dans le panier</p>
+                <p>Quantité</p>
+            </div>
 
-        </c:forEach>
+            <c:forEach items="${produits}" var="produit">
+                <ul>
+                    <li class="legend"><span>${produit.nom}</span> <span>${produit.quantite} ${produit.mesure.nom}</span></li>
+                </ul>
+            </c:forEach>
+        </div>
 
+        <div class="wrapper all-produits">
+            <h2>Tous les produits</h2>
 
-    <div>
-        Tous les produits :   Ajouter au panier
-        <c:forEach items="${allProduits}" var="produit">
-            <ul>
-                <li>${produit.nom}</li>
-            </ul>
+            <c:forEach items="${allProduits}" var="produit">
+                <ul>
+                    <li>
+                            ${produit.nom}
+                        <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </li>
+                </ul>
 
-            <a href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">+</a>
-        </c:forEach>
-    </div>
+            </c:forEach>
+        </div>
 
     </div>
 </div>
 
 <%@include file="../../templates/footer.jsp"%>
-
-<%--<h2>Un single panier est composé d'un panier qui comprend le nom du magasin et de ces produit (avec mesures) etc</h2>--%>
-<%--<h2>On peut rajouter des produits dans le panier directement depuis cette fenetre sans besoin de changer</h2>--%>
-
-<%--<h2>A coté du nom du magasin petit icone pour modifier son nom</h2>--%>
-<%--<h2>On peut égalemment supprimer le nom du magasin</h2>--%>

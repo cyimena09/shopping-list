@@ -1,6 +1,7 @@
 package be.ifosup.servlet.panier;
 
 import be.ifosup.dao.DAOFactory;
+import be.ifosup.magasin.Magasin;
 import be.ifosup.magasin.MagasinDAO;
 import be.ifosup.produit.ProduitDAO;
 import be.ifosup.panier.Panier;
@@ -29,13 +30,20 @@ public class ServletAddPanier extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // force UTF-8
         request.setCharacterEncoding("UTF-8");
+        Magasin magasin = new Magasin();
+        Panier panier = new Panier();
 
         try {
             // Recuperation et conversion en Integer de l'id du magasin et du produit.
             String nomPanier = request.getParameter("nomPanier");
             Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
+            // On set les valeurs du magasin
+            magasin.setIdMagasin(idMagasin);
+            // On set les valeurs du panier
+            panier.setNom(nomPanier);
+            panier.setMagasin(magasin);
             // Ajout du panier dans la db.
-            panierDAO.createPanier(new Panier(nomPanier, idMagasin));
+            panierDAO.createPanier(panier);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

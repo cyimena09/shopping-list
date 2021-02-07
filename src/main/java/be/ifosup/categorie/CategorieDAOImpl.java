@@ -23,11 +23,11 @@ public class CategorieDAOImpl implements CategorieDAO {
     @Override
     public List<Categorie> getCategories() throws SQLException {
         List<Categorie> categories = new ArrayList<>();
-
+        System.out.println("NOUS SOMMES DANS QUATER");
         try {
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT m.idCategorie, m.nom FROM categorie m");
+            resultSet = statement.executeQuery("SELECT ca.idCategorie, ca.nom FROM categorie ca");
 
             while (resultSet.next()) {
                 Integer idCategorie = resultSet.getInt("idCategorie");
@@ -35,6 +35,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 
                 Categorie categorie = new Categorie(idCategorie, nom);
                 categories.add(categorie);
+                System.out.println("JE VAIS BIEN ");
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
