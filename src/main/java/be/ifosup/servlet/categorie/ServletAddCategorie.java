@@ -29,7 +29,7 @@ public class ServletAddCategorie extends HttpServlet {
 
         try {
             // Ajout de la catégorie dans la db.
-            categorieDAO.createCategorie(new Categorie(null, "nomCategorie"));
+            categorieDAO.createCategorie(new Categorie(null, nomCategorie));
             request.setAttribute("categories", categorieDAO.getCategories());
         }   catch (SQLException throwable) {
             throwable.printStackTrace();
