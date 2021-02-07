@@ -3,18 +3,32 @@ package be.ifosup.panier;
 public class Panier {
     // ATTRIBUTS
     private Integer idPanier;
+    private String nom;
     private Integer idMagasin;
     private Integer idProduit;
     private String nomProduit;
     private String nomMagasin;
+    private Integer quantite;
 
     // CONSTRUCTEUR
     public Panier() { }
 
-    public Panier(Integer idPanier) {
+    // pour la récupération du panier uniquement
+    public Panier(Integer idPanier, Integer idMagasin, Integer idProduit, Integer quantite, String nomMagasin) {
         this.idPanier = idPanier;
+        this.idMagasin = idMagasin;
+        this.idProduit = idProduit;
+        this.quantite = quantite;
+        this.nomMagasin = nomMagasin;
     }
 
+    // pour la création du panier
+    public Panier(String nom, Integer idMagasin) {
+        this.nom = nom;
+        this.idMagasin = idMagasin;
+    }
+
+    // pour la récupération du panier et des produits par magasin
     public Panier(Integer idPanier, Integer idMagasin, Integer idProduit, String nomMagasin, String nomProduit) {
         this.idPanier = idPanier;
         this.idMagasin = idMagasin;
@@ -30,6 +44,14 @@ public class Panier {
 
     public void setIdPanier(Integer idPanier) {
         this.idPanier = idPanier;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public Integer getIdMagasin() {
@@ -62,6 +84,14 @@ public class Panier {
 
     public void setNomMagasin(String nomMagasin) {
         this.nomMagasin = nomMagasin;
+    }
+
+    public Integer getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(Integer quantite) {
+        this.quantite = quantite;
     }
 
 }

@@ -40,11 +40,11 @@ public class ServletUpdateMesure extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String strIdMesure = request.getParameter("idMesure");
 
         try {
+            Integer idMesure = Integer.parseInt(request.getParameter("idMesure"));
             // Ajout de la mesure dans l'attribut.
-            request.setAttribute("mesure", mesureDAO.getMesureById(Integer.parseInt(strIdMesure)));
+            request.setAttribute("mesure", mesureDAO.getMesureById(idMesure));
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

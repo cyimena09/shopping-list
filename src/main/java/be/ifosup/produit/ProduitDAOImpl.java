@@ -1,6 +1,7 @@
 package be.ifosup.produit;
 
 import be.ifosup.dao.DAOFactory;
+import be.ifosup.panier.Panier;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -100,6 +101,46 @@ public class ProduitDAOImpl implements ProduitDAO {
         produit.setNomMesure(nomMesure);
 
         return produit;
+    }
+
+    @Override
+    public List<Produit> getProduitsByPanierId(Integer id) throws SQLException {
+        List<Produit> produits = new ArrayList<>();
+
+        try {
+            // La connexion et la requete prepare sont crees.
+            connection = daoFactory.getConnection();
+            statement = connection.createStatement();
+            preparedStatement = connection.prepareStatement("SELECT pr.idProduit, pr.nom as nomProduit " +
+                    "FROM produit pr " +
+                    "INNER JOIN panier_produit pp ON pp.idProduit = pr.idProduit " +
+                    "WHERE pp.idPanier = ?");
+            // Set attributes.
+            preparedStatement.setInt(1, id);
+            // Execution de la requete.
+            resultSet = preparedStatement.executeQuery();
+            // Recuperation des donnees.
+            while (resultSet.next()) {
+                Integer idProduit = resultSet.getInt("idProduit");
+                String nomProduit = resultSet.getString("nomProduit");
+
+                Produit produit = new Produit();
+                produit.setIdProduit(idProduit);
+                produit.setNom(nomProduit);
+                produits.add(produit);
+            }
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return produits;
     }
 
     @Override

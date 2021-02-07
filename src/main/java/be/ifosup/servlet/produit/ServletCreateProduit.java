@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "ServletAddProduit", urlPatterns = "/add_produit")
-public class ServletAddProduit extends HttpServlet {
+@WebServlet(name = "ServletAddProduit", urlPatterns = "/create_produit")
+public class ServletCreateProduit extends HttpServlet {
     private ProduitDAO produitDAO;
     private MesureDAO mesureDAO;
 
@@ -32,7 +32,7 @@ public class ServletAddProduit extends HttpServlet {
         String strIdCategorie = request.getParameter("idCategorie");
         String strIdMesure = request.getParameter("idMesure");
 
-        // convert strings to long
+        // convert strings to integer
         //Long idCategorie = Long.parseLong(strIdCategorie);
         Integer idMesure = Integer.parseInt(strIdMesure);
 
