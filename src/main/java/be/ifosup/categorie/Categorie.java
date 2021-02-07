@@ -6,23 +6,15 @@ public class Categorie {
     private String nom;
 
     // CONSTRUCTEUR
-
-    public Categorie() {}
-
     public Categorie(Integer idCategorie, String nom) {
         this.idCategorie = idCategorie;
         this.nom = nom;
     }
 
     // METHODES
-    public Integer getIdCategorie() {
-        return idCategorie;
-    }
+    public Integer getIdCategorie() { return idCategorie; }
 
-    public void setIdCategorie(Integer idCategorie) {
-
-        this.idCategorie = idCategorie;
-    }
+    public void setIdCategorie(Integer idCategorie) { this.idCategorie = idCategorie; }
 
     public String getNom() {
         return nom;
