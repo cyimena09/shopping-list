@@ -12,9 +12,7 @@ public interface ProduitDAO {
     List<Produit> getProduitsByPanierId(Integer idPanier) throws SQLException;
 
     void createProduit(Produit produit) throws SQLException;
-
     void updateProduit(Integer idProduit, Produit produit) throws SQLException;
-
     void deleteProduit(Integer idProduit) throws SQLException;
 
 }
