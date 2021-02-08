@@ -3,7 +3,6 @@ package be.ifosup.produit;
 import be.ifosup.categorie.Categorie;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.Mesure;
-import be.ifosup.panier.Panier;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -85,11 +84,11 @@ public class ProduitDAOImpl implements ProduitDAO {
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
             preparedStatement = connection.prepareStatement(
-                    "SELECT pr.idProduit, pr.nom AS nomProduit, ca.idCategorie, ca.nom, me.idMesure, me.nom AS nomMesure " +
+                    "SELECT pr.idProduit, pr.nom AS nomProduit, ca.idCategorie, ca.nom AS nomCategorie, me.idMesure, me.nom AS nomMesure " +
                             "FROM produit pr " +
                             "INNER JOIN mesure me ON me.idMesure = pr.idMesure " +
                             "INNER JOIN categorie ca ON ca.idCategorie = pr.idCategorie " +
-                            "WHERE p.idProduit = ?");
+                            "WHERE pr.idProduit = ?");
             // Set attributes.
             preparedStatement.setInt(1, id);
             // Execution de la requete.
@@ -143,7 +142,7 @@ public class ProduitDAOImpl implements ProduitDAO {
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
             preparedStatement = connection.prepareStatement(
-                    "SELECT pr.idProduit, pr.nom AS nomProduit, COUNT(pp.quantite) AS quantite, me.idMesure, me.nom AS nomMesure " +
+                    "SELECT pr.idProduit, pr.nom AS nomProduit, SUM(pp.quantite) AS quantite, me.idMesure, me.nom AS nomMesure " +
                             "FROM produit pr " +
                             "INNER JOIN panier_produit pp ON pp.idProduit = pr.idProduit " +
                             "INNER JOIN mesure me ON me.idMesure = pr.idMesure " +
@@ -152,8 +151,8 @@ public class ProduitDAOImpl implements ProduitDAO {
             // Set attributes.
             preparedStatement.setInt(1, id);
             // Execution de la requete.
-            // On crée une nouvelle variable resultset pour le différencier de l'attribut de la classe
-            // car cette méthode est utilisé dans une autre methode et les deux resultset ne concernent pas la meme requete
+            // On crée une nouvelle variable resultSet pour le différencier de l'attribut de la classe resultSet
+            // car cette méthode est imbriqué dans une autre methode et les deux resultset ne concernent pas la meme requete
             ResultSet resultSet = preparedStatement.executeQuery();
             // Recuperation des donnees.
             while (resultSet.next()) {
@@ -165,11 +164,10 @@ public class ProduitDAOImpl implements ProduitDAO {
                 quantite = resultSet.getFloat("quantite");
                 idMesure = resultSet.getInt("idMesure");
                 nomMesure = resultSet.getString("nomMesure");
-
-                // On set les données dans mesure
+                // On ajout les données dans mesure
                 mesure.setIdMesure(idMesure);
                 mesure.setNom(nomMesure);
-                // On set les données dans produit
+                // On ajout les données dans produit
                 produit.setIdProduit(idProduit);
                 produit.setNom(nomProduit);
                 produit.setQuantite(quantite);
@@ -180,14 +178,15 @@ public class ProduitDAOImpl implements ProduitDAO {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        //finally {
-//            if (preparedStatement != null) {
-//                preparedStatement.close();
-//            }
-//            if (connection != null) {
-//                connection.close();
-//            }
-//        }
+        finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+        }
 
         return produitsList;
     }
@@ -227,13 +226,13 @@ public class ProduitDAOImpl implements ProduitDAO {
             // La connexion et la requete prepare sont crees.
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement(
-                    "UPDATE produit p " +
-                            "SET p.nom = ? , p.idCategorie = ?, p.idMesure = ? " +
-                            "WHERE p.idProduit = ?");
+                    "UPDATE produit pr " +
+                            "SET pr.nom = ?, pr.idMesure = ?, pr.idCategorie = ? " +
+                            "WHERE pr.idProduit = ?");
             // Set attributes
             preparedStatement.setString(1, produit.getNom());
-//            preparedStatement.setInt(2, produit.getIdCategorie());
-//            preparedStatement.setInt(3, produit.getIdMesure());
+            preparedStatement.setInt(2, produit.getMesure().getIdMesure());
+            preparedStatement.setInt(3, produit.getCategorie().getIdCategorie());
             preparedStatement.setInt(4, id);
             // Execution de la requete.
             preparedStatement.executeUpdate();

@@ -14,7 +14,6 @@
                 <label for="idCategorie">Catégorie de produit</label>
                 <select class="form-control" name="idCategorie" id="idCategorie">
                     <c:forEach items="${categories}" var="categorie">
-                        <p>fff</p>
                         <option value="${categorie.idCategorie}">${categorie.nom}</option>
                     </c:forEach>
                 </select>

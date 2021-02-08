@@ -15,28 +15,29 @@
             </div>
 
             <div class="form-group">
-        <%--    <label for="idMesure">Sélectionnez une Catégorie</label>--%>
-        <%--    <select class="form-control" name="idCategorie" id="idCategorie">--%>
-        <%--        <option value="${produit.idCategorie}" selected>${produit.nomCategorie}</option>--%>
-        <%--        <c:forEach items="${categories}" var="categorie">--%>
-        <%--            <c:if test="${produit.idCategorie != categorie.idCategorie}">--%>
-        <%--                <option value="${categorie.idCategorie}">${categorie.nom}</option>--%>
-        <%--            </c:if>--%>
-        <%--        </c:forEach>--%>
-        <%--    </select>--%>
-
+                <label for="idMesure">Sélectionnez une Catégorie</label>
+                <select class="form-control" name="idCategorie" id="idCategorie">
+                    <option value="${produit.categorie.idCategorie}" selected>${produit.categorie.nom}</option>
+                    <c:forEach items="${categories}" var="categorie">
+                        <c:if test="${produit.categorie.idCategorie != categorie.idCategorie}">
+                            <option value="${categorie.idCategorie}">${categorie.nom}</option>
+                        </c:if>
+                    </c:forEach>
+                </select>
             </div>
+
             <div class="form-group">
-            <label for="idMesure">Sélectionnez une mesure</label>
-            <select class="form-control" name="idMesure" id="idMesure">
-                <option value="${produit.idMesure}" selected>${produit.nomMesure}</option>
-                <c:forEach items="${mesures}" var="mesure">
-                    <c:if test="${produit.idMesure != mesure.idMesure}">
-                        <option value="${mesure.idMesure}">${mesure.nom}</option>
-                    </c:if>
-                </c:forEach>
-            </select>
-                </div>
+                <label for="idMesure">Sélectionnez une mesure</label>
+                <select class="form-control" name="idMesure" id="idMesure">
+                    <option value="${produit.mesure.idMesure}" selected>${produit.mesure.nom}</option>
+                    <c:forEach items="${mesures}" var="mesure">
+                        <c:if test="${produit.mesure.idMesure != mesure.idMesure}">
+                            <option value="${mesure.idMesure}">${mesure.nom}</option>
+                        </c:if>
+                    </c:forEach>
+                </select>
+            </div>
+
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
         </form>
     </div>

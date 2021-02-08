@@ -27,6 +27,7 @@ public class ServletListProduits extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         try {
             request.setAttribute("produits", produitDAO.getProduits());
             request.setAttribute("mesures", mesureDAO.getMesures());

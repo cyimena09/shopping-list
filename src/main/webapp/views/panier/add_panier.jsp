@@ -9,7 +9,7 @@
 
             <div class="form-group">
                 <label for="nomPanier">Nom de votre panier</label>
-                <input id="nomPanier" type="text" name="nomPanier">
+                <input id="nomPanier" class="form-control" type="text" name="nomPanier">
             </div>
 
             <div class="form-group">
@@ -20,20 +20,6 @@
                     </c:forEach>
                 </select>
             </div>
-
-<%--            <div class="form-group">--%>
-<%--                <label for="idProduit">Ajouter un produit</label>--%>
-<%--                <select id="idProduit" class="form-control" name="idProduit" >--%>
-<%--                    <c:forEach items="${produits}" var="produit">--%>
-<%--                        <option value="${produit.idProduit}">${produit.nom}</option>--%>
-<%--                    </c:forEach>--%>
-<%--                </select>--%>
-<%--            </div>--%>
-
-<%--            <div class="form-group">--%>
-<%--                <label for="quantite">Qte</label>--%>
-<%--                <input id="quantite" type="text" name="quantite">--%>
-<%--            </div>--%>
 
             <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i>Enregistrer</button>
         </form>

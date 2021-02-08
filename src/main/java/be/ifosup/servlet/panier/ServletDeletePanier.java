@@ -30,11 +30,11 @@ public class ServletDeletePanier extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Récupération de l'id de le mesure à supprimer.
-        String idMesure = request.getParameter("idPanier");
+        Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
 
         try {
             // On appelle la méthode delete.
-            panierDAO.deletePanier(Integer.parseInt(idMesure));
+            panierDAO.deletePanier(idPanier);
             request.setAttribute("paniers", panierDAO.getPaniers());
         } catch (SQLException throwable){
             throwable.printStackTrace();

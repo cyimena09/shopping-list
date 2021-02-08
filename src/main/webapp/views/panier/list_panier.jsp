@@ -14,7 +14,10 @@
 
                 <div class="magasin">
                     <div class="head">
-                        <h2>${panier.magasin.nom}</h2>
+                        <h2 style="display: flex; justify-content: space-between">
+                            <span>${panier.magasin.nom}</span>
+                            <a style="color: red" href="delete_panier?idPanier=${panier.idPanier}"><i class="far fa-times-circle"></i></a>
+                        </h2>
                         <p>${panier.nom}</p>
                     </div>
 

@@ -30,6 +30,7 @@ public class CategorieDAOImpl implements CategorieDAO {
             resultSet = statement.executeQuery("SELECT ca.idCategorie, ca.nom FROM categorie ca");
 
             while (resultSet.next()) {
+                // On récupère les données
                 Integer idCategorie = resultSet.getInt("idCategorie");
                 String nom = resultSet.getString("nom");
 
@@ -61,7 +62,7 @@ public class CategorieDAOImpl implements CategorieDAO {
             // La connexion et la requete prepare sont crees.
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
-            preparedStatement = connection.prepareStatement("SELECT ma.idCategorie, ma.nom FROM categorie ma WHERE ma.idCategorie = ?");
+            preparedStatement = connection.prepareStatement("SELECT ca.idCategorie, ca.nom FROM categorie ca WHERE ca.idCategorie = ?");
             // Set attributes.
             preparedStatement.setInt(1, id);
             // Execution de la requete.
