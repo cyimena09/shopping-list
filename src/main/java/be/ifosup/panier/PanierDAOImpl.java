@@ -2,10 +2,8 @@ package be.ifosup.panier;
 
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.magasin.Magasin;
-import be.ifosup.mesure.Mesure;
 import be.ifosup.produit.Produit;
 import be.ifosup.produit.ProduitDAO;
-import be.ifosup.produit.ProduitDAOImpl;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -46,13 +46,19 @@ public class DAOFactory {
     }
 
     // Récupération des DAO par tables SQL
-    public ProduitDAO getProduitDAO() { return new ProduitDAOImpl(this); }
+    public ProduitDAO getProduitDAO() {
+        return new ProduitDAOImpl(this);
+    }
 
-    public MesureDAO getMesureDAO() { return new MesureDAOImpl(this); }
+    public MesureDAO getMesureDAO() {
+        return new MesureDAOImpl(this);
+    }
 
-    public PanierDAO getPanierDAO() { return new PanierDAOImpl(this); }
+    public PanierDAO getPanierDAO() {
+        return new PanierDAOImpl(this);
+    }
 
-    public MagasinDAO getMagasinDAO(){
+    public MagasinDAO getMagasinDAO() {
         return new MagasinDAOImpl(this);
     }
 

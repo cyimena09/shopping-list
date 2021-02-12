@@ -1,10 +1,7 @@
 package be.ifosup.servlet.panier;
 
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.mesure.MesureDAO;
 import be.ifosup.panier.PanierDAO;
-import be.ifosup.produit.Produit;
-import be.ifosup.produit.ProduitDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,14 +14,10 @@ import java.sql.SQLException;
 @WebServlet(name = "ServletAddProduit", urlPatterns = "/add_produit")
 public class ServletAddPanierProduit extends HttpServlet {
     private PanierDAO panierDAO;
-    private ProduitDAO produitDAO;
-    private MesureDAO mesureDAO;
 
     public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.panierDAO = daoFactory.getPanierDAO();
-        this.produitDAO = daoFactory.getProduitDAO();
-        this.mesureDAO = daoFactory.getMesureDAO();
     }
 
     // Cette méthode vise à ajouter un produit dans le panier
