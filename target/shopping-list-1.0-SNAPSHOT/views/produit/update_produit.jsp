@@ -37,8 +37,8 @@
                     </c:forEach>
                 </select>
             </div>
-
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
+            <a class="btn btn-primary mt-2" href="produits">Retour</a>
         </form>
     </div>
 </div>

@@ -12,7 +12,7 @@
                 <input id="nomCategorie" name="nomCategorie" type="text" value="${categorie.nom}">
             </div>
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
-
+            <a class="btn btn-primary mt-2" href="categories">Retour</a>
         </form>
     </div>
 </div>

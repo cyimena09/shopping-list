@@ -12,9 +12,8 @@
                 <label for="nomMagasin">Nom du magasin</label>
                 <input id="nomMagasin" class="form-control" name="nomMagasin" type="text" value="${magasin.nom}">
             </div>
-
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
-
+            <a class="btn btn-primary mt-2" href="magasins">Retour</a>
         </form>
 
     </div>
