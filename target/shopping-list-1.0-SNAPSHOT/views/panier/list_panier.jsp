@@ -28,24 +28,21 @@
                             <p class="action"></p>
                         </div>
                     </div>
+
                     <ul>
-
                         <c:forEach items="${panier.produitList}" var="produit">
-
                             <li>
                                 <span>${produit.nom}</span>
 
-                                <div style="display: flex">
+                                <div style="display: flex;">
                                     <span>${produit.quantite} ${produit.mesure.nom}</span>
-                                    <div class="action">
-                                        <a href="">cc<i class="fas fa-trash" style="color: red"></i></a>
+                                    <div class="action" style="justify-content: flex-end; border: solid red 1px">
+                                        <a style="margin: 0; padding: 0;" href=""><i class="fas fa-trash" style="color: red; padding: 0; margin: 0"></i></a>
                                     </div>
                                 </div>
-
                             </li>
                         </c:forEach>
                     </ul>
-
 
                     <a class="btn btn-success add-article" href="single_panier?idPanier=${panier.idPanier}">Modifier le panier</a>
 

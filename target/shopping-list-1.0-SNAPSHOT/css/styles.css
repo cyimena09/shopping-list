@@ -32,7 +32,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 25px;
+  font-size: 26px;
 }
 
 h2 {
@@ -71,6 +71,7 @@ header {
   align-items: center;
   width: 100%;
 }
+
 header .wrapper {
   width: 100%;
   display: flex;
@@ -94,7 +95,7 @@ header .brand {
   display: flex;
 }
 
-header  h1 {
+#brand {
   color: white;
   font-size: 25px;
   text-transform: uppercase;
@@ -173,9 +174,9 @@ header .fas {
 }
 
 .home h1 {
-
   margin-bottom: 15px;
   color: rgb(219, 217, 61);
+  font-size: 22px;
 }
 
 .home .presentation, .home .illustration {
@@ -222,7 +223,7 @@ header .fas {
 }
 
 .panier .magasin, #single-panier .wrapper {
-  width: 350px;
+  width: 500px;
   border: solid #c6e9c6 1px;
   margin: 0 30px 30px 0;
   padding: 20px;
@@ -269,6 +270,7 @@ header .fas {
 
 #single-panier .wrapper {
   width: 500px;
+  min-height: 400px;
 }
 
 #single-panier .all-produits {
