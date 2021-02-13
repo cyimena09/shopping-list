@@ -10,6 +10,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom</th>
+                <th scope="col">Unité</th>
                 <th scope="col">Catégorie</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -19,6 +20,7 @@
                 <tr>
                     <th scope="row">1</th>
                     <td>${produit.nom}</td>
+                    <td>${produit.mesure.nom}</td>
                     <td>${produit.categorie.nom}</td>
                     <th>
                         <a class="btn btn-warning btn-sm mr-2" href="update_produit?idProduit=${produit.idProduit}">Modifier</a>

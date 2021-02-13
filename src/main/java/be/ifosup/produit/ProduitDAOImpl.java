@@ -31,8 +31,9 @@ public class ProduitDAOImpl implements ProduitDAO {
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(
-                    "SELECT pr.idProduit, pr.nom AS nomProduit, ca.idCategorie, ca.nom AS nomCategorie " +
+                    "SELECT pr.idProduit, pr.nom AS nomProduit, ca.idCategorie, ca.nom AS nomCategorie, me.idMesure, me.nom AS nomMesure " +
                             "FROM produit pr " +
+                            "INNER JOIN mesure me ON me.idMesure = pr.idMesure " +
                             "INNER JOIN categorie ca ON ca.idCategorie = pr.idCategorie");
             // Recuperation des donnees.
             while (resultSet.next()) {
@@ -41,16 +42,25 @@ public class ProduitDAOImpl implements ProduitDAO {
                 String nomProduit = resultSet.getString("nomProduit");
                 Integer idCategorie = resultSet.getInt("idCategorie");
                 String nomCategorie = resultSet.getString("nomCategorie");
+                Integer idMesure = resultSet.getInt("idMesure");
+                String nomMesure = resultSet.getString("nomMesure");
+
                 // Ajout dans categorie
                 Categorie categorie = new Categorie();
                 categorie.setIdCategorie(idCategorie);
                 categorie.setNom(nomCategorie);
+                // Ajout dans mesure
+                Mesure mesure = new Mesure();
+                mesure.setIdMesure(idMesure);
+                mesure.setNom(nomMesure);
                 // Ajout dans produit
                 Produit produit = new Produit();
                 produit.setIdProduit(idProduit);
                 produit.setNom(nomProduit);
                 produit.setCategorie(categorie);
+                produit.setMesure(mesure);
                 produits.add(produit);
+
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();

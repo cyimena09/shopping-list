@@ -36,7 +36,7 @@
 
                                 <div style="display: flex;">
                                     <span>${produit.quantite} ${produit.mesure.nom}</span>
-                                    <div class="action" style="justify-content: flex-end; border: solid red 1px">
+                                    <div class="action" style="justify-content: flex-end;">
                                         <a style="margin: 0; padding: 0;" href=""><i class="fas fa-trash" style="color: red; padding: 0; margin: 0"></i></a>
                                     </div>
                                 </div>
