@@ -24,14 +24,17 @@ public class ServletUpdateMagasin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Force UTF-8
         request.setCharacterEncoding("UTF-8");
-        // Récupération depuis l'url et conversion en Integer de l'id du magasin
-        String strIdMagasin = request.getParameter("idMagasin");
-        Integer idMagasin = Integer.parseInt(strIdMagasin);
+        // Récupération de l'id depuis l'url
+        Integer idMagasin= Integer.parseInt(request.getParameter("idMagasin"));
         // Récupération du nom du magasin depuis le formulaire.
         String nomMagasin = request.getParameter("nomMagasin");
 
+        // Ajout dans le magasin
+        Magasin magasin = new Magasin();
+        magasin.setNom(nomMagasin);
+
         try {
-            magasinDAO.updateMagasin(idMagasin, new Magasin());
+            magasinDAO.updateMagasin(idMagasin, magasin);
             request.setAttribute("magasins", magasinDAO.getMagasins());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

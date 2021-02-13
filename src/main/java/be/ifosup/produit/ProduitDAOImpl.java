@@ -262,6 +262,7 @@ public class ProduitDAOImpl implements ProduitDAO {
 
     @Override
     public void deleteProduit(Integer idProduit) throws SQLException {
+
         try {
             // La connexion et la requete prepare sont crees.
             connection = daoFactory.getConnection();

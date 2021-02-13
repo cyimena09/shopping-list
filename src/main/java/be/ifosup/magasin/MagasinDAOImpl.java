@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MagasinDAOImpl implements MagasinDAO {
+
     // ATTRIBUTS
+
     private final DAOFactory daoFactory;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
@@ -15,11 +17,13 @@ public class MagasinDAOImpl implements MagasinDAO {
     ResultSet resultSet = null;
 
     // CONSTRUCTEUR
+
     public MagasinDAOImpl(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
     }
 
     // METHODES
+
     @Override
     public List<Magasin> getMagasins() throws SQLException {
         List<Magasin> magasins = new ArrayList<>();
@@ -124,6 +128,7 @@ public class MagasinDAOImpl implements MagasinDAO {
     @Override
     public void updateMagasin(Integer id, Magasin magasin) throws SQLException {
 
+        System.out.println(id);
         try {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement("UPDATE magasin m SET m.nom = ? WHERE m.idMagasin = ?");

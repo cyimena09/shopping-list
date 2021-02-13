@@ -16,9 +16,9 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${produits}" var="produit">
+            <c:forEach items="${produits}" var="produit" varStatus="count">
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">${count.count}</th>
                     <td>${produit.nom}</td>
                     <td>${produit.mesure.nom}</td>
                     <td>${produit.categorie.nom}</td>

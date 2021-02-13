@@ -13,9 +13,9 @@
             </thead>
             <tbody>
             
-            <c:forEach items="${mesures}" var="mesure">
+            <c:forEach items="${mesures}" var="mesure" varStatus="count">
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">${count.count}</th>
                     <td>${mesure.nom}</td>
                     <td>
                         <a class="btn btn-warning btn-sm mr-2" href="update_mesure?idMesure=${mesure.idMesure}">Modifier</a>
