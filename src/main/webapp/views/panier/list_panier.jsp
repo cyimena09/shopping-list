@@ -36,10 +36,9 @@
                                 <span>${produit.nom}</span>
 
                                 <div style="display: flex">
-                                    <span style="border-right: 1px solid green">${produit.quantite} ${produit.mesure.nom} </span>
+                                    <span>${produit.quantite} ${produit.mesure.nom}</span>
                                     <div class="action">
-                                        <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                        <i class="fas fa-trash"></i>
+                                        <a href=""><i class="fas fa-trash" style="color: red"></i></a>
                                     </div>
                                 </div>
 
@@ -48,7 +47,7 @@
                     </ul>
 
 
-                    <a class="btn btn-success add-article" href="single_panier?idPanier=${panier.idPanier}">Ajouter un article</a>
+                    <a class="btn btn-success add-article" href="single_panier?idPanier=${panier.idPanier}">Modifier le panier</a>
 
                 </div>
 
