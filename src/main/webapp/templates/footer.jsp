@@ -20,7 +20,7 @@
                 <ul>
                     <li>Emile Cyimena</li>
                     <li>Benoît Vankoningsloo</li>
-                    <li>Xavier</li>
+                    <li>Xavier De Beck</li>
                 </ul>
             </div>
         </div>

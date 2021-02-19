@@ -11,28 +11,29 @@
                 <p>Produits dans le panier</p>
                 <p>Quantité</p>
             </div>
+            <ul>
+                <c:forEach items="${produits}" var="produit">
 
-            <c:forEach items="${produits}" var="produit">
-                <ul>
-                    <li class="legend"><span>${produit.nom}</span> <span>${produit.quantite} ${produit.mesure.nom}</span></li>
-                </ul>
-            </c:forEach>
+                        <li class="legend"><span>${produit.nom}</span> <span>${produit.quantite} ${produit.mesure.nom}</span></li>
+
+                </c:forEach>
+            </ul>
         </div>
 
         <div class="wrapper all-produits">
-            <h2>Tous les produits</h2>
-
+            <h2>Tous les produits</h2>p
+            <ul>
             <c:forEach items="${allProduits}" var="produit">
-                <ul>
                     <li>
                             ${produit.nom}
-                        <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">
+                        <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}&quantite=1">
                             <i class="fas fa-plus"></i>
                         </a>
                     </li>
-                </ul>
+
 
             </c:forEach>
+            </ul>
         </div>
 
     </div>
