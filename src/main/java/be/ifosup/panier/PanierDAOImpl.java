@@ -140,11 +140,6 @@ public class PanierDAOImpl implements PanierDAO {
 
     @Override
     public void createPanier(Panier panier) throws SQLException {
-
-        System.out.println("coucou");
-        System.out.println(panier.getNom());
-        System.out.println(panier.getMagasin().getIdMagasin());
-        System.out.println("Aurevoir");
         try {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement(

@@ -11,6 +11,7 @@
                 <input id="nomPanier" name="nomPanier" type="text" value="${panier.nom}">
             </div>
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
+            <a class="btn btn-primary mt-2" href="paniers">Retour</a>
         </form>
     </div>
 </div>
