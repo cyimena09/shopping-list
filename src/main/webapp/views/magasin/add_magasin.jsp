@@ -15,9 +15,5 @@
             <p class="error">${error}</p>
         </c:if>
 
-        <c:if test="${success != null}">
-            <p class="success">${success}</p>
-        </c:if>
-
     </div>
 </div>

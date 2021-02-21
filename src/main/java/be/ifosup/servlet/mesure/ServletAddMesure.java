@@ -1,8 +1,10 @@
 package be.ifosup.servlet.mesure;
 
+import be.ifosup.categorie.Categorie;
 import be.ifosup.mesure.Mesure;
 import be.ifosup.mesure.MesureDAO;
 import be.ifosup.dao.DAOFactory;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static java.net.URLEncoder.encode;
 
 @WebServlet(name = "ServletAddMesure", urlPatterns = "/add_mesure")
 public class ServletAddMesure extends HttpServlet {
@@ -27,15 +31,19 @@ public class ServletAddMesure extends HttpServlet {
         // Recuperation de la mesure dans le formulaire.
         String nomMesure = request.getParameter("nomMesure");
 
-        try {
-            // Ajout de la mesure dans la db.
-            mesureDAO.createMesure(new Mesure(null, nomMesure));
-            request.setAttribute("mesures", mesureDAO.getMesures());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+        if (StringUtils.isBlank(nomMesure)) {
+            String error = encode("La mesure ne peut pas être vide.","UTF-8");
+            response.sendRedirect("mesures?error=" + error);
+        } else {
+            try {
+                // Ajout de la catégoie dans la db.
+                mesureDAO.createMesure(new Mesure(null, nomMesure));
+                request.setAttribute("mesures", mesureDAO.getMesures());
+                response.sendRedirect("mesures");
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
         }
-
-        request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
     }
 
 }

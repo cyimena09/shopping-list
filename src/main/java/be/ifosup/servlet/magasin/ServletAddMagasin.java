@@ -1,9 +1,10 @@
 package be.ifosup.servlet.magasin;
 
+import be.ifosup.categorie.Categorie;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.magasin.Magasin;
 import be.ifosup.magasin.MagasinDAO;
-import be.ifosup.utils.FormsConstantes;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static java.net.URLEncoder.encode;
 
 @WebServlet(name = "ServletAddMagasin", urlPatterns = "/add_magasin")
 public class ServletAddMagasin extends HttpServlet {
@@ -27,30 +30,16 @@ public class ServletAddMagasin extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         // Recuperation de la mesure dans le formulaire.
         String nomMagasin = request.getParameter("nomMagasin");
-        // Si les champs sont nulles on ajoute un message d'erreur et on redirige.
-        if (nomMagasin.isEmpty()) {
 
-            try {
-                // Redirection.
-                String error = FormsConstantes.EMPTY_STRINGS;
-                request.setAttribute("error", error);
-                request.setAttribute("magasins", magasinDAO.getMagasins());
-                request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
-            } catch (SQLException throwable) {
-                throwable.printStackTrace();
-            }
+        if (StringUtils.isBlank(nomMagasin)) {
+            String error = encode("Le champs magasin ne peut pas être vide.","UTF-8");
+            response.sendRedirect("magasins?error=" + error);
         } else {
-
             try {
-                Magasin magasin = new Magasin();
-                magasin.setNom(nomMagasin);
-                // Enregistrement du magasin dans la db.
-                magasinDAO.createMagasin(magasin);
-                // Redirection.
-                String success = FormsConstantes.SUCCESS_NEW_MAGASIN;
-                request.setAttribute("success", success);
+                // Ajout du magasin dans la db.
+                magasinDAO.createMagasin(new Magasin(null, nomMagasin));
                 request.setAttribute("magasins", magasinDAO.getMagasins());
-                request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
+                response.sendRedirect("magasins");
             } catch (SQLException throwable) {
                 throwable.printStackTrace();
             }

@@ -3,6 +3,7 @@ package be.ifosup.servlet.categorie;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.categorie.Categorie;
 import be.ifosup.categorie.CategorieDAO;
+import be.ifosup.utils.FormsConstantes;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
@@ -35,17 +36,13 @@ public class ServletAddCategorie extends HttpServlet {
             response.sendRedirect("categories?error=" + error);
         } else {
             try {
-                // Ajout de la mesure dans la db.
+                // Ajout de la catégoie dans la db.
                 categorieDAO.createCategorie(new Categorie(null, nomCategorie));
                 request.setAttribute("categories", categorieDAO.getCategories());
+                response.sendRedirect("categories");
             } catch (SQLException throwable) {
                 throwable.printStackTrace();
             }
         }
-
-
-
-        //request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
-
 }
