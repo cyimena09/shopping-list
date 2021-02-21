@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import org.apache.commons.lang3.StringUtils;
 
 import static java.net.URLEncoder.encode;
 
@@ -30,19 +31,22 @@ public class ServletAddPanierProduit extends HttpServlet {
         int idPanier = Integer.parseInt(request.getParameter("idPanier"));
         int idProduit = Integer.parseInt(request.getParameter("idProduit"));
 
+        String nomAddPanier = request.getParameter("nomAddPanier");
 
-        try {
-            // On vérifie si le produit est déjà dans le panier, s'il n'est pas dans le panier on ajoute une unité.
-            if (panierDAO.searchproduitInPanier(idPanier, idProduit) == null) {
-                panierDAO.addProduitInPanier(idPanier, idProduit, 1 );
-                response.sendRedirect("single_panier?idPanier=" + idPanier);
-            } else {
-                String warning = encode("Le produit existe déjà dans le panier.","UTF-8");
-                response.sendRedirect("single_panier?idPanier=" + idPanier + "&warning=" + warning);
+
+            try {
+                // On vérifie si le produit est déjà dans le panier, s'il n'est pas dans le panier on ajoute une unité.
+                if (panierDAO.searchproduitInPanier(idPanier, idProduit) == null) {
+                    panierDAO.addProduitInPanier(idPanier, idProduit, 1);
+                    response.sendRedirect("single_panier?idPanier=" + idPanier);
+                } else {
+                    String warning = encode("Le produit existe déjà dans le panier.", "UTF-8");
+                    response.sendRedirect("single_panier?idPanier=" + idPanier + "&warning=" + warning);
+                }
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
             }
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
         }
     }
 
-}
+
