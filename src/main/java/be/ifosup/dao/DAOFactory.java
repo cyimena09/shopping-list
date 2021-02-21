@@ -30,7 +30,7 @@ public class DAOFactory {
         this.userName = userName;
         this.password = password;
     }
-
+  khk
     // METHODES
 
     // Chargement du driver
