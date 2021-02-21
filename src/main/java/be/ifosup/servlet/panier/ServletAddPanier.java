@@ -36,22 +36,29 @@ public class ServletAddPanier extends HttpServlet {
         Magasin magasin = new Magasin();
         Panier panier = new Panier();
 
-        try {
-            // Recuperation et conversion en Integer de l'id du magasin et du produit.
-            String nomPanier = request.getParameter("nomPanier");
-            Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
-            // On set les valeurs du magasin
-            magasin.setIdMagasin(idMagasin);
-            // On set les valeurs du panier
-            panier.setNom(nomPanier);
-            panier.setMagasin(magasin);
-            // Ajout du panier dans la db.
-            panierDAO.createPanier(panier);
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+        String nomPanierr = request.getParameter("nomPanier");
+
+        if (StringUtils.isBlank(nomPanierr)) {
+            String error = encode("Le champs panier ne peut pas être vide.", "UTF-8");
+            response.sendRedirect("paniers?error=" + error);
+        } else {
+            try {
+                // Recuperation et conversion en Integer de l'id du magasin et du produit.
+                String nomPanier = request.getParameter("nomPanier");
+                Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
+                // On set les valeurs du magasin
+                magasin.setIdMagasin(idMagasin);
+                // On set les valeurs du panier
+                panier.setNom(nomPanier);
+                panier.setMagasin(magasin);
+                // Ajout du panier dans la db.
+                panierDAO.createPanier(panier);
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
+            // On appelle le servletListPanier qui va se charger de récupérer les paniers
+            response.sendRedirect("paniers");
         }
-        // On appelle le servletListPanier qui va se charger de récupérer les paniers
-        response.sendRedirect("paniers");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -14,8 +14,6 @@ public class Produit {
     private Mesure mesure;
     private Categorie categorie;
 
-
-
     // GETTERS & SETTERS
 
     public Integer getIdProduit() {

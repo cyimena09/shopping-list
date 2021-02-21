@@ -51,17 +51,22 @@ public class ServletCreateProduit extends HttpServlet {
         produit.setMesure(mesure);
         produit.setCategorie(categorie);
 
+        if (StringUtils.isBlank(nomProduit)) {
+            String error = encode("Le produit ne peut pas être vide.", "UTF-8");
+            response.sendRedirect("produits?error=" + error);
+        } else {
 
-       try {
-            // Enregistrement dans la Db.
-         produitDAO.createProduit(produit);
-         request.setAttribute("produits", produitDAO.getProduits());
-         request.setAttribute("mesures", mesureDAO.getMesures());
-         request.setAttribute("categories", categorieDAO.getCategories());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
-        }
+            try {
+                // Enregistrement dans la Db.
+                produitDAO.createProduit(produit);
+                request.setAttribute("produits", produitDAO.getProduits());
+                request.setAttribute("mesures", mesureDAO.getMesures());
+                request.setAttribute("categories", categorieDAO.getCategories());
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
 
             request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
         }
     }
+}
