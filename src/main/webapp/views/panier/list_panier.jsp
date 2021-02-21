@@ -30,6 +30,7 @@
                     </div>
 
                     <ul>
+
                         <c:forEach items="${panier.produitList}" var="produit">
                             <li>
                                 <span>${produit.nom}</span>

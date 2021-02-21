@@ -1,7 +1,5 @@
 package be.ifosup.categorie;
 
-import be.ifosup.categorie.Categorie;
-
 import java.sql.SQLException;
 import java.util.List;
 

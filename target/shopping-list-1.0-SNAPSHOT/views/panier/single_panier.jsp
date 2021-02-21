@@ -26,8 +26,7 @@
             <c:forEach items="${allProduits}" var="produit">
                     <li>
                             ${produit.nom}
-                        <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}&quantite=1">
-                            <i class="fas fa-plus"></i>
+                                <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">                            <i class="fas fa-plus"></i>
                         </a>
                     </li>
 

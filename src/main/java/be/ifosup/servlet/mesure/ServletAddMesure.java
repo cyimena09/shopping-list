@@ -1,8 +1,8 @@
 package be.ifosup.servlet.mesure;
 
-import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.Mesure;
 import be.ifosup.mesure.MesureDAO;
+import be.ifosup.dao.DAOFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class ServletAddMesure extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // force UTF-8
+        // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
         // Recuperation de la mesure dans le formulaire.
         String nomMesure = request.getParameter("nomMesure");
@@ -34,6 +34,7 @@ public class ServletAddMesure extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
     }
 

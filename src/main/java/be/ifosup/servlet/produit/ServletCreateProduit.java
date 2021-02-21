@@ -2,9 +2,9 @@ package be.ifosup.servlet.produit;
 
 import be.ifosup.categorie.Categorie;
 import be.ifosup.categorie.CategorieDAO;
-import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.Mesure;
 import be.ifosup.mesure.MesureDAO;
+import be.ifosup.dao.DAOFactory;
 import be.ifosup.produit.Produit;
 import be.ifosup.produit.ProduitDAO;
 
@@ -30,26 +30,26 @@ public class ServletCreateProduit extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // force UTF-8
+        // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
-        // get form values
+        // Récupération des valeurs du formulaire.
         String nomProduit =  request.getParameter("nomProduit");
         Integer idMesure = Integer.parseInt(request.getParameter("idMesure"));
         Integer idCategorie = Integer.parseInt(request.getParameter("idCategorie"));
         // Ajout dans la mesure
         Mesure mesure = new Mesure();
         mesure.setIdMesure(idMesure);
-        // Ajout dans la catégorie
+        // Ajout dans la catégorie.
         Categorie categorie = new Categorie();
         categorie.setIdCategorie(idCategorie);
-        // Ajout dans produit
+        // Ajout dans produit.
         Produit produit = new Produit();
         produit.setNom(nomProduit);
         produit.setMesure(mesure);
         produit.setCategorie(categorie);
 
         try {
-            // Enregistrement dans la Db
+            // Enregistrement dans la Db.
             produitDAO.createProduit(produit);
             request.setAttribute("produits", produitDAO.getProduits());
             request.setAttribute("mesures", mesureDAO.getMesures());
@@ -57,6 +57,7 @@ public class ServletCreateProduit extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
     }
 

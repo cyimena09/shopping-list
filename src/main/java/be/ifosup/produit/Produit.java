@@ -4,14 +4,17 @@ import be.ifosup.categorie.Categorie;
 import be.ifosup.mesure.Mesure;
 
 public class Produit {
+
     // ATTRIBUTS
+
     private Integer idProduit;
     private String nom;
     private float quantite;
     private Mesure mesure;
     private Categorie categorie;
 
-    // METHODES
+    // GETTERS & SETTERS
+
     public Integer getIdProduit() {
         return idProduit;
     }

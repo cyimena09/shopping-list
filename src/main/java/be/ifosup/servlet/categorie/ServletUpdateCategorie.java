@@ -22,9 +22,9 @@ public class ServletUpdateCategorie extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Force UTF-8
+        // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
-        // Récupération depuis l'url et conversion en Integer de l'id du categorie
+        // Récupération depuis l'url et conversion en Integer de l'id du categorie.
         String strIdCategorie = request.getParameter("idCategorie");
         Integer idCategorie = Integer.parseInt(strIdCategorie);
         // Récupération du nom du categorie depuis le formulaire.
@@ -36,6 +36,7 @@ public class ServletUpdateCategorie extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
 
@@ -48,6 +49,7 @@ public class ServletUpdateCategorie extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/categorie/update_categorie.jsp").forward(request, response);
     }
 

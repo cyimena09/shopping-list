@@ -1,7 +1,7 @@
 package be.ifosup.servlet.panier;
 
-import be.ifosup.dao.DAOFactory;
 import be.ifosup.panier.PanierDAO;
+import be.ifosup.dao.DAOFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class ServletAddPanierProduit extends HttpServlet {
 
     // Cette méthode vise à ajouter un produit dans le panier
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // recupération du panier, du produit et du magasin depuis l'url
+        // Récupération du panier, du produit et du magasin depuis l'url
         Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
         Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
 
@@ -31,6 +31,7 @@ public class ServletAddPanierProduit extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         response.sendRedirect("single_panier?idPanier=" + idPanier);
     }
 

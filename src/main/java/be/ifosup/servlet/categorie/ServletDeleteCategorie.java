@@ -13,10 +13,8 @@ import java.sql.SQLException;
 
 @WebServlet(name = "ServletDeleteCategorie", urlPatterns = "/delete_categorie")
 public class ServletDeleteCategorie extends HttpServlet {
-    // ATTRIBUTS
     private CategorieDAO categorieDAO;
 
-    // METHODES
     public void init(){
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.categorieDAO = daoFactory.getCategorieDAO();
@@ -33,6 +31,7 @@ public class ServletDeleteCategorie extends HttpServlet {
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
 }

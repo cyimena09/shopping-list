@@ -63,6 +63,18 @@ button i {
   margin-right: 10px;
 }
 
+.error, .success {
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
 /* NAVIGATION */
 
 header {

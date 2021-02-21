@@ -1,7 +1,7 @@
 package be.ifosup.servlet.categorie;
 
-import be.ifosup.dao.DAOFactory;
 import be.ifosup.categorie.CategorieDAO;
+import be.ifosup.dao.DAOFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +26,7 @@ public class ServletListCategorie extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
 

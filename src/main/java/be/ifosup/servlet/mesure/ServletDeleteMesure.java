@@ -1,7 +1,7 @@
 package be.ifosup.servlet.mesure;
 
-import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.MesureDAO;
+import be.ifosup.dao.DAOFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,11 +13,9 @@ import java.sql.SQLException;
 
 @WebServlet(name = "ServletDeleteMesure", urlPatterns = "/delete_mesure")
 public class ServletDeleteMesure extends HttpServlet {
-    // ATTRIBUTS
     private MesureDAO mesureDAO;
 
-    // METHODES
-    public void init(){
+    public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.mesureDAO = daoFactory.getMesureDAO();
     }
@@ -30,9 +28,10 @@ public class ServletDeleteMesure extends HttpServlet {
             // On appelle la méthode delete.
             mesureDAO.deleteMesure(Integer.parseInt(idMesure));
             request.setAttribute("mesures", mesureDAO.getMesures());
-        } catch (SQLException throwable){
+        } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
     }
 

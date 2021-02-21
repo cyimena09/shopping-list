@@ -3,6 +3,7 @@ package be.ifosup.servlet.magasin;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.magasin.Magasin;
 import be.ifosup.magasin.MagasinDAO;
+import be.ifosup.utils.FormsConstantes;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,20 +23,38 @@ public class ServletAddMagasin extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // force UTF-8
+        // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
         // Recuperation de la mesure dans le formulaire.
         String nomMagasin = request.getParameter("nomMagasin");
-        Magasin magasin = new Magasin();
-        magasin.setNom(nomMagasin);
-        try {
-            // Ajout de la mesure dans la db.
-            magasinDAO.createMagasin(magasin);
-            request.setAttribute("magasins", magasinDAO.getMagasins());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+        // Si les champs sont nulles on ajoute un message d'erreur et on redirige.
+        if (nomMagasin.isEmpty()) {
+
+            try {
+                // Redirection.
+                String error = FormsConstantes.EMPTY_STRINGS;
+                request.setAttribute("error", error);
+                request.setAttribute("magasins", magasinDAO.getMagasins());
+                request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
+        } else {
+
+            try {
+                Magasin magasin = new Magasin();
+                magasin.setNom(nomMagasin);
+                // Enregistrement du magasin dans la db.
+                magasinDAO.createMagasin(magasin);
+                // Redirection.
+                String success = FormsConstantes.SUCCESS_NEW_MAGASIN;
+                request.setAttribute("success", success);
+                request.setAttribute("magasins", magasinDAO.getMagasins());
+                request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
         }
-        request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
     }
 
 }

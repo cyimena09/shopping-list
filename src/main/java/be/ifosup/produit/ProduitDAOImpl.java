@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProduitDAOImpl implements ProduitDAO {
+
     // ATTRIBUTS
+
     private final DAOFactory daoFactory;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
@@ -17,11 +19,13 @@ public class ProduitDAOImpl implements ProduitDAO {
     ResultSet resultSet = null;
 
     // CONSTRUCTEUR
+
     public ProduitDAOImpl(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
     }
 
     // METHODES
+
     @Override
     public List<Produit> getProduits() throws SQLException {
         List<Produit> produits = new ArrayList<>();
@@ -140,7 +144,7 @@ public class ProduitDAOImpl implements ProduitDAO {
     @Override
     public List<Produit> getProduitsByPanierId(Integer id) throws SQLException {
         List<Produit> produitsList = new ArrayList<>();
-        // Attribut de l'objet retourné.
+        // Attributs de l'objet retourné.
         int idProduit;
         String nomProduit;
         float quantite;

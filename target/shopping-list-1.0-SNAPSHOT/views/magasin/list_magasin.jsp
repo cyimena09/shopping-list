@@ -12,9 +12,9 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${magasins}" var="magasin">
+            <c:forEach items="${magasins}" var="magasin" varStatus="count">
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">${count.count}</th>
                     <td>${magasin.nom}</td>
                     <td>
                         <a class="btn btn-warning btn-sm" href="update_magasin?idMagasin=${magasin.idMagasin}">Modifier</a>

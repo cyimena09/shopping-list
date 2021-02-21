@@ -1,7 +1,9 @@
 package be.ifosup.categorie;
 
 public class Categorie {
+
     // ATTRIBUTS
+
     private Integer idCategorie;
     private String nom;
 
@@ -14,7 +16,8 @@ public class Categorie {
         this.nom = nom;
     }
 
-    // METHODES
+    // GETTERS & SETTERS
+
     public Integer getIdCategorie() {
         return idCategorie;
     }

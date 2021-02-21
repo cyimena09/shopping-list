@@ -1,7 +1,6 @@
 package be.ifosup.servlet.panier;
 
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.mesure.MesureDAO;
 import be.ifosup.panier.PanierDAO;
 import be.ifosup.produit.ProduitDAO;
 
@@ -31,7 +30,7 @@ public class ServletSinglePanier extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            // On récupère le panier indiqué dans l'url de la requete
+            // On récupère le panier indiqué dans l'url de la requete.
             Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
             request.setAttribute("panier", panierDAO.getPanierById(idPanier));
             request.setAttribute("produits", produitDAO.getProduitsByPanierId(idPanier));

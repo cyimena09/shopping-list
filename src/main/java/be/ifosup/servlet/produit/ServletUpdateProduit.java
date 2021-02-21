@@ -2,9 +2,9 @@ package be.ifosup.servlet.produit;
 
 import be.ifosup.categorie.Categorie;
 import be.ifosup.categorie.CategorieDAO;
-import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.Mesure;
 import be.ifosup.mesure.MesureDAO;
+import be.ifosup.dao.DAOFactory;
 import be.ifosup.produit.Produit;
 import be.ifosup.produit.ProduitDAO;
 
@@ -30,7 +30,7 @@ public class ServletUpdateProduit extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Force UTF-8
+        // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
         // Récupération de l'id du produit depuis l'url.
         Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
@@ -40,18 +40,18 @@ public class ServletUpdateProduit extends HttpServlet {
         Integer idCategorie = Integer.parseInt(request.getParameter("idCategorie"));
 
         try {
-            // On ajoute la mesure
+            // On ajoute la mesure.
             Mesure mesure = new Mesure();
             mesure.setIdMesure(idMesure);
-            // On ajoute la catégorie
+            // On ajoute la catégorie.
             Categorie categorie = new Categorie();
             categorie.setIdCategorie(idCategorie);
-            // On ajoute la mesure
+            // On ajoute la mesure.
             Produit produit = new Produit();
             produit.setNom(nomProduit);
             produit.setMesure(mesure);
             produit.setCategorie(categorie);
-            // On enregistre le produit
+            // On enregistre le produit.
             produitDAO.updateProduit(idProduit, produit);
 
         } catch (SQLException throwable) {
@@ -71,6 +71,7 @@ public class ServletUpdateProduit extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/produit/update_produit.jsp").forward(request, response);
     }
 

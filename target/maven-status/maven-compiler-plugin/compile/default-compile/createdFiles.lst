@@ -3,6 +3,7 @@ be\ifosup\servlet\magasin\ServletUpdateMagasin.class
 be\ifosup\panier\PanierDAO.class
 be\ifosup\servlet\panier\ServletListPanier.class
 be\ifosup\produit\ProduitDAOImpl.class
+be\ifosup\Program.class
 be\ifosup\servlet\panier\ServletUpdatePanier.class
 be\ifosup\categorie\CategorieDAOImpl.class
 be\ifosup\servlet\panier\ServletAddPanierProduit.class
@@ -20,6 +21,7 @@ be\ifosup\servlet\categorie\ServletUpdateCategorie.class
 be\ifosup\categorie\Categorie.class
 be\ifosup\magasin\Magasin.class
 be\ifosup\mesure\Mesure.class
+be\ifosup\utils\FormsConstantes.class
 be\ifosup\servlet\produit\ServletDeleteProduit.class
 be\ifosup\servlet\panier\ServletSinglePanier.class
 be\ifosup\servlet\magasin\ServletDeleteMagasin.class

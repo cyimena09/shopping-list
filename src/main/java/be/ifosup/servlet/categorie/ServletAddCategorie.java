@@ -3,6 +3,7 @@ package be.ifosup.servlet.categorie;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.categorie.Categorie;
 import be.ifosup.categorie.CategorieDAO;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,10 +23,14 @@ public class ServletAddCategorie extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // force UTF-8
+        // Force UTF-8
         request.setCharacterEncoding("UTF-8");
         // Recuperation de la mesure dans le formulaire.
         String nomCategorie = request.getParameter("nomCategorie");
+
+        if (StringUtils.isBlank(nomCategorie)) {
+            System.out.println("La catégorie est nulle");
+        }
 
         try {
             // Ajout de la mesure dans la db.
@@ -34,6 +39,7 @@ public class ServletAddCategorie extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
 

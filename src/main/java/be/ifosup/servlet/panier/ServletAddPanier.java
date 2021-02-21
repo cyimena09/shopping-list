@@ -1,10 +1,10 @@
 package be.ifosup.servlet.panier;
 
+import be.ifosup.panier.Panier;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.magasin.Magasin;
 import be.ifosup.magasin.MagasinDAO;
 import be.ifosup.produit.ProduitDAO;
-import be.ifosup.panier.Panier;
 import be.ifosup.panier.PanierDAO;
 
 import javax.servlet.ServletException;
@@ -28,7 +28,7 @@ public class ServletAddPanier extends HttpServlet {
         this.produitDAO = daoFactory.getProduitDAO();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // force UTF-8
+        // Force UTF-8
         request.setCharacterEncoding("UTF-8");
         Magasin magasin = new Magasin();
         Panier panier = new Panier();
@@ -59,6 +59,7 @@ public class ServletAddPanier extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/panier/add_panier.jsp").forward(request, response);
     }
 

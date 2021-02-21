@@ -35,6 +35,7 @@ public class ServletListProduits extends HttpServlet {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
     }
 

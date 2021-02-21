@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategorieDAOImpl implements CategorieDAO {
+
     // ATTRIBUTS
+
     private final DAOFactory daoFactory;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
@@ -15,11 +17,13 @@ public class CategorieDAOImpl implements CategorieDAO {
     ResultSet resultSet = null;
 
     // CONSTRUCTEUR
+
     public CategorieDAOImpl(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
     }
 
     // METHODES
+
     @Override
     public List<Categorie> getCategories() throws SQLException {
         List<Categorie> categories = new ArrayList<>();

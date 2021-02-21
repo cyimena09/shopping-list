@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PanierDAOImpl implements PanierDAO {
+
     // ATTRIBUTS
+
     private final DAOFactory daoFactory;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
@@ -18,11 +20,13 @@ public class PanierDAOImpl implements PanierDAO {
     ResultSet resultSet = null;
 
     // CONSTRUCTEUR
+
     public PanierDAOImpl(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
     }
 
     // METHODES
+
     @Override
     public List<Panier> getPaniers() throws SQLException {
         // On appelle le dao de produit pour récupérer les produits du panier
@@ -133,7 +137,6 @@ public class PanierDAOImpl implements PanierDAO {
                 connection.close();
             }
         }
-
 
         return panier;
     }

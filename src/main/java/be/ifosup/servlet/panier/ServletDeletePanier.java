@@ -1,12 +1,7 @@
 package be.ifosup.servlet.panier;
 
-import be.ifosup.dao.DAOFactory;
-import be.ifosup.mesure.Mesure;
-import be.ifosup.mesure.MesureDAO;
-import be.ifosup.produit.Produit;
-import be.ifosup.produit.ProduitDAO;
-import be.ifosup.panier.Panier;
 import be.ifosup.panier.PanierDAO;
+import be.ifosup.dao.DAOFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,17 +13,14 @@ import java.sql.SQLException;
 
 @WebServlet(name = "ServletDeletePanier", urlPatterns = "/delete_panier")
 public class ServletDeletePanier extends HttpServlet {
-    // ATTRIBUTS
     private PanierDAO panierDAO;
 
-    // METHODES
-    public void init(){
+    public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.panierDAO = daoFactory.getPanierDAO();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         // Récupération de l'id de le mesure à supprimer.
         Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
 
@@ -39,6 +31,7 @@ public class ServletDeletePanier extends HttpServlet {
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/panier/paniers.jsp").forward(request, response);
     }
 

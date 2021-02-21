@@ -1,7 +1,7 @@
 package be.ifosup.servlet.mesure;
 
-import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.MesureDAO;
+import be.ifosup.dao.DAOFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,11 +21,13 @@ public class ServletListMesure extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         try {
             request.setAttribute("mesures", mesureDAO.getMesures());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
     }
 

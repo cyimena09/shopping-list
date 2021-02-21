@@ -1,8 +1,8 @@
 package be.ifosup.servlet.produit;
 
 import be.ifosup.categorie.CategorieDAO;
-import be.ifosup.dao.DAOFactory;
 import be.ifosup.mesure.MesureDAO;
+import be.ifosup.dao.DAOFactory;
 import be.ifosup.produit.ProduitDAO;
 
 import javax.servlet.ServletException;
@@ -15,12 +15,10 @@ import java.sql.SQLException;
 
 @WebServlet(name = "ServletDeleteProduit", urlPatterns = "/delete_produit")
 public class ServletDeleteProduit extends HttpServlet {
-    // ATTRIBUTS
     private ProduitDAO produitDAO;
     private MesureDAO mesureDAO;
     private CategorieDAO categorieDAO;
 
-    // METHODES
     public void init(){
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.produitDAO = daoFactory.getProduitDAO();
@@ -29,11 +27,9 @@ public class ServletDeleteProduit extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // get idProduit
         String idProduit = request.getParameter("idProduit");
 
         try {
-            // call delete method
             produitDAO.deleteProduit(Integer.parseInt(idProduit));
             request.setAttribute("produits", produitDAO.getProduits());
             request.setAttribute("mesures", mesureDAO.getMesures());
@@ -41,6 +37,7 @@ public class ServletDeleteProduit extends HttpServlet {
         } catch (SQLException throwable){
             throwable.printStackTrace();
         }
+
         request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
     }
 

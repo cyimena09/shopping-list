@@ -23,6 +23,18 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Ajout du logger -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <!-- Apporte entre autres des outils pour vérifier les formulaires -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
     </dependencies>
 
     <build>

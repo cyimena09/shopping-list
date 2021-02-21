@@ -1,7 +1,5 @@
 package be.ifosup.panier;
 
-import be.ifosup.produit.Produit;
-
 import java.sql.SQLException;
 import java.util.List;
 

@@ -1,11 +1,14 @@
 package be.ifosup.magasin;
 
 public class Magasin {
+
     // ATTRIBUTS
+
     private Integer idMagasin;
     private String nom;
 
-    // METHODES
+    // GETTERS & SETTERS
+
     public Integer getIdMagasin() {
         return idMagasin;
     }

@@ -16,12 +16,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DAOFactory {
+
     // ATTRIBUTS
+
     private final String url;
     private final String userName;
     private final String password;
 
     // CONSTRUCTEUR
+
     public DAOFactory(String url, String userName, String password) {
         this.url = url;
         this.userName = userName;
@@ -29,6 +32,7 @@ public class DAOFactory {
     }
 
     // METHODES
+
     // Chargement du driver
     public static DAOFactory getInstance() {
         try {

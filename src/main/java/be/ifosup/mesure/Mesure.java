@@ -1,11 +1,14 @@
 package be.ifosup.mesure;
 
 public class Mesure {
+
     // ATTRIBUTS
+
     private Integer idMesure;
     private String nom;
 
     // CONSTRUCTEUR
+
     public Mesure() { }
 
     public Mesure(Integer idMesure, String nom) {
@@ -13,7 +16,8 @@ public class Mesure {
         this.nom = nom;
     }
 
-    // METHODES
+    // GETTERS & SETTERS
+
     public Integer getIdMesure() {
         return idMesure;
     }

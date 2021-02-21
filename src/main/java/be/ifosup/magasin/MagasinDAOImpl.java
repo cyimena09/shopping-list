@@ -1,12 +1,17 @@
 package be.ifosup.magasin;
 
 import be.ifosup.dao.DAOFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MagasinDAOImpl implements MagasinDAO {
+
+    // Outils pour débuger.
+    private static final Logger LOGGER = LoggerFactory.getLogger(MagasinDAOImpl.class);
 
     // ATTRIBUTS
 
@@ -128,7 +133,6 @@ public class MagasinDAOImpl implements MagasinDAO {
     @Override
     public void updateMagasin(Integer id, Magasin magasin) throws SQLException {
 
-        System.out.println(id);
         try {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement("UPDATE magasin m SET m.nom = ? WHERE m.idMagasin = ?");

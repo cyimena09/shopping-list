@@ -10,5 +10,14 @@
             </div>
             <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i>Enregistrer</button>
         </form>
+
+        <c:if test="${error != null}">
+            <p class="error">${error}</p>
+        </c:if>
+
+        <c:if test="${success != null}">
+            <p class="success">${success}</p>
+        </c:if>
+
     </div>
 </div>

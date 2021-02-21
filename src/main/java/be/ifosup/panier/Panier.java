@@ -6,13 +6,16 @@ import be.ifosup.produit.Produit;
 import java.util.List;
 
 public class Panier {
+
     // ATTRIBUTS
+
     private Integer idPanier;
     private String nom;
     private Magasin magasin;
     private List<Produit> produitList;
 
-    // METHODES
+    // GETTERS & SETTERS
+
     public Integer getIdPanier() {
         return idPanier;
     }
@@ -44,4 +47,5 @@ public class Panier {
     public void setProduitList(List<Produit> produitList) {
         this.produitList = produitList;
     }
+
 }

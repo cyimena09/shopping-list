@@ -2,6 +2,7 @@ C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\m
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\servlet\categorie\ServletListCategorie.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\produit\ProduitDAO.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\servlet\produit\ServletCreateProduit.java
+C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\Program.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\servlet\mesure\ServletUpdateMesure.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\servlet\categorie\ServletAddCategorie.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\produit\ProduitDAOImpl.java
@@ -15,6 +16,7 @@ C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\m
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\categorie\Categorie.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\servlet\magasin\ServletAddMagasin.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\servlet\categorie\ServletUpdateCategorie.java
+C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\utils\FormsConstantes.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\categorie\CategorieDAO.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\panier\PanierDAO.java
 C:\Users\cyime\OneDrive\Bureau\IFOSUP\Bac 2\POO\ShoppingList\shopping-list\src\main\java\be\ifosup\servlet\panier\ServletAddPanierProduit.java
