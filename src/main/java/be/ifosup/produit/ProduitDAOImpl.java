@@ -147,6 +147,7 @@ public class ProduitDAOImpl implements ProduitDAO {
         // Attributs de l'objet retourné.
         int idProduit;
         String nomProduit;
+        int idPanierProduit;
         float quantite;
         int idMesure;
         String nomMesure;
@@ -156,7 +157,7 @@ public class ProduitDAOImpl implements ProduitDAO {
             connection = daoFactory.getConnection();
             statement = connection.createStatement();
             preparedStatement = connection.prepareStatement(
-                    "SELECT pr.idProduit, pr.nom AS nomProduit, SUM(pp.quantite) AS quantite, me.idMesure, me.nom AS nomMesure " +
+                    "SELECT pr.idProduit, pr.nom AS nomProduit, pp.idPanierProduit, pp.quantite, me.idMesure, me.nom AS nomMesure " +
                             "FROM produit pr " +
                             "INNER JOIN panier_produit pp ON pp.idProduit = pr.idProduit " +
                             "INNER JOIN mesure me ON me.idMesure = pr.idMesure " +
@@ -175,6 +176,7 @@ public class ProduitDAOImpl implements ProduitDAO {
                 // Récupération des données
                 idProduit = resultSet.getInt("idProduit");
                 nomProduit = resultSet.getString("nomProduit");
+                idPanierProduit = resultSet.getInt("idPanierProduit");
                 quantite = resultSet.getFloat("quantite");
                 idMesure = resultSet.getInt("idMesure");
                 nomMesure = resultSet.getString("nomMesure");
@@ -184,6 +186,7 @@ public class ProduitDAOImpl implements ProduitDAO {
                 // On ajout les données dans produit
                 produit.setIdProduit(idProduit);
                 produit.setNom(nomProduit);
+                produit.setIdPanierProduit(idPanierProduit);
                 produit.setQuantite(quantite);
                 produit.setMesure(mesure);
                 // Ajout du produit dans la liste des produits
@@ -288,5 +291,6 @@ public class ProduitDAOImpl implements ProduitDAO {
             }
         }
     }
+
 
 }

@@ -9,6 +9,7 @@ public class Produit {
 
     private Integer idProduit;
     private String nom;
+    private int idPanierProduit;
     private float quantite;
     private Mesure mesure;
     private Categorie categorie;
@@ -29,6 +30,14 @@ public class Produit {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public int getIdPanierProduit() {
+        return idPanierProduit;
+    }
+
+    public void setIdPanierProduit(int idPanierProduit) {
+        this.idPanierProduit = idPanierProduit;
     }
 
     public float getQuantite() {

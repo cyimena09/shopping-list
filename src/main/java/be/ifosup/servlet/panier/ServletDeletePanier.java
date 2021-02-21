@@ -22,7 +22,7 @@ public class ServletDeletePanier extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupération de l'id de le mesure à supprimer.
-        Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
+        int idPanier = Integer.parseInt(request.getParameter("idPanier"));
 
         try {
             // On appelle la méthode delete.

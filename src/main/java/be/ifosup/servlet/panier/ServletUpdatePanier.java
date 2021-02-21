@@ -26,10 +26,10 @@ public class ServletUpdatePanier extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try {
             // Récupération des paramètres depuis l'url et la méthode post.
+            int idPanierProduit = Integer.parseInt(request.getParameter("idPanierProduit"));
             int idPanier = Integer.parseInt(request.getParameter("idPanier"));
-            int idProduit = Integer.parseInt(request.getParameter("idProduit"));
             float quantite = Float.parseFloat(request.getParameter("quantite"));
-            panierDAO.updateProduitInPanier(idPanier, idProduit, quantite);
+            panierDAO.updateProduitInPanier(idPanierProduit, quantite);
 
             response.sendRedirect("single_panier?idPanier=" + idPanier);
         } catch (SQLException throwable) {

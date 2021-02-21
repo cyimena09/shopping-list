@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static java.net.URLEncoder.encode;
+
 @WebServlet(name = "ServletAddProduit", urlPatterns = "/add_produit")
 public class ServletAddPanierProduit extends HttpServlet {
     private PanierDAO panierDAO;
@@ -22,17 +24,24 @@ public class ServletAddPanierProduit extends HttpServlet {
 
     // Cette méthode vise à ajouter un produit dans le panier
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Force UTF-8.
+        request.setCharacterEncoding("UTF-8");
         // Récupération du panier, du produit et du magasin depuis l'url
-        Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
-        Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
+        int idPanier = Integer.parseInt(request.getParameter("idPanier"));
+        int idProduit = Integer.parseInt(request.getParameter("idProduit"));
 
         try {
-            panierDAO.addProduitInPanier(idPanier, idProduit, 5 );
+            // On vérifie si le produit est déjà dans le panier, s'il n'est pas dans le panier on ajoute une unité.
+            if (panierDAO.searchproduitInPanier(idPanier, idProduit) == null) {
+                panierDAO.addProduitInPanier(idPanier, idProduit, 1 );
+                response.sendRedirect("single_panier?idPanier=" + idPanier);
+            } else {
+                String warning = encode("Le produit existe déjà dans le panier.","UTF-8");
+                response.sendRedirect("single_panier?idPanier=" + idPanier + "&warning=" + warning);
+            }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-
-        response.sendRedirect("single_panier?idPanier=" + idPanier);
     }
 
 }

@@ -28,6 +28,9 @@ public class ServletSinglePanier extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Force UTF-8.
+        request.setCharacterEncoding("UTF-8");
+        String warning = request.getParameter("warning");
 
         try {
             // On récupère le panier indiqué dans l'url de la requete.
@@ -35,6 +38,12 @@ public class ServletSinglePanier extends HttpServlet {
             request.setAttribute("panier", panierDAO.getPanierById(idPanier));
             request.setAttribute("produits", produitDAO.getProduitsByPanierId(idPanier));
             request.setAttribute("allProduits", produitDAO.getProduits());
+            // Le servlet addPanierProduit retourne un warning
+            // si on a essayé de rajouter un produit qui existe déjà dans le panier.
+            if (warning != null) {
+                request.setAttribute("warning", warning);
+            }
+
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

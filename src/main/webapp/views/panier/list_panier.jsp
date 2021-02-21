@@ -38,7 +38,10 @@
                                 <div style="display: flex;">
                                     <span>${produit.quantite} ${produit.mesure.nom}</span>
                                     <div class="action" style="justify-content: flex-end;">
-                                        <a style="margin: 0; padding: 0;" href=""><i class="fas fa-trash" style="color: red; padding: 0; margin: 0"></i></a>
+                                        <a class="btn btn-danger btn-sm mt-1 mb-1"
+                                           href="delete_produit_in_panier?idPanierProduit=${produit.idPanierProduit}&idPanier=${panier.idPanier}&view=paniers">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </li>
