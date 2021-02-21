@@ -39,7 +39,7 @@ public class ServletAddPanier extends HttpServlet {
         String nomPanier = request.getParameter("nomPanier");
 
         if (StringUtils.isBlank(nomPanier)) {
-            String error = encode("Le champs panier ne peut pas être vide.", "UTF-8");
+            String error = encode("Le champ panier ne peut pas être vide.", "UTF-8");
             response.sendRedirect("add_panier?error=" + error);
         } else {
             try {
@@ -56,7 +56,7 @@ public class ServletAddPanier extends HttpServlet {
                 throwable.printStackTrace();
             }
             // On appelle le servletListPanier qui va se charger de récupérer les paniers
-            response.sendRedirect("add_panier");
+            response.sendRedirect("paniers");
         }
     }
 

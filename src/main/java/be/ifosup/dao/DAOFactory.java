@@ -42,7 +42,7 @@ public class DAOFactory {
             e.printStackTrace();
         }
 
-        return new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "root", "");
+        return new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "admin", "admin");
     }
 
     public Connection getConnection() throws SQLException {
