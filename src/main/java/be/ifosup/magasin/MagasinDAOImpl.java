@@ -1,8 +1,8 @@
 package be.ifosup.magasin;
 
 import be.ifosup.dao.DAOFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 public class MagasinDAOImpl implements MagasinDAO {
 
     // Outils pour débuger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(MagasinDAOImpl.class);
+//    private static final Logger LOGGER = LoggerFactory.getLogger(MagasinDAOImpl.class);
 
     // ATTRIBUTS
 
