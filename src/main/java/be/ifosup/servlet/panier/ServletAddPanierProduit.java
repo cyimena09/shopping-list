@@ -30,6 +30,7 @@ public class ServletAddPanierProduit extends HttpServlet {
         int idPanier = Integer.parseInt(request.getParameter("idPanier"));
         int idProduit = Integer.parseInt(request.getParameter("idProduit"));
 
+
         try {
             // On vérifie si le produit est déjà dans le panier, s'il n'est pas dans le panier on ajoute une unité.
             if (panierDAO.searchproduitInPanier(idPanier, idProduit) == null) {

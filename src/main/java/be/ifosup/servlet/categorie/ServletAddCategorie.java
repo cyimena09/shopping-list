@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static java.net.URLEncoder.encode;
+
 @WebServlet(name = "ServletAddCategorie", urlPatterns = "/add_categorie")
 public class ServletAddCategorie extends HttpServlet {
     private CategorieDAO categorieDAO;
@@ -25,22 +27,25 @@ public class ServletAddCategorie extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Force UTF-8
         request.setCharacterEncoding("UTF-8");
-        // Recuperation de la mesure dans le formulaire.
+        // Récuperation de la mesure dans le formulaire.
         String nomCategorie = request.getParameter("nomCategorie");
 
         if (StringUtils.isBlank(nomCategorie)) {
-            System.out.println("La catégorie est nulle");
+            String error = encode("La catégorie ne peut pas être vide.","UTF-8");
+            response.sendRedirect("categories?error=" + error);
+        } else {
+            try {
+                // Ajout de la mesure dans la db.
+                categorieDAO.createCategorie(new Categorie(null, nomCategorie));
+                request.setAttribute("categories", categorieDAO.getCategories());
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
         }
 
-        try {
-            // Ajout de la mesure dans la db.
-            categorieDAO.createCategorie(new Categorie(null, nomCategorie));
-            request.setAttribute("categories", categorieDAO.getCategories());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
-        }
 
-        request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
+
+        //request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
     }
 
 }

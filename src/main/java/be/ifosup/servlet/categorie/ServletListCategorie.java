@@ -21,8 +21,11 @@ public class ServletListCategorie extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String error = request.getParameter("error");
+
         try {
             request.setAttribute("categories", categorieDAO.getCategories());
+            request.setAttribute("error", error);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
