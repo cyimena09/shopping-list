@@ -20,7 +20,6 @@
                 <ul>
                     <li>Emile Cyimena</li>
                     <li>Benoît Vankoningsloo</li>
-                    <li>Xavier De Beck</li>
                 </ul>
             </div>
         </div>
