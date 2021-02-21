@@ -6,6 +6,7 @@ import be.ifosup.magasin.Magasin;
 import be.ifosup.magasin.MagasinDAO;
 import be.ifosup.produit.ProduitDAO;
 import be.ifosup.panier.PanierDAO;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static java.net.URLEncoder.encode;
 
 @WebServlet(name = "ServletAddPanier", urlPatterns = "/add_panier")
 public class ServletAddPanier extends HttpServlet {
@@ -52,10 +55,12 @@ public class ServletAddPanier extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String error = request.getParameter("error");
 
         try {
             request.setAttribute("magasins", magasinDAO.getMagasins());
             request.setAttribute("produits", produitDAO.getProduits());
+            request.setAttribute("error", error);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

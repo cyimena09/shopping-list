@@ -21,9 +21,11 @@ public class ServletListMagasin extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String error = request.getParameter("error");
 
         try {
             request.setAttribute("magasins", magasinDAO.getMagasins());
+            request.setAttribute("error", error);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }

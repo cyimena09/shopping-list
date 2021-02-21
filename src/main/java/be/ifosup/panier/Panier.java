@@ -14,6 +14,15 @@ public class Panier {
     private Magasin magasin;
     private List<Produit> produitList;
 
+    // CONSTRUCTEUR
+
+    public Panier() { }
+
+    public Panier(Integer idPanier, String nom) {
+        this.idPanier = idPanier;
+        this.nom = nom;
+    }
+
     // GETTERS & SETTERS
 
     public Integer getIdPanier() {
