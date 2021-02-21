@@ -57,7 +57,7 @@ public class ServletAddPanier extends HttpServlet {
                 throwable.printStackTrace();
             }
             // On appelle le servletListPanier qui va se charger de récupérer les paniers
-            response.sendRedirect("paniers");
+            response.sendRedirect("add_panier");
         }
     }
 
