@@ -21,9 +21,10 @@ public class ServletListMesure extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String error = request.getParameter("error");
         try {
             request.setAttribute("mesures", mesureDAO.getMesures());
+            request.setAttribute("error", error);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
