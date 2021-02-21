@@ -7,6 +7,15 @@ public class Magasin {
     private Integer idMagasin;
     private String nom;
 
+    // CONSTRUCTEUR
+
+    public Magasin() { }
+
+    public Magasin(Integer idMagasin, String nom) {
+        this.idMagasin = idMagasin;
+        this.nom = nom;
+    }
+
     // GETTERS & SETTERS
 
     public Integer getIdMagasin() {

@@ -22,24 +22,20 @@ public class ServletUpdateMagasin extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Force UTF-8.
+        // Force UTF-8
         request.setCharacterEncoding("UTF-8");
-        // Récupération de l'id depuis l'url.
-        Integer idMagasin= Integer.parseInt(request.getParameter("idMagasin"));
+        // Récupération depuis l'url et conversion en Integer de l'id du magasin
+        String strIdMagasin = request.getParameter("idMagasin");
+        Integer idMagasin = Integer.parseInt(strIdMagasin);
         // Récupération du nom du magasin depuis le formulaire.
         String nomMagasin = request.getParameter("nomMagasin");
 
-        // Ajout dans le magasin.
-        Magasin magasin = new Magasin();
-        magasin.setNom(nomMagasin);
-
         try {
-            magasinDAO.updateMagasin(idMagasin, magasin);
+            magasinDAO.updateMagasin(idMagasin, new Magasin(null, nomMagasin));
             request.setAttribute("magasins", magasinDAO.getMagasins());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-
         request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
     }
 
@@ -49,10 +45,10 @@ public class ServletUpdateMagasin extends HttpServlet {
         try {
             // Ajout du magasin dans l'attribut.
             request.setAttribute("magasin", magasinDAO.getMagasinById(Integer.parseInt(strIdMagasin)));
-            request.getRequestDispatcher("views/magasin/update_magasin.jsp").forward(request, response);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+        request.getRequestDispatcher("views/magasin/update_magasin.jsp").forward(request, response);
     }
 
 }
