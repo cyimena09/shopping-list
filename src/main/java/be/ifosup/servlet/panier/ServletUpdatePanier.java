@@ -22,23 +22,19 @@ public class ServletUpdatePanier extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Force UTF-8
+        // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
-        // Récupération depuis l'url et conversion en Integer de l'id de la mesure.
-        Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
-
-        // Récupération depuis le formulaire.
-        String nomPanier = request.getParameter("nomPanier");
-        Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
-//        Integer idProduit = Integer.parseInt(request.getParameter("idProduit"));
-//        Integer quantite = Integer.parseInt(request.getParameter("quantite"));
         try {
-            panierDAO.updatePanier(idPanier, new Panier());
-            request.setAttribute("paniers", panierDAO.getPaniers());
+            // Récupération des paramètres depuis l'url et la méthode post.
+            int idPanier = Integer.parseInt(request.getParameter("idPanier"));
+            int idProduit = Integer.parseInt(request.getParameter("idProduit"));
+            float quantite = Float.parseFloat(request.getParameter("quantite"));
+            panierDAO.updateProduitInPanier(idPanier, idProduit, quantite);
+
+            response.sendRedirect("single_panier?idPanier=" + idPanier);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        request.getRequestDispatcher("views/paniers.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -220,6 +220,37 @@ public class PanierDAOImpl implements PanierDAO {
     }
 
     @Override
+    public void updateProduitInPanier(int idPanier, int idProduit, float quantite) throws SQLException {
+
+        try {
+            connection = daoFactory.getConnection();
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE panier_produit pp " +
+                            "SET pp.quantite = ? " +
+                            "WHERE pp.idPanier = ? AND pp.idProduit = ?");
+
+            preparedStatement.setFloat(1, quantite);
+            preparedStatement.setInt(2, idPanier);
+            preparedStatement.setInt(3, idProduit);
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }
+
+
+
+    @Override
     public void deletePanier(Integer idPanier) throws SQLException {
 
         try {

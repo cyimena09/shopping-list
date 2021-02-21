@@ -17,6 +17,8 @@ public interface PanierDAO {
 
     void updatePanier(Integer id, Panier panier) throws SQLException;
 
+    void updateProduitInPanier(int idPanier, int idProduit, float quantite) throws SQLException;
+
     void deletePanier(Integer id) throws SQLException;
 
 }

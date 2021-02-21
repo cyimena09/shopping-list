@@ -310,10 +310,29 @@ header .fas {
 }
 
 #single-panier li:hover {
-  //background-color: #cbc9c9;
   background-color: #e9e7e7;
 }
 
+#single-panier form {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+}
+
+#single-panier form input {
+  margin-right: 5px;
+  padding: 0 0 0 2px;
+}
+
+#single-panier form span {
+  margin-right: 15px;
+}
+
+#single-panier i {
+  margin: 0;
+  padding: 0;
+}
 
 /* FOOTER */
 

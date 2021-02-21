@@ -11,26 +11,35 @@
                 <p>Produits dans le panier</p>
                 <p>Quantité</p>
             </div>
-            <ul>
-                <c:forEach items="${produits}" var="produit">
 
-                        <li class="legend"><span>${produit.nom}</span> <span>${produit.quantite} ${produit.mesure.nom}</span></li>
 
-                </c:forEach>
-            </ul>
+                <ul>
+                    <c:forEach items="${produits}" var="produit">
+                        <li class="legend">
+                            <span>${produit.nom}</span>
+                            <form action="update_panier?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}" method="post">
+                                <input class="form-control" style="width: 50px" type="text" value="${produit.quantite}" name="quantite">
+                                <span> ${produit.mesure.nom}</span>
+                                <div><button class="btn btn-warning btn-sm"><i class="fas fa-save"></i></button></div>
+                            </form>
+                        </li>
+                    </c:forEach>
+                </ul>
+
+
         </div>
 
         <div class="wrapper all-produits">
-            <h2>Tous les produits</h2>p
+            <h2>Tous les produits</h2>
             <ul>
-            <c:forEach items="${allProduits}" var="produit">
+
+                <c:forEach items="${allProduits}" var="produit">
                     <li>
-                            ${produit.nom}
-                                <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">                            <i class="fas fa-plus"></i>
+                        <span>${produit.nom}</span>
+                        <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">
+                            <i class="fas fa-plus"></i>
                         </a>
                     </li>
-
-
             </c:forEach>
             </ul>
         </div>
