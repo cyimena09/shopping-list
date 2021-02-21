@@ -41,7 +41,7 @@ public class DAOFactory {
         catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "admin", "admin");
+        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "root", "");
         return instance;
     }
 
