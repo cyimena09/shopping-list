@@ -22,6 +22,7 @@ public class ServletListPanier extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String error = request.getParameter("error");
+
         try {
             request.setAttribute("paniers", this.panierDAO.getPaniers());
             request.setAttribute("error", error);

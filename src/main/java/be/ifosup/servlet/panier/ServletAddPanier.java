@@ -36,15 +36,14 @@ public class ServletAddPanier extends HttpServlet {
         Magasin magasin = new Magasin();
         Panier panier = new Panier();
 
-        String nomPanierr = request.getParameter("nomPanier");
+        String nomPanier = request.getParameter("nomPanier");
 
-        if (StringUtils.isBlank(nomPanierr)) {
+        if (StringUtils.isBlank(nomPanier)) {
             String error = encode("Le champs panier ne peut pas être vide.", "UTF-8");
-            response.sendRedirect("paniers?error=" + error);
+            response.sendRedirect("add_panier?error=" + error);
         } else {
             try {
-                // Recuperation et conversion en Integer de l'id du magasin et du produit.
-                String nomPanier = request.getParameter("nomPanier");
+                // Recuperation et conversion en Integer de l'id du magasin.
                 Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
                 // On set les valeurs du magasin
                 magasin.setIdMagasin(idMagasin);

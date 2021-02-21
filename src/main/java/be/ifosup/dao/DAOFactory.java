@@ -30,19 +30,19 @@ public class DAOFactory {
         this.userName = userName;
         this.password = password;
     }
-  khk
+
     // METHODES
 
     // Chargement du driver
     public static DAOFactory getInstance() {
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        DAOFactory instance = new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "admin", "admin");
-        return instance;
+
+        return new DAOFactory("jdbc:mysql://localhost:3306/shopping-list?serverTimezone=CET", "root", "");
     }
 
     public Connection getConnection() throws SQLException {
