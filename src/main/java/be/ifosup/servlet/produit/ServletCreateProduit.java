@@ -7,6 +7,7 @@ import be.ifosup.mesure.MesureDAO;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.produit.Produit;
 import be.ifosup.produit.ProduitDAO;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static java.net.URLEncoder.encode;
 
 @WebServlet(name = "ServletCreateProduit", urlPatterns = "/create_produit")
 public class ServletCreateProduit extends HttpServlet {
@@ -33,7 +36,7 @@ public class ServletCreateProduit extends HttpServlet {
         // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
         // Récupération des valeurs du formulaire.
-        String nomProduit =  request.getParameter("nomProduit");
+        String nomProduit = request.getParameter("nomProduit");
         Integer idMesure = Integer.parseInt(request.getParameter("idMesure"));
         Integer idCategorie = Integer.parseInt(request.getParameter("idCategorie"));
         // Ajout dans la mesure
@@ -48,17 +51,17 @@ public class ServletCreateProduit extends HttpServlet {
         produit.setMesure(mesure);
         produit.setCategorie(categorie);
 
-        try {
+
+       try {
             // Enregistrement dans la Db.
-            produitDAO.createProduit(produit);
-            request.setAttribute("produits", produitDAO.getProduits());
-            request.setAttribute("mesures", mesureDAO.getMesures());
-            request.setAttribute("categories", categorieDAO.getCategories());
+         produitDAO.createProduit(produit);
+         request.setAttribute("produits", produitDAO.getProduits());
+         request.setAttribute("mesures", mesureDAO.getMesures());
+         request.setAttribute("categories", categorieDAO.getCategories());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
 
-        request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
+            request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
+        }
     }
-
-}
