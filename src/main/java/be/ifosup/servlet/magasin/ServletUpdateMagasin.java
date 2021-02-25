@@ -3,6 +3,7 @@ package be.ifosup.servlet.magasin;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.magasin.Magasin;
 import be.ifosup.magasin.MagasinDAO;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static java.net.URLEncoder.encode;
 
 @WebServlet(name = "ServletUpdateMagasin", urlPatterns = "/update_magasin")
 public class ServletUpdateMagasin extends HttpServlet {
@@ -30,13 +33,18 @@ public class ServletUpdateMagasin extends HttpServlet {
         // Récupération du nom du magasin depuis le formulaire.
         String nomMagasin = request.getParameter("nomMagasin");
 
-        try {
-            magasinDAO.updateMagasin(idMagasin, new Magasin(null, nomMagasin));
-            request.setAttribute("magasins", magasinDAO.getMagasins());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+        if (StringUtils.isBlank(nomMagasin)) {
+            String error = encode("Le champs magasin ne peut pas être vide.", "UTF-8");
+            response.sendRedirect("magasins?error=" + error);
+        } else {
+            try {
+                magasinDAO.updateMagasin(idMagasin, new Magasin(null, nomMagasin));
+                request.setAttribute("magasins", magasinDAO.getMagasins());
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
+            request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("views/magasin/magasins.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

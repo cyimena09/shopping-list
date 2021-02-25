@@ -3,6 +3,7 @@ package be.ifosup.servlet.categorie;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.categorie.Categorie;
 import be.ifosup.categorie.CategorieDAO;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static java.net.URLEncoder.encode;
 
 @WebServlet(name = "ServletUpdateCategorie", urlPatterns = "/update_categorie")
 public class ServletUpdateCategorie extends HttpServlet {
@@ -30,14 +33,19 @@ public class ServletUpdateCategorie extends HttpServlet {
         // Récupération du nom du categorie depuis le formulaire.
         String nomCategorie = request.getParameter("nomCategorie");
 
-        try {
-            categorieDAO.updateCategorie(idCategorie, new Categorie(null, nomCategorie));
-            request.setAttribute("categories", categorieDAO.getCategories());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
-        }
+        if (StringUtils.isBlank(nomCategorie)) {
+            String error = encode("Le champs ne peut pas être vide.", "UTF-8");
+            response.sendRedirect("categories?error=" + error);
+        } else {
+            try {
+                categorieDAO.updateCategorie(idCategorie, new Categorie(null, nomCategorie));
+                request.setAttribute("categories", categorieDAO.getCategories());
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
 
-        request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
+            request.getRequestDispatcher("views/categorie/categories.jsp").forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

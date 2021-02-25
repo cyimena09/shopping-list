@@ -3,6 +3,7 @@ package be.ifosup.servlet.mesure;
 import be.ifosup.mesure.Mesure;
 import be.ifosup.mesure.MesureDAO;
 import be.ifosup.dao.DAOFactory;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static java.net.URLEncoder.encode;
 
 @WebServlet(name = "ServletUpdateMesure", urlPatterns = "/update_mesure")
 public class ServletUpdateMesure extends HttpServlet {
@@ -30,14 +33,19 @@ public class ServletUpdateMesure extends HttpServlet {
         // Récupération du nom de la mesure depuis le formulaire.
         String nomMesure = request.getParameter("nomMesure");
 
-        try {
-            mesureDAO.updateMesure(idMesure, new Mesure(null, nomMesure));
-            request.setAttribute("mesures", mesureDAO.getMesures());
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
-        }
+        if (StringUtils.isBlank(nomMesure)) {
+            String error = encode("La mesure ne peut pas être vide.", "UTF-8");
+            response.sendRedirect("mesures?error=" + error);
+        } else {
+            try {
+                mesureDAO.updateMesure(idMesure, new Mesure(null, nomMesure));
+                request.setAttribute("mesures", mesureDAO.getMesures());
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
 
-        request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
+            request.getRequestDispatcher("views/mesure/mesures.jsp").forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

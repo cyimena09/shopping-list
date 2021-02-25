@@ -7,6 +7,7 @@ import be.ifosup.mesure.MesureDAO;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.produit.Produit;
 import be.ifosup.produit.ProduitDAO;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static java.net.URLEncoder.encode;
 
 @WebServlet(name = "ServletUpdateProduit", urlPatterns = "/update_produit")
 public class ServletUpdateProduit extends HttpServlet {
@@ -39,25 +42,30 @@ public class ServletUpdateProduit extends HttpServlet {
         Integer idMesure = Integer.parseInt(request.getParameter("idMesure"));
         Integer idCategorie = Integer.parseInt(request.getParameter("idCategorie"));
 
-        try {
-            // On ajoute la mesure.
-            Mesure mesure = new Mesure();
-            mesure.setIdMesure(idMesure);
-            // On ajoute la catégorie.
-            Categorie categorie = new Categorie();
-            categorie.setIdCategorie(idCategorie);
-            // On ajoute la mesure.
-            Produit produit = new Produit();
-            produit.setNom(nomProduit);
-            produit.setMesure(mesure);
-            produit.setCategorie(categorie);
-            // On enregistre le produit.
-            produitDAO.updateProduit(idProduit, produit);
+        if (StringUtils.isBlank(nomProduit)) {
+            String error = encode("Le produit ne peut pas être vide.", "UTF-8");
+            response.sendRedirect("produits?error=" + error);
+        } else {
+            try {
+                // On ajoute la mesure.
+                Mesure mesure = new Mesure();
+                mesure.setIdMesure(idMesure);
+                // On ajoute la catégorie.
+                Categorie categorie = new Categorie();
+                categorie.setIdCategorie(idCategorie);
+                // On ajoute la mesure.
+                Produit produit = new Produit();
+                produit.setNom(nomProduit);
+                produit.setMesure(mesure);
+                produit.setCategorie(categorie);
+                // On enregistre le produit.
+                produitDAO.updateProduit(idProduit, produit);
 
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            } catch (SQLException throwable) {
+                throwable.printStackTrace();
+            }
+            response.sendRedirect("produits");
         }
-        response.sendRedirect("produits");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

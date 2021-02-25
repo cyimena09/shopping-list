@@ -15,7 +15,9 @@
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
             <a class="btn btn-primary mt-2" href="mesures">Retour</a>
         </form>
-
+        <c:if test="${error != null}">
+            <p class="error">${error}</p>
+        </c:if>
     </div>
 </div>
 
