@@ -72,7 +72,7 @@ public class CategorieDAOImpl implements CategorieDAO {
             // Execution de la requete.
             resultSet = preparedStatement.executeQuery();
             // Recuperation des donnees.
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 idCategorie = resultSet.getInt("idCategorie");
                 nom = resultSet.getString("nom");
             }

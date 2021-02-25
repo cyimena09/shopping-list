@@ -71,7 +71,7 @@ public class MesureDAOImpl implements MesureDAO {
             // Execution de la requete.
             resultSet = preparedStatement.executeQuery();
             // Recuperation des donnees.
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 idMesure = resultSet.getInt("idMesure");
                 nom = resultSet.getString("nom");
             }

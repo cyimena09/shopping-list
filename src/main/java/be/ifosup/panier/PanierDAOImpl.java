@@ -109,7 +109,7 @@ public class PanierDAOImpl implements PanierDAO {
             // Execution de la requete.
             resultSet = preparedStatement.executeQuery();
             // Recuperation des donnees.
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 // de la table panier
                 idPanier = resultSet.getInt("idPanier");
                 nomPanier = resultSet.getString("nomPanier");

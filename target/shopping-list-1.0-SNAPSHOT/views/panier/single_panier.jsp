@@ -33,16 +33,21 @@
 
         <div class="wrapper all-produits">
             <h2>Tous les produits</h2>
-            <ul>
 
-                <c:forEach items="${allProduits}" var="produit">
-                    <li>
-                        <span>${produit.nom}</span>
-                        <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </li>
-            </c:forEach>
+            <ul>
+                <c:forEach items="${categories}" var="categorie">
+                    <p style="font-size: 18px; font-weight: bold;margin-top: 30px">${categorie.nom}</p>
+                    <c:forEach items="${allProduits}" var="produit">
+                        <c:if test="${categorie.idCategorie == produit.categorie.idCategorie}">
+                            <li>
+                                <span>${produit.nom}</span>
+                                <a class="btn btn-success btn-sm mt-1 mb-1" href="add_produit?idPanier=${panier.idPanier}&idProduit=${produit.idProduit}">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </li>
+                        </c:if>
+                    </c:forEach>
+                </c:forEach>
             </ul>
 
             <c:if test="${warning != null}">

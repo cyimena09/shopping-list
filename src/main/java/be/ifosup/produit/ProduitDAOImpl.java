@@ -108,7 +108,7 @@ public class ProduitDAOImpl implements ProduitDAO {
             // Execution de la requete.
             resultSet = preparedStatement.executeQuery();
             // Recuperation des donnees.
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 idProduit = resultSet.getInt("idProduit");
                 nomProduit = resultSet.getString("nomProduit");
                 idMesure = resultSet.getInt("idMesure");
@@ -140,7 +140,7 @@ public class ProduitDAOImpl implements ProduitDAO {
 
         return produit;
     }
-// if(resultSet.next())
+
     @Override
     public List<Produit> getProduitsByPanierId(Integer id) throws SQLException {
         List<Produit> produitsList = new ArrayList<>();
@@ -291,6 +291,5 @@ public class ProduitDAOImpl implements ProduitDAO {
             }
         }
     }
-
 
 }

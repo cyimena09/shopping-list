@@ -83,7 +83,7 @@ public class MagasinDAOImpl implements MagasinDAO {
             // Execution de la requete.
             resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 // Recuperation des donnees.
                 idMagasin = resultSet.getInt("idMagasin");
                 nomMagasin = resultSet.getString("nomMagasin");
