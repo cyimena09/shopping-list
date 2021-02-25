@@ -89,11 +89,10 @@ public class PanierDAOImpl implements PanierDAO {
         Magasin magasin = new Magasin();
         List<Produit> produits;
         // Déclaration des variables qui seront utilisées dans le résultat de la recherche.
-        Integer idPanier = null;
-        String nomPanier = null;
-        Integer idMagasin = null;
-        String nomMagasin = null;
-        Integer quantite = null;
+        Integer idPanier;
+        String nomPanier;
+        Integer idMagasin;
+        String nomMagasin ;
 
         try {
             // La connexion et la requete prepare sont crees.
@@ -145,8 +144,6 @@ public class PanierDAOImpl implements PanierDAO {
     @Override
     public Integer searchproduitInPanier(int idPanier, int idProduit) throws SQLException {
         // On appelle le dao de produit pour récupérer les produits du panier
-        DAOFactory daoFactory = DAOFactory.getInstance();
-        ProduitDAO produitDAO = daoFactory.getProduitDAO();
         // Variable.
         Integer idPanierProduit = null;
 
@@ -182,8 +179,6 @@ public class PanierDAOImpl implements PanierDAO {
         return idPanierProduit;
     }
 
-
-
     @Override
     public void createPanier(Panier panier) throws SQLException {
         try {
@@ -216,7 +211,7 @@ public class PanierDAOImpl implements PanierDAO {
         try {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement("INSERT INTO panier_produit (idPanier, idProduit, quantite) " +
-                    "VALUES (?, ?, ?)");
+                                                                    "VALUES (?, ?, ?)");
 
             preparedStatement.setInt(1, idPanier);
             preparedStatement.setInt(2, idProduit);
