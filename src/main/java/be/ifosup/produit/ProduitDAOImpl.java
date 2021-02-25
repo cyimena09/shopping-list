@@ -140,7 +140,7 @@ public class ProduitDAOImpl implements ProduitDAO {
 
         return produit;
     }
-
+// if(resultSet.next())
     @Override
     public List<Produit> getProduitsByPanierId(Integer id) throws SQLException {
         List<Produit> produitsList = new ArrayList<>();

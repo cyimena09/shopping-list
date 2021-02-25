@@ -316,16 +316,24 @@ public class PanierDAOImpl implements PanierDAO {
         }
     }
 
+    // Lorsqu'on supprime un panier on supprime égalemment le panier dans la table intermédiaire
     @Override
     public void deletePanier(Integer idPanier) throws SQLException {
 
         try {
-            // La connexion et la requete prepare sont crees.
+            // La connexion et la requete préparée sont créés.
             connection = daoFactory.getConnection();
+
+            // Suppression du panier
             preparedStatement = connection.prepareStatement("DELETE FROM panier WHERE idPanier = ?");
             // Set attributes
             preparedStatement.setInt(1, idPanier);
             // Execution de la requete.
+            preparedStatement.executeUpdate();
+
+            // Suppression du panier_produit
+            preparedStatement = connection.prepareStatement("DELETE FROM panier_produit WHERE idPanier = ?");
+            preparedStatement.setInt(1, idPanier);
             preparedStatement.executeUpdate();
 
         } catch (SQLException throwable) {

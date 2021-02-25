@@ -91,6 +91,41 @@ public class CategorieDAOImpl implements CategorieDAO {
         return new Categorie(idCategorie, nom);
     }
 
+    // Récupère toutes les catégories pour lesquels il existe un produit
+    @Override
+    public List<Categorie> getCategoriesIfProductExist() throws SQLException {
+        List<Categorie> categories = new ArrayList<>();
+
+        try {
+            connection = daoFactory.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT DISTINCT ca.idCategorie, ca.nom FROM categorie ca " +
+                                                        "INNER JOIN produit p ON p.idCategorie = ca.idCategorie");
+
+            while (resultSet.next()) {
+                // On récupère les données
+                Integer idCategorie = resultSet.getInt("idCategorie");
+                String nom = resultSet.getString("nom");
+
+                Categorie categorie = new Categorie(idCategorie, nom);
+                categories.add(categorie);
+            }
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return categories;
+    }
+
+
     @Override
     public void createCategorie(Categorie categorie) throws SQLException {
 

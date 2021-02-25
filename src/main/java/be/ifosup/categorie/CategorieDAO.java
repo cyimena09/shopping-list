@@ -7,6 +7,8 @@ public interface CategorieDAO {
 
     List<Categorie> getCategories() throws SQLException;
 
+    List<Categorie> getCategoriesIfProductExist() throws SQLException;
+
     Categorie getCategorieById(Integer id) throws SQLException;
 
     void createCategorie(Categorie magasin) throws SQLException;

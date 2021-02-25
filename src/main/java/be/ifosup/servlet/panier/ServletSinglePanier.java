@@ -1,5 +1,6 @@
 package be.ifosup.servlet.panier;
 
+import be.ifosup.categorie.CategorieDAO;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.panier.PanierDAO;
 import be.ifosup.produit.ProduitDAO;
@@ -16,11 +17,13 @@ import java.sql.SQLException;
 public class ServletSinglePanier extends HttpServlet {
     private PanierDAO panierDAO;
     private ProduitDAO produitDAO;
+    private CategorieDAO categorieDAO;
 
     public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
         this.panierDAO = daoFactory.getPanierDAO();
         this.produitDAO = daoFactory.getProduitDAO();
+        this.categorieDAO = daoFactory.getCategorieDAO();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,11 +36,12 @@ public class ServletSinglePanier extends HttpServlet {
         String warning = request.getParameter("warning");
 
         try {
-            // On récupère le panier indiqué dans l'url de la requete.
+            // On récupère le panier qui correspond à l'id indiqué dans l'url de la requête.
             Integer idPanier = Integer.parseInt(request.getParameter("idPanier"));
             request.setAttribute("panier", panierDAO.getPanierById(idPanier));
             request.setAttribute("produits", produitDAO.getProduitsByPanierId(idPanier));
             request.setAttribute("allProduits", produitDAO.getProduits());
+            request.setAttribute("categories", categorieDAO.getCategoriesIfProductExist());
             // Le servlet addPanierProduit retourne un warning
             // si on a essayé de rajouter un produit qui existe déjà dans le panier.
             if (warning != null) {

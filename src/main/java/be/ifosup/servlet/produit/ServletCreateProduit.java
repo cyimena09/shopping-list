@@ -63,11 +63,11 @@ public class ServletCreateProduit extends HttpServlet {
                 request.setAttribute("produits", produitDAO.getProduits());
                 request.setAttribute("mesures", mesureDAO.getMesures());
                 request.setAttribute("categories", categorieDAO.getCategories());
+
+                response.sendRedirect("produits");
             } catch (SQLException throwable) {
                 throwable.printStackTrace();
             }
-
-            request.getRequestDispatcher("views/produit/produits.jsp").forward(request, response);
         }
     }
 }
