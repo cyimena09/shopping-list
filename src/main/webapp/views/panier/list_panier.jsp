@@ -4,14 +4,12 @@
     <div class="content panier">
         <h1 class="page-title">Paniers de course</h1>
 
-        <div  style="margin-bottom: 15px">
-            <a href="create_panier">Créer un nouveau panier</a>
+        <div  style="margin-bottom: 20px">
+            <a class="btn btn-success" href="create_panier">Créer un nouveau panier</a>
         </div>
 
         <div class="magasins">
-
             <c:forEach items="${paniers}" var="panier">
-
                 <div class="magasin">
                     <div class="head">
                         <h2 style="display: flex; justify-content: space-between">
