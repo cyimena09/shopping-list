@@ -24,7 +24,7 @@
             </div>
 
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
-            <a class="btn btn-primary mt-2" href="paniers">Retour</a>
+            <input class="btn btn-primary mt-2" type="button" value="Retour" onclick="javascript:history.go(-1)" />
         </form>
 
 
