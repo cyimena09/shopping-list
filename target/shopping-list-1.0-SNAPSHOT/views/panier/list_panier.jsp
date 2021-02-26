@@ -5,7 +5,7 @@
         <h1 class="page-title">Paniers de course</h1>
 
         <div  style="margin-bottom: 20px">
-            <a class="btn btn-success add-article" href="create_panier">Créer un nouveau panier</a>
+            <a class="btn btn-success" href="create_panier">Créer un nouveau panier</a>
         </div>
 
         <div class="magasins">
