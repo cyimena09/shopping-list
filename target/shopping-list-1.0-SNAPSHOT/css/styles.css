@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Poppins:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
 
-
 /*COMMUNS*/
 
 * {
@@ -22,6 +21,7 @@ body {
 .content {
   width: 1200px;
   margin-top: 50px;
+
 }
 
 h1, h2, h3 {
@@ -232,6 +232,12 @@ header .fas {
 .panier .magasins {
   display: flex;
   flex-wrap: wrap;
+}
+
+.newpanier {
+  display: flex;
+  flex-wrap: wrap;
+  style="margin-bottom: 20px
 }
 
 .panier .magasin, #single-panier .wrapper {
