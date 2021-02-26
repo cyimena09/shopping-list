@@ -44,16 +44,16 @@ public class ServletUpdateProduit extends HttpServlet {
 
         if (StringUtils.isBlank(nomProduit)) {
             String error = encode("Le produit ne peut pas être vide.", "UTF-8");
-            response.sendRedirect("produits?error=" + error);
+            response.sendRedirect("update_produit?idProduit=" + idProduit + "&error=" + error);
         } else {
             try {
-                // On ajoute la mesure.
+                // Ajout de la mesure.
                 Mesure mesure = new Mesure();
                 mesure.setIdMesure(idMesure);
-                // On ajoute la catégorie.
+                // Ajout de la catégorie.
                 Categorie categorie = new Categorie();
                 categorie.setIdCategorie(idCategorie);
-                // On ajoute la mesure.
+                // Ajout du prouit.
                 Produit produit = new Produit();
                 produit.setNom(nomProduit);
                 produit.setMesure(mesure);
@@ -70,6 +70,8 @@ public class ServletUpdateProduit extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int IdProduit = Integer.parseInt(request.getParameter("idProduit"));
+        String error = request.getParameter("error");
+        request.setAttribute("error", error);
 
         try {
             // Recuperation du produits, des catégories et des mesures.

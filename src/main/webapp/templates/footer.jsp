@@ -8,10 +8,10 @@
                 <ul>
                     <li><a href="home">Accueil</a></li>
                     <li><a href="paniers">Mes paniers</a></li>
+                    <li><a href="produits">Mes Produits</a></li>
                     <li><a href="magasins">Gestion des magasins</a></li>
                     <li><a href="categories">Gestion des catégories</a></li>
                     <li><a href="mesures">Gestion des mesures</a></li>
-                    <li><a href="produits">Mes Produits</a></li>
                 </ul>
             </div>
 

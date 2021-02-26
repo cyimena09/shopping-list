@@ -14,8 +14,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import static java.net.URLEncoder.encode;
 
-@WebServlet(name = "ServletAddProduit", urlPatterns = "/add_produit")
-public class ServletAddPanierProduit extends HttpServlet {
+@WebServlet(name = "ServletAddProduitInPanier", urlPatterns = "/add_produit_in_panier")
+public class ServletAddProduitInPanier extends HttpServlet {
     private PanierDAO panierDAO;
 
     public void init() {
@@ -31,22 +31,18 @@ public class ServletAddPanierProduit extends HttpServlet {
         int idPanier = Integer.parseInt(request.getParameter("idPanier"));
         int idProduit = Integer.parseInt(request.getParameter("idProduit"));
 
-        String nomAddPanier = request.getParameter("nomAddPanier");
-
-
-            try {
-                // On vérifie si le produit est déjà dans le panier, s'il n'est pas dans le panier on ajoute une unité.
-                if (panierDAO.searchproduitInPanier(idPanier, idProduit) == null) {
-                    panierDAO.addProduitInPanier(idPanier, idProduit, 1);
-                    response.sendRedirect("single_panier?idPanier=" + idPanier);
-                } else {
-                    String warning = encode("Le produit existe déjà dans le panier.", "UTF-8");
-                    response.sendRedirect("single_panier?idPanier=" + idPanier + "&warning=" + warning);
-                }
-            } catch (SQLException throwable) {
-                throwable.printStackTrace();
+        try {
+            // On vérifie si le produit est déjà dans le panier, s'il n'est pas dans le panier on ajoute une unité.
+            if (panierDAO.searchproduitInPanier(idPanier, idProduit) == null) {
+                panierDAO.addProduitInPanier(idPanier, idProduit, 1);
+                response.sendRedirect("single_panier?idPanier=" + idPanier);
+            } else {
+                String warning = encode("Le produit existe déjà dans le panier.", "UTF-8");
+                response.sendRedirect("single_panier?idPanier=" + idPanier + "&warning=" + warning);
             }
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
     }
 
-
+}

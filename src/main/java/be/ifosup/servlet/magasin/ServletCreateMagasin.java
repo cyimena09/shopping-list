@@ -1,9 +1,9 @@
-package be.ifosup.servlet.mesure;
+package be.ifosup.servlet.magasin;
 
 import be.ifosup.categorie.Categorie;
-import be.ifosup.mesure.Mesure;
-import be.ifosup.mesure.MesureDAO;
 import be.ifosup.dao.DAOFactory;
+import be.ifosup.magasin.Magasin;
+import be.ifosup.magasin.MagasinDAO;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
@@ -16,34 +16,33 @@ import java.sql.SQLException;
 
 import static java.net.URLEncoder.encode;
 
-@WebServlet(name = "ServletAddMesure", urlPatterns = "/add_mesure")
-public class ServletAddMesure extends HttpServlet {
-    private MesureDAO mesureDAO;
+@WebServlet(name = "ServletCreateMagasin", urlPatterns = "/create_magasin")
+public class ServletCreateMagasin extends HttpServlet {
+    private MagasinDAO magasinDAO;
 
     public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
-        this.mesureDAO = daoFactory.getMesureDAO();
+        this.magasinDAO = daoFactory.getMagasinDAO();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
         // Recuperation de la mesure dans le formulaire.
-        String nomMesure = request.getParameter("nomMesure");
+        String nomMagasin = request.getParameter("nomMagasin");
 
-        if (StringUtils.isBlank(nomMesure)) {
-            String error = encode("La mesure ne peut pas être vide.","UTF-8");
-            response.sendRedirect("mesures?error=" + error);
+        if (StringUtils.isBlank(nomMagasin)) {
+            String error = encode("Le champs magasin ne peut pas être vide.","UTF-8");
+            response.sendRedirect("magasins?error=" + error);
         } else {
             try {
-                // Ajout de la catégoie dans la db.
-                mesureDAO.createMesure(new Mesure(null, nomMesure));
-                request.setAttribute("mesures", mesureDAO.getMesures());
-                response.sendRedirect("mesures");
+                // Ajout du magasin dans la db.
+                magasinDAO.createMagasin(new Magasin(null, nomMagasin));
+                request.setAttribute("magasins", magasinDAO.getMagasins());
+                response.sendRedirect("magasins");
             } catch (SQLException throwable) {
                 throwable.printStackTrace();
             }
         }
     }
-
 }

@@ -15,7 +15,7 @@
             </div>
 
             <div class="form-group">
-                <label for="idMesure">Sélectionnez une Catégorie</label>
+                <label for="idCategorie">Sélectionnez une Catégorie</label>
                 <select class="form-control" name="idCategorie" id="idCategorie">
                     <option value="${produit.categorie.idCategorie}" selected>${produit.categorie.nom}</option>
                     <c:forEach items="${categories}" var="categorie">
@@ -40,6 +40,11 @@
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
             <a class="btn btn-primary mt-2" href="produits">Retour</a>
         </form>
+
+        <c:if test="${error != null}">
+            <p class="error">${error}</p>
+        </c:if>
+
     </div>
 </div>
 <%@include file="../../templates/footer.jsp"%>

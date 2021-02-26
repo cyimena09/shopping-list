@@ -3,7 +3,6 @@ package be.ifosup.servlet.categorie;
 import be.ifosup.dao.DAOFactory;
 import be.ifosup.categorie.Categorie;
 import be.ifosup.categorie.CategorieDAO;
-import be.ifosup.utils.FormsConstantes;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
@@ -16,8 +15,8 @@ import java.sql.SQLException;
 
 import static java.net.URLEncoder.encode;
 
-@WebServlet(name = "ServletAddCategorie", urlPatterns = "/add_categorie")
-public class ServletAddCategorie extends HttpServlet {
+@WebServlet(name = "ServletCreateCategorie", urlPatterns = "/create_categorie")
+public class ServletCreateCategorie extends HttpServlet {
     private CategorieDAO categorieDAO;
 
     public void init() {

@@ -233,13 +233,13 @@ public class PanierDAOImpl implements PanierDAO {
     }
 
     @Override
-    public void updatePanier(Integer id, Panier panier) throws SQLException {
+    public void updatePanierNom(Integer id, String nom) throws SQLException {
 
         try {
             connection = daoFactory.getConnection();
-            preparedStatement = connection.prepareStatement("UPDATE panier m SET m.nom = ? WHERE m.idPanier = ?");
+            preparedStatement = connection.prepareStatement("UPDATE panier p SET p.nom = ? WHERE p.idPanier = ?");
 
-           // preparedStatement.setString(1, panier.getNom());
+            preparedStatement.setString(1, nom);
             preparedStatement.setInt(2, id);
 
             preparedStatement.executeUpdate();

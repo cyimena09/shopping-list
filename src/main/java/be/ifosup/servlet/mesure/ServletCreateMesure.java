@@ -1,9 +1,8 @@
-package be.ifosup.servlet.magasin;
+package be.ifosup.servlet.mesure;
 
-import be.ifosup.categorie.Categorie;
+import be.ifosup.mesure.Mesure;
+import be.ifosup.mesure.MesureDAO;
 import be.ifosup.dao.DAOFactory;
-import be.ifosup.magasin.Magasin;
-import be.ifosup.magasin.MagasinDAO;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
@@ -16,33 +15,34 @@ import java.sql.SQLException;
 
 import static java.net.URLEncoder.encode;
 
-@WebServlet(name = "ServletAddMagasin", urlPatterns = "/add_magasin")
-public class ServletAddMagasin extends HttpServlet {
-    private MagasinDAO magasinDAO;
+@WebServlet(name = "ServletCreateMesure", urlPatterns = "/create_mesure")
+public class ServletCreateMesure extends HttpServlet {
+    private MesureDAO mesureDAO;
 
     public void init() {
         DAOFactory daoFactory = DAOFactory.getInstance();
-        this.magasinDAO = daoFactory.getMagasinDAO();
+        this.mesureDAO = daoFactory.getMesureDAO();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
         // Recuperation de la mesure dans le formulaire.
-        String nomMagasin = request.getParameter("nomMagasin");
+        String nomMesure = request.getParameter("nomMesure");
 
-        if (StringUtils.isBlank(nomMagasin)) {
-            String error = encode("Le champs magasin ne peut pas être vide.","UTF-8");
-            response.sendRedirect("magasins?error=" + error);
+        if (StringUtils.isBlank(nomMesure)) {
+            String error = encode("La mesure ne peut pas être vide.","UTF-8");
+            response.sendRedirect("mesures?error=" + error);
         } else {
             try {
-                // Ajout du magasin dans la db.
-                magasinDAO.createMagasin(new Magasin(null, nomMagasin));
-                request.setAttribute("magasins", magasinDAO.getMagasins());
-                response.sendRedirect("magasins");
+                // Ajout de la catégoie dans la db.
+                mesureDAO.createMesure(new Mesure(null, nomMesure));
+                request.setAttribute("mesures", mesureDAO.getMesures());
+                response.sendRedirect("mesures");
             } catch (SQLException throwable) {
                 throwable.printStackTrace();
             }
         }
     }
+
 }

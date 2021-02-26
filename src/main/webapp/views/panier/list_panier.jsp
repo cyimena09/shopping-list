@@ -5,7 +5,7 @@
         <h1 class="page-title">Paniers de course</h1>
 
         <div  style="margin-bottom: 15px">
-            <a href="add_panier">Créer un nouveau panier</a>
+            <a href="create_panier">Créer un nouveau panier</a>
         </div>
 
         <div class="magasins">
@@ -47,7 +47,7 @@
                         </c:forEach>
                     </ul>
 
-                    <a class="btn btn-success add-article" href="single_panier?idPanier=${panier.idPanier}">Modifier le panier</a>
+                    <a class="btn btn-success add-article" href="single_panier?idPanier=${panier.idPanier}">Ajouter des produits</a>
 
                 </div>
 

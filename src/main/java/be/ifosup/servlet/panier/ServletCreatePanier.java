@@ -18,8 +18,8 @@ import java.sql.SQLException;
 
 import static java.net.URLEncoder.encode;
 
-@WebServlet(name = "ServletAddPanier", urlPatterns = "/add_panier")
-public class ServletAddPanier extends HttpServlet {
+@WebServlet(name = "ServletCreatePanier", urlPatterns = "/create_panier")
+public class ServletCreatePanier extends HttpServlet {
     private PanierDAO panierDAO;
     private MagasinDAO magasinDAO;
     private ProduitDAO produitDAO;
@@ -40,7 +40,7 @@ public class ServletAddPanier extends HttpServlet {
 
         if (StringUtils.isAnyBlank(nomPanier, strIdMagasin)) {
             String error = encode("Veuillez remplir tous les champs.", "UTF-8");
-            response.sendRedirect("add_panier?error=" + error);
+            response.sendRedirect("create_panier?error=" + error);
         } else {
             try {
                 Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
@@ -58,7 +58,7 @@ public class ServletAddPanier extends HttpServlet {
             } catch (Exception throwable) {
                 throwable.printStackTrace();
                 String error = encode("Une erreur est survenue, impossible de créer le panier.", "UTF-8");
-                response.sendRedirect("add_panier?error=" + error);
+                response.sendRedirect("create_panier?error=" + error);
             }
         }
     }
@@ -74,7 +74,7 @@ public class ServletAddPanier extends HttpServlet {
             throwable.printStackTrace();
         }
 
-        request.getRequestDispatcher("views/panier/add_panier.jsp").forward(request, response);
+        request.getRequestDispatcher("views/panier/create_panier.jsp").forward(request, response);
     }
 
 }

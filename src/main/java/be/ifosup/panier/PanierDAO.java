@@ -17,7 +17,7 @@ public interface PanierDAO {
 
     void addProduitInPanier(Integer idMagasin, Integer idProduit, Integer quantite) throws SQLException;
 
-    void updatePanier(Integer id, Panier panier) throws SQLException;
+    void updatePanierNom(Integer id, String nom) throws SQLException;
 
     void updateProduitInPanier(int idPanierProduit, float quantite) throws SQLException;
 
