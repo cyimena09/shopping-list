@@ -33,18 +33,19 @@ public class ServletAddPanier extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Force UTF-8
         request.setCharacterEncoding("UTF-8");
-        Magasin magasin = new Magasin();
-        Panier panier = new Panier();
 
+        // Recuperation et conversion des champs du formulaire.
         String nomPanier = request.getParameter("nomPanier");
+        String strIdMagasin = request.getParameter("idMagasin");
 
-        if (StringUtils.isBlank(nomPanier)) {
-            String error = encode("Le champ panier ne peut pas être vide.", "UTF-8");
+        if (StringUtils.isAnyBlank(nomPanier, strIdMagasin)) {
+            String error = encode("Veuillez remplir tous les champs.", "UTF-8");
             response.sendRedirect("add_panier?error=" + error);
         } else {
             try {
-                // Recuperation et conversion en Integer de l'id du magasin.
                 Integer idMagasin = Integer.parseInt(request.getParameter("idMagasin"));
+                Magasin magasin = new Magasin();
+                Panier panier = new Panier();
                 // On set les valeurs du magasin
                 magasin.setIdMagasin(idMagasin);
                 // On set les valeurs du panier
@@ -52,11 +53,13 @@ public class ServletAddPanier extends HttpServlet {
                 panier.setMagasin(magasin);
                 // Ajout du panier dans la db.
                 panierDAO.createPanier(panier);
-            } catch (SQLException throwable) {
+                // On appelle le servletListPanier qui va se charger de récupérer les paniers
+                response.sendRedirect("paniers");
+            } catch (Exception throwable) {
                 throwable.printStackTrace();
+                String error = encode("Une erreur est survenue, impossible de créer le panier.", "UTF-8");
+                response.sendRedirect("add_panier?error=" + error);
             }
-            // On appelle le servletListPanier qui va se charger de récupérer les paniers
-            response.sendRedirect("paniers");
         }
     }
 

@@ -16,7 +16,7 @@
                         <li class="legend">
                             <span>${produit.nom}</span>
                             <form action="update_panier?idPanierProduit=${produit.idPanierProduit}&idPanier=${panier.idPanier}" method="post">
-                                <input class="form-control" style="width: 50px" type="text" value="${produit.quantite}" name="quantite">
+                                <input class="form-control" style="width: 50px" type="text" value="<fmt:formatNumber value = '${produit.quantite}' type = 'number'/>" name="quantite">
                                 <span> ${produit.mesure.nom}</span>
                                 <div>
                                     <button class="btn btn-warning btn-sm"><i class="fas fa-save"></i></button>
@@ -29,6 +29,10 @@
                         </li>
                     </c:forEach>
                 </ul>
+
+            <c:if test="${error != null}">
+                <p class="error">${error}</p>
+            </c:if>
         </div>
 
         <div class="wrapper all-produits">

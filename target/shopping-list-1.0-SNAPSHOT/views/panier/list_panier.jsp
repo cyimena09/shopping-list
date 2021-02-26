@@ -30,13 +30,12 @@
                     </div>
 
                     <ul>
-
                         <c:forEach items="${panier.produitList}" var="produit">
                             <li>
                                 <span>${produit.nom}</span>
 
                                 <div style="display: flex;">
-                                    <span>${produit.quantite} ${produit.mesure.nom}</span>
+                                    <span><fmt:formatNumber value = "${produit.quantite}" type = "number"/> ${produit.mesure.nom}</span>
                                     <div class="action" style="justify-content: flex-end;">
                                         <a class="btn btn-danger btn-sm mt-1 mb-1"
                                            href="delete_produit_in_panier?idPanierProduit=${produit.idPanierProduit}&idPanier=${panier.idPanier}&view=paniers">
