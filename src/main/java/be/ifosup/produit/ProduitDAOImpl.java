@@ -279,6 +279,11 @@ public class ProduitDAOImpl implements ProduitDAO {
             // Execution de la requete.
             preparedStatement.executeUpdate();
 
+            // Suppression dans le panier_produit
+            preparedStatement = connection.prepareStatement("DELETE FROM panier_produit WHERE idPanier = ?");
+            preparedStatement.setInt(1, idProduit);
+            preparedStatement.executeUpdate();
+
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         } finally {

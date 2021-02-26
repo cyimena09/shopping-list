@@ -24,7 +24,7 @@
             </div>
 
             <button class="btn btn-primary mt-2" type="submit">Enregister</button>
-            <a class="btn btn-primary mt-2" href="paniers">Retour</a>
+            <a class="btn btn-primary mt-2" href="single_panier?idPanier=${panier.idPanier}">Retour</a>
         </form>
 
 

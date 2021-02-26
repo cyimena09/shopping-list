@@ -5,7 +5,7 @@
 <div class="page">
     <div class="content">
         <h1 class="page-title">Créer un nouveau panier</h1>
-        <form action="add_panier" method="post">
+        <form action="create_panier" method="post">
 
             <div class="form-group">
                 <label for="nomPanier">Nom de votre panier</label>
