@@ -35,11 +35,30 @@ public class ServletCreateProduit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
-        // Récupération des valeurs du formulaire.
+        // Initialisation des variables
         String nomProduit = request.getParameter("nomProduit");
-        Integer idMesure = Integer.parseInt(request.getParameter("idMesure"));
-        Integer idCategorie = Integer.parseInt(request.getParameter("idCategorie"));
-        // Ajout dans la mesure
+        Integer idMesure = null;
+        Integer idCategorie = null;
+
+        // Vérification du nom du produit
+        if (StringUtils.isBlank(nomProduit)) {
+            String error = encode("Le produit ne peut pas être vide.", "UTF-8");
+            response.sendRedirect("produits?error=" + error);
+            return;
+        } else {
+
+            try {
+                // Tentative de récupération des valeurs du formulaire.
+                idMesure = Integer.parseInt(request.getParameter("idMesure"));
+                idCategorie = Integer.parseInt(request.getParameter("idCategorie"));
+            } catch(NumberFormatException e) {
+                e.printStackTrace();
+                String error = "Impossible d'enregistrer le produit";
+                response.sendRedirect("produits?error=" + error);
+                return; // S'il y a une erreur, on ne va pas plus loin.
+            }
+        }
+        // Ajout dans la mesure.
         Mesure mesure = new Mesure();
         mesure.setIdMesure(idMesure);
         // Ajout dans la catégorie.
@@ -51,23 +70,16 @@ public class ServletCreateProduit extends HttpServlet {
         produit.setMesure(mesure);
         produit.setCategorie(categorie);
 
-
-        if (StringUtils.isBlank(nomProduit)) {
-            String error = encode("Le produit ne peut pas être vide.", "UTF-8");
-            response.sendRedirect("produits?error=" + error);
-        } else {
-
-            try {
-                // Enregistrement dans la Db.
-                produitDAO.createProduit(produit);
-                request.setAttribute("produits", produitDAO.getProduits());
-                request.setAttribute("mesures", mesureDAO.getMesures());
-                request.setAttribute("categories", categorieDAO.getCategories());
-
-                response.sendRedirect("produits");
-            } catch (SQLException throwable) {
-                throwable.printStackTrace();
-            }
+        try {
+            // Enregistrement dans la Db et redirection.
+            produitDAO.createProduit(produit);
+            request.setAttribute("produits", produitDAO.getProduits());
+            request.setAttribute("mesures", mesureDAO.getMesures());
+            request.setAttribute("categories", categorieDAO.getCategories());
+            response.sendRedirect("produits");
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
     }
+
 }

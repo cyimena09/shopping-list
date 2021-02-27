@@ -26,12 +26,16 @@ public class ServletUpdateProduitInPanier extends HttpServlet {
         // Force UTF-8.
         request.setCharacterEncoding("UTF-8");
         Integer idPanier = null;
+        String strQuantite = request.getParameter("quantite");
+        // Nous autorisons l'utilisateur à encoder un nombre décimale en utilisant la virgule ou le point.
+        // S'il choisi la virgule on le converti en point
+        strQuantite = strQuantite.replace(",", ".");
 
         try {
             // Récupération des paramètres depuis l'url et la méthode post.
             int idPanierProduit = Integer.parseInt(request.getParameter("idPanierProduit"));
             idPanier = Integer.parseInt(request.getParameter("idPanier"));
-            float quantite = Float.parseFloat(request.getParameter("quantite"));
+            float quantite = Float.parseFloat(strQuantite);
             panierDAO.updateProduitInPanier(idPanierProduit, quantite);
             response.sendRedirect("single_panier?idPanier=" + idPanier);
         } catch (NumberFormatException e) {
