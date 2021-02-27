@@ -234,12 +234,6 @@ header .fas {
   flex-wrap: wrap;
 }
 
-.newpanier {
-  display: flex;
-  flex-wrap: wrap;
-  style="margin-bottom: 20px
-}
-
 .panier .magasin, #single-panier .wrapper {
   width: 500px;
   border: solid #c6e9c6 1px;
