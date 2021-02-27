@@ -22,6 +22,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-save"></i>Enregistrer</button>
+            <a class="btn btn-primary mt-2" href="paniers">Retour</a>
         </form>
 
         <c:if test="${error != null}">

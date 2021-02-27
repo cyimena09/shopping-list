@@ -21,7 +21,7 @@
                     <li class="legend">
                         <span>${produit.nom}</span>
                         <form action="update_produit_in_panier?idPanierProduit=${produit.idPanierProduit}&idPanier=${panier.idPanier}" method="post">
-                            <input class="form-control" style="width: 50px" type="text" value="<fmt:formatNumber value = '${produit.quantite}' type = 'number'/>" name="quantite">
+                            <input class="form-control" style="width: 50px" type="text" value="<fmt:formatNumber type = 'number' value = '${produit.quantite}' />" name="quantite">
                             <span> ${produit.mesure.nom}</span>
                             <div>
                                 <button class="btn btn-warning btn-sm"><i class="fas fa-save"></i></button>

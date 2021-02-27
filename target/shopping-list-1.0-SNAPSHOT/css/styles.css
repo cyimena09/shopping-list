@@ -193,6 +193,8 @@ header .fas {
 
 .home .presentation, .home .illustration {
   width: 800px;
+  max-height: 500px;
+  border: solid blue;
 }
 
 .home .presentation {
@@ -237,7 +239,6 @@ header .fas {
 .newpanier {
   display: flex;
   flex-wrap: wrap;
-  style="margin-bottom: 20px
 }
 
 .panier .magasin, #single-panier .wrapper {
