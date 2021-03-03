@@ -194,7 +194,6 @@ header .fas {
 .home .presentation, .home .illustration {
   width: 800px;
   max-height: 500px;
-  border: solid blue;
 }
 
 .home .presentation {
